@@ -28,11 +28,17 @@ union_scores_df <- union_scores_df |>
                         party = Party,
                         score = Score,
                         lifetime_score = "Lifetime Score"
-                      )
+                      ) |>
+                      mutate(score = as.numeric(gsub('%', '', score)),
+                             lifetime_score = as.numeric(gsub('%', '', lifetime_score)))
+
 union_scores_df
 
+
+write.csv(union_scores_df, "cleaned_union_scores.csv", row.names=FALSE)
+
 # To do:
-  # change the score values into integers
+  # change the score values into integers -- done!
   # recode the party and chamber values as factors
   # associate this data with the incumbents list
   # make a new df with just the incumbents info
