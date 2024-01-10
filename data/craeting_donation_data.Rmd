@@ -1,0 +1,99 @@
+---
+title: "creating_donation"
+author: "Tommy Schupp"
+date: "2024-01-08"
+output: html_document
+---
+```{r}
+library(tidyverse)
+```
+
+```{r}
+candidates = read_delim("./data/candidates.txt", delim="|", col_names=FALSE)
+
+process_chunk = function(individuals, pos){
+  deleters = c(FALSE)
+  for (i in 1:24){
+    if (i %% 2 == 1){
+        deleters = c(deleters, TRUE)
+    }else{
+        deleters = c(deleters, FALSE)
+    }
+  }
+  
+  candidates <- candidates %>% 
+    select(everything()[deleters]) %>% 
+    rename(all_of(c("candidate_id" = "X6", "candidate_name" = "X8", "candidate_party" = "X10"))) %>% 
+    select("candidate_id", "candidate_name", "candidate_party") %>% 
+    distinct()
+  
+  
+  
+  
+  individuals <- individuals %>% 
+    rename(c("donor_name" = X8, "recipient_id" = X10, "ugly" = X17)) %>% 
+    separate("ugly", into = c("blank", "date", "amount"), sep = ",", extra = "drop") %>% 
+    select(-blank)
+  
+  
+  individuals <- individuals %>% 
+    filter(grepl("N", recipient_id)) %>% 
+    rename(candidate_id = recipient_id)
+  
+  ugly_string_of_columns_2 = "-----c-cc----------------------------------"
+  
+  pac_contributions = read_delim("./data/pac_contributions.txt", delim="|", col_types = ugly_string_of_columns_2, col_names=FALSE)
+  pac_contributions <- pac_contributions %>% 
+    rename(c("pac_id" = X6, "candidate_id" = X8, "ugly" = X9)) %>% 
+    separate("ugly", into = c("blank", "amount", "date"), sep = ",", extra = "drop") %>% 
+    select(-blank)
+  
+  pac_names = read_delim("./data/pac_names.txt", delim="|", col_names=FALSE)
+  pac_names <- pac_names %>%  
+    rename("pac_id" = X4, "pac" = X6) %>% 
+    select(c("pac_id", "pac"))
+  
+  
+  candidates %>% 
+    group_by(candidate_id) %>% 
+    filter(n() > 1) %>% 
+    arrange(candidate_id)
+  
+  
+  pac_contributions <- pac_contributions %>% 
+    left_join(pac_names, by = "pac_id") %>% 
+    left_join(candidates, by = "candidate_id") %>% 
+    select(-pac_id, -candidate_id) %>% 
+    mutate(pac_or_individual = "p") %>% 
+    rename("donor_name" = pac) %>% 
+    relocate(donor_name, date, amount, candidate_name, candidate_party, pac_or_individual)
+  
+  
+  individuals <- individuals %>% 
+    left_join(candidates, by="candidate_id") %>% 
+    mutate(pac_or_individual = "i") %>% 
+    select(-candidate_id)
+    
+  complete_contributions <- bind_rows(individuals, pac_contributions)
+  
+  file_path <- "final_contribution.csv"
+
+  # If it's the first chunk, write the file with headers.
+  # Otherwise, append without headers.
+  if (pos == 1) {
+    write_csv(complete_contributions, file_path)
+  } else {
+    write_csv(complete_contributions, file_path, append = TRUE, col_names = FALSE)
+  }
+  
+  NULL
+
+}
+
+
+chunk_size <- 1000 
+ugly_string_of_columns = "-------c-c------c--------------------------"
+individuals = read_delim_chunked("./data/individual_contributions.txt", delim="|", callback = SideEffectChunkCallback$new(process_chunk), col_names=FALSE, col_types = ugly_string_of_columns, chunk_size = 1000000, progress = TRUE)
+
+```
+

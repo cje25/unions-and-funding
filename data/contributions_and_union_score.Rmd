@@ -1,0 +1,72 @@
+---
+title: "contributions_and_union_score"
+author: "Tommy Schupp"
+date: "2024-01-09"
+output: html_document
+---
+```{r}
+library(tidyverse)
+```
+
+```{r}
+
+union_scores = read_csv("./cleaned_union_scores.csv")
+#Imports the dataset and cleans the strings.
+union_scores <- union_scores %>% 
+  mutate(clean_name = trimws(iconv(stringr::str_sub(name, start = 5), to = "UTF-8")))
+
+#Returns a lifetime score and a union score from a candidate's name. 
+match_score <- function(candidate_name) {
+  matched_row <- union_scores %>% 
+    filter(str_detect(candidate_name, clean_name))
+  
+  if (nrow(matched_row) > 0) {
+    return(matched_row[1, c("score", "lifetime_score", "clean_name")])
+  } else {
+    return(tibble(score = NA, lifetime_score = NA))
+  }
+}
+
+#target tibble where we want to send all of the data. 
+unmatched_records <- tibble(
+  name = character(),
+  state = character(),
+  district = double(),
+  party = character(),
+  score = double(),
+  lifetime_score = double(),
+  chamber = character(),
+  clean_name = character()
+)
+
+#this gets called every chunk
+process_chunk = function(contributions, pos){
+  #matches a union score to every row. drops rows without a union score.  
+  contributions_and_union_scores <- contributions %>%
+    rowwise() %>%
+    mutate(matched_scores = list(match_score(candidate_name))) %>%
+    unnest(matched_scores) %>% 
+    filter(complete.cases(.))
+  
+  #This is TEMPORARY to see that we are getting everybody. this just tells us all of the congresspeople that aren't anywhere in the contributions_and_union_scores yet. 
+  temp_anti_join = anti_join(union_scores, contributions_and_union_scores, by = "clean_name")
+  if(pos == 1){
+    unmatched_records <<- bind_rows(unmatched_records, temp_anti_join)
+  }else{
+    unmatched_records <<- inner_join(temp_anti_join, unmatched_records)
+  }
+  #This runs 5000 chunks. make this lower for testing. comment it out for reals. 
+  if (pos >= 50000) {
+    return(FALSE)  
+  }
+
+  NULL
+}
+contributions = read_csv_chunked("./contribution_data/final_contribution.csv", callback = SideEffectChunkCallback$new(process_chunk), chunk_size = 50000)
+
+unmatched_records
+```
+```{r}
+
+```
+
