@@ -36,6 +36,13 @@ union_scores_df <- union_scores_df |>
                       mutate(score = as.numeric(gsub('%', '', score)),
                              lifetime_score = as.numeric(gsub('%', '', lifetime_score)))
 
+#note that observation 131 is not yet fixed
+
+union_scores_df$name[228] <- "Emanuel Cleaver"
+union_scores_df$name[265] <- "Bill Pascrell"
+union_scores_df$name[266] <- "Donald M. Payne"
+union_scores_df$name[540] <- "Joe Manchin"
+
 union_scores_df
 
 other_par <- 'ID'
@@ -46,7 +53,10 @@ independent_candidates <- union_scores_df |> filter(union_scores_df$party %in% o
 
 
 
-write.csv(union_scores_df, "cleaned_union_scores.csv", row.names=FALSE)
+write.csv(union_scores_df, "cleaned_union_scores.csv", fileEncoding = "latin1", row.names=FALSE)
+#test_recode <- readLines("cleaned_union_scores.csv", encoding = "latin1")
+#writeLines(test_recode, con = "cleaned_union_scores.csv", encoding = "UTF-8")
+
 
 # To do:
   # change the score values into integers -- done!
