@@ -8,12 +8,18 @@ output: html_document
 ```{r}
 library(igraph)
 library(tidyverse)
-donations = read_csv("../../large_contributions_and_scores.csv", n_max = 500000)
+donations = read_csv("../../large_contributions_and_scores.csv") #n_max if you don't want to explode
+
+print(nrow(donations))
+
 individual_donations = donations %>%
   filter(pac_or_individual == 'i')
+#pac_donations = donations %>%
+  #filter(pac_or_individual == 'p')
 
-pac_donations = donations %>%
-  filter(pac_or_individual == 'p')
+#print(nrow(pac_donations))
+#print(nrow(individual_donations))
+
 ```
 
 ```{r}
@@ -46,14 +52,23 @@ for (i in 1:nrow(candidate_pairs)) {
   E(candidate_projection)[edge]$weight <- pair$weight
 }
 
+
+wt_communities <- cluster_walktrap(candidate_projection)
+membership <- membership(wt_communities)
+V(candidate_projection)$community <- membership
+
 plot(candidate_projection, 
-     edge.width=E(candidate_projection)$weight / max(E(candidate_projection)$weight) * 5, 
-     vertex.label=V(candidate_projection)$name, 
-     vertex.size=15, 
+     vertex.color=V(candidate_projection)$community,
+     vertex.label=NA, #V(candidate_projection)$name, 
+     vertex.size=3, 
      edge.arrow.size=0, 
      edge.curved=0.1, 
      layout=layout_nicely(candidate_projection)
 )
+
+for (i in unique(membership)) {
+  cat("Community", i, ":", names(V(candidate_projection))[membership == i], "\n")
+}
 
 ```
 
