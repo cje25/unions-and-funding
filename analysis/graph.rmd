@@ -1,0 +1,36 @@
+---
+title: "Graph"
+author: "Tommy Schupp"
+date: "2024-01-10"
+output: html_document
+---
+
+```{r}
+library(igraph)
+library(tidyverse)
+donations = read_csv("../../large_contributions_and_scores.csv", n_max = 10000)
+individual_donations = donations %>%
+  filter(pac_or_individual == 'i')
+
+pac_donations = donations %>%
+  filter(pac_or_individual == 'p')
+
+head(individual_donations)
+head(pac_donations)
+```
+
+```{r}
+edge_list <- individual_donations %>%
+  select(donor_name, candidate_name, amount)
+
+g <- graph_from_data_frame(d=edge_list, directed=FALSE)
+
+V(g)$type <- bipartite_mapping(g)$type
+
+candidate_projection <- bipartite_projection(g, which=TRUE)
+
+candidate_projection
+
+```
+
+
