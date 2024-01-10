@@ -27,9 +27,38 @@ g <- graph_from_data_frame(d=edge_list, directed=FALSE)
 
 V(g)$type <- bipartite_mapping(g)$type
 
-candidate_projection <- bipartite_projection(g, which=TRUE)
+donor_candidate_amount <- edge_list %>%
+  group_by(donor_name, candidate_name) %>%
+  summarize(total_amount = sum(amount))
 
-candidate_projection
+
+candidate_pairs <- donor_candidate_amount %>%
+  full_join(donor_candidate_amount, by="donor_name") %>%
+  filter(candidate_name.x != candidate_name.y) %>%
+  group_by(candidate_name.x, candidate_name.y) %>%
+  summarize(weight = sum(total_amount.x + total_amount.y))
+
+candidate_projection <- bipartite_projection(g, which=TRUE)
+V(candidate_projection)$name <- V(g)[V(g)$type == TRUE]$name
+
+E(candidate_projection)$weight <- 0
+for (i in 1:nrow(candidate_pairs)) {
+  pair <- candidate_pairs[i, ]
+  edge <- get.edge.ids(candidate_projection, 
+                       c(pair$candidate_name.x, pair$candidate_name.y))
+  E(candidate_projection)[edge]$weight <- pair$weight
+}
+
+for(e in E(candidate_projection)) {
+    edge_ends <- ends(candidate_projection, e)
+    cat(paste("Edge:", 
+              V(candidate_projection)[edge_ends[1]]$name, 
+              "<->",
+              V(candidate_projection)[edge_ends[2]]$name, 
+              "Weight:", 
+              E(candidate_projection)[e]$weight, 
+              "\n"))
+}
 
 ```
 
