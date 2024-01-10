@@ -8,15 +8,12 @@ output: html_document
 ```{r}
 library(igraph)
 library(tidyverse)
-donations = read_csv("../../large_contributions_and_scores.csv", n_max = 10000)
+donations = read_csv("../../large_contributions_and_scores.csv", n_max = 500000)
 individual_donations = donations %>%
   filter(pac_or_individual == 'i')
 
 pac_donations = donations %>%
   filter(pac_or_individual == 'p')
-
-head(individual_donations)
-head(pac_donations)
 ```
 
 ```{r}
@@ -49,16 +46,14 @@ for (i in 1:nrow(candidate_pairs)) {
   E(candidate_projection)[edge]$weight <- pair$weight
 }
 
-for(e in E(candidate_projection)) {
-    edge_ends <- ends(candidate_projection, e)
-    cat(paste("Edge:", 
-              V(candidate_projection)[edge_ends[1]]$name, 
-              "<->",
-              V(candidate_projection)[edge_ends[2]]$name, 
-              "Weight:", 
-              E(candidate_projection)[e]$weight, 
-              "\n"))
-}
+plot(candidate_projection, 
+     edge.width=E(candidate_projection)$weight / max(E(candidate_projection)$weight) * 5, 
+     vertex.label=V(candidate_projection)$name, 
+     vertex.size=15, 
+     edge.arrow.size=0, 
+     edge.curved=0.1, 
+     layout=layout_nicely(candidate_projection)
+)
 
 ```
 
