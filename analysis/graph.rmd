@@ -8,7 +8,7 @@ output: html_document
 ```{r}
 library(igraph)
 library(tidyverse)
-donations = read_csv("../../large_contributions_and_scores.csv") #n_max if you don't want to explode
+donations = read_csv("../../large_contributions_and_scores.csv", n_max = 10000) #n_max if you don't want to explode
 
 print(nrow(donations))
 
@@ -53,17 +53,17 @@ for (i in 1:nrow(candidate_pairs)) {
 }
 
 
-wt_communities <- cluster_walktrap(candidate_projection)
+wt_communities <- cluster_walktrap(candidate_projection, steps = 3)
 membership <- membership(wt_communities)
 V(candidate_projection)$community <- membership
 
 plot(candidate_projection, 
      vertex.color=V(candidate_projection)$community,
      vertex.label=NA, #V(candidate_projection)$name, 
-     vertex.size=3, 
+     vertex.size=10, 
      edge.arrow.size=0, 
      edge.curved=0.1, 
-     layout=layout_nicely(candidate_projection)
+     layout=layout.kamada.kawai(candidate_projection)
 )
 
 for (i in unique(membership)) {
