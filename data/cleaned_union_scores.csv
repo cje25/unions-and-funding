@@ -1,543 +1,543 @@
-"name","state","district","party","score","lifetime_score","chamber"
-"Mary Peltola","AK",0,"Democrat",100,100,"House"
-"Don Young","AK",0,"Republican",100,45,"House"
-"Jerry Carl","AL",1,"Republican",0,0,"House"
-"Barry Moore","AL",2,"Republican",0,0,"House"
-"Mike D. Rogers","AL",3,"Republican",8,14,"House"
-"Robert B. Aderholt","AL",4,"Republican",8,14,"House"
-"Mo Brooks","AL",5,"Republican",0,9,"House"
-"Gary Palmer","AL",6,"Republican",0,7,"House"
-"Terri Sewell","AL",7,"Democrat",100,94,"House"
-"Rick Crawford","AR",1,"Republican",0,13,"House"
-"French Hill","AR",2,"Republican",8,14,"House"
-"Steve Womack","AR",3,"Republican",15,14,"House"
-"Bruce Westerman","AR",4,"Republican",8,12,"House"
-"Tom O'Halleran","AZ",1,"Democrat",100,90,"House"
-"Ann Kirkpatrick","AZ",2,"Democrat",100,94,"House"
-"Raúl M. Grijalva","AZ",3,"Democrat",100,99,"House"
-"Paul Gosar","AZ",4,"Republican",0,7,"House"
-"Andy Biggs","AZ",5,"Republican",0,13,"House"
-"David Schweikert","AZ",6,"Republican",0,7,"House"
-"Ruben Gallego","AZ",7,"Democrat",100,98,"House"
-"Debbie Lesko","AZ",8,"Republican",0,15,"House"
-"Greg Stanton","AZ",9,"Democrat",100,100,"House"
-"Doug LaMalfa","CA",1,"Republican",8,14,"House"
-"Jared Huffman","CA",2,"Democrat",100,96,"House"
-"John Garamendi","CA",3,"Democrat",100,98,"House"
-"Tom McClintock","CA",4,"Republican",0,7,"House"
-"Mike Thompson","CA",5,"Democrat",100,96,"House"
-"Doris Matsui","CA",6,"Democrat",100,97,"House"
-"Ami Bera","CA",7,"Democrat",100,91,"House"
-"Jay Obernolte","CA",8,"Republican",15,9,"House"
-"Jerry McNerney","CA",9,"Democrat",100,97,"House"
-"Josh Harder","CA",10,"Democrat",100,99,"House"
-"Mark DeSaulnier","CA",11,"Democrat",100,98,"House"
-"Nancy Pelosi","CA",12,"Democrat",100,97,"House"
-"Barbara Lee","CA",13,"Democrat",100,99,"House"
-"Jackie Speier","CA",14,"Democrat",100,96,"House"
-"Eric Swalwell","CA",15,"Democrat",100,98,"House"
-"Jim Costa","CA",16,"Democrat",100,85,"House"
-"Ro Khanna","CA",17,"Democrat",100,97,"House"
-"Anna G. Eshoo","CA",18,"Democrat",100,97,"House"
-"Zoe Lofgren","CA",19,"Democrat",100,97,"House"
-"Jimmy Panetta","CA",20,"Democrat",100,95,"House"
-"David Valadao","CA",21,"Republican",23,29,"House"
-"Connie Conway","CA",22,"Republican",0,0,"House"
-"Kevin McCarthy","CA",23,"Republican",8,12,"House"
-"Salud Carbajal","CA",24,"Democrat",100,95,"House"
-"Mike Garcia","CA",25,"Republican",23,17,"House"
-"Julia Brownley","CA",26,"Democrat",100,96,"House"
-"Judy Chu","CA",27,"Democrat",100,98,"House"
-"Adam B. Schiff","CA",28,"Democrat",100,97,"House"
-"Tony Cárdenas","CA",29,"Democrat",100,95,"House"
-"Brad Sherman","CA",30,"Democrat",100,98,"House"
-"Pete Aguilar","CA",31,"Democrat",100,94,"House"
-"Grace F. Napolitano","CA",32,"Democrat",100,100,"House"
-"Ted Lieu","CA",33,"Democrat",100,97,"House"
-"Jimmy Gomez","CA",34,"Democrat",100,99,"House"
-"Norma Torres","CA",35,"Democrat",100,98,"House"
-"Raul Ruiz","CA",36,"Democrat",100,95,"House"
-"Karen Bass","CA",37,"Democrat",100,99,"House"
-"Linda T. Sánchez","CA",38,"Democrat",100,99,"House"
-"Young Kim","CA",39,"Republican",15,18,"House"
-"Lucille Roybal-Allard","CA",40,"Democrat",100,98,"House"
-"Mark Takano","CA",41,"Democrat",100,98,"House"
-"Ken Calvert","CA",42,"Republican",8,15,"House"
-"Maxine Waters","CA",43,"Democrat",100,99,"House"
-"Nanette Barragán","CA",44,"Democrat",100,98,"House"
-"Katie Porter","CA",45,"Democrat",100,100,"House"
-"J. Luis Correa","CA",46,"Democrat",100,91,"House"
-"Alan Lowenthal","CA",47,"Democrat",100,98,"House"
-"Michelle Steel","CA",48,"Republican",0,3,"House"
-"Mike Levin","CA",49,"Democrat",100,100,"House"
-"Darrell Issa","CA",50,"Republican",0,10,"House"
-"Juan Vargas","CA",51,"Democrat",100,99,"House"
-"Scott Peters","CA",52,"Democrat",100,89,"House"
-"Sara Jacobs","CA",53,"Democrat",100,100,"House"
-"Diana DeGette","CO",1,"Democrat",100,97,"House"
-"Joe Neguse","CO",2,"Democrat",100,99,"House"
-"Lauren Boebert","CO",3,"Republican",0,0,"House"
-"Ken Buck","CO",4,"Republican",0,7,"House"
-"Doug Lamborn","CO",5,"Republican",0,6,"House"
-"Jason Crow","CO",6,"Democrat",100,100,"House"
-"Ed Perlmutter","CO",7,"Democrat",100,96,"House"
-"John B. Larson","CT",1,"Democrat",100,98,"House"
-"Joe Courtney","CT",2,"Democrat",100,99,"House"
-"Rosa DeLauro","CT",3,"Democrat",100,99,"House"
-"Jim Himes","CT",4,"Democrat",100,93,"House"
-"Jahana Hayes","CT",5,"Democrat",100,100,"House"
-"Lisa Blunt Rochester","DE",0,"Democrat",100,98,"House"
-"Matt Gaetz","FL",1,"Republican",8,14,"House"
-"Neal Dunn","FL",2,"Republican",8,15,"House"
-"Kat Cammack","FL",3,"Republican",0,0,"House"
-"John Rutherford","FL",4,"Republican",9,20,"House"
-"Al Lawson","FL",5,"Democrat",100,97,"House"
-"Michael Waltz","FL",6,"Republican",8,18,"House"
-"Stephanie Murphy","FL",7,"Democrat",92,87,"House"
-"Bill Posey","FL",8,"Republican",8,12,"House"
-"Darren Soto","FL",9,"Democrat",100,99,"House"
-"Val Demings","FL",10,"Democrat",100,98,"House"
-"Daniel Webster","FL",11,"Republican",8,12,"House"
-"Gus Bilirakis","FL",12,"Republican",15,12,"House"
-"Charlie Crist","FL",13,"Democrat",100,96,"House"
-"Kathy Castor","FL",14,"Democrat",100,97,"House"
-"Scott Franklin","FL",15,"Republican",0,0,"House"
-"Vern Buchanan","FL",16,"Republican",0,15,"House"
-"Greg Steube","FL",17,"Republican",0,8,"House"
-"Brian Mast","FL",18,"Republican",15,23,"House"
-"Byron Donalds","FL",19,"Republican",0,0,"House"
-"Sheila Cherfilus-McCormick","FL",20,"Democrat",100,100,"House"
-"Lois Frankel","FL",21,"Democrat",100,99,"House"
-"Ted Deutch","FL",22,"Democrat",100,97,"House"
-"Debbie Wasserman Schultz","FL",23,"Democrat",100,97,"House"
-"Frederica Wilson","FL",24,"Democrat",100,99,"House"
-"Mario Diaz-Balart","FL",25,"Republican",15,38,"House"
-"Carlos Giménez","FL",26,"Republican",8,21,"House"
-"Maria Elvira Salazar","FL",27,"Republican",31,27,"House"
-"Buddy Carter","GA",1,"Republican",0,11,"House"
-"Sanford D. Bishop Jr.","GA",2,"Democrat",100,94,"House"
-"A. Drew Ferguson","GA",3,"Republican",0,13,"House"
-"Hank Johnson","GA",4,"Democrat",100,98,"House"
-"Nikema Williams","GA",5,"Democrat",100,100,"House"
-"Lucy McBath","GA",6,"Democrat",100,99,"House"
-"Carolyn Bourdeaux","GA",7,"Democrat",100,100,"House"
-"Austin Scott","GA",8,"Republican",0,13,"House"
-"Andrew Clyde","GA",9,"Republican",8,3,"House"
-"Jody Hice","GA",10,"Republican",0,6,"House"
-"Barry Loudermilk","GA",11,"Republican",0,9,"House"
-"Rick Allen","GA",12,"Republican",0,9,"House"
-"David Scott","GA",13,"Democrat",100,97,"House"
-"Marjorie Taylor Greene","GA",14,"Republican",0,0,"House"
-"Ed Case","HI",1,"Democrat",100,99,"House"
-"Kaiali?i Kahele","HI",2,"Democrat",100,100,"House"
-"Ashley Hinson","IA",1,"Republican",8,9,"House"
-"Mariannette Miller-Meeks","IA",2,"Republican",8,9,"House"
-"Cynthia Axne","IA",3,"Democrat",100,99,"House"
-"Randy Feenstra","IA",4,"Republican",8,6,"House"
-"Russ Fulcher","ID",1,"Republican",0,8,"House"
-"Mike Simpson","ID",2,"Republican",8,21,"House"
-"Bobby L. Rush","IL",1,"Democrat",100,97,"House"
-"Robin Kelly","IL",2,"Democrat",100,99,"House"
-"Marie Newman","IL",3,"Democrat",100,100,"House"
-"Jesús García","IL",4,"Democrat",100,96,"House"
-"Mike Quigley","IL",5,"Democrat",100,95,"House"
-"Sean Casten","IL",6,"Democrat",100,100,"House"
-"Danny K. Davis","IL",7,"Democrat",100,98,"House"
-"Raja Krishnamoorthi","IL",8,"Democrat",100,98,"House"
-"Jan Schakowsky","IL",9,"Democrat",100,99,"House"
-"Brad Schneider","IL",10,"Democrat",100,94,"House"
-"Bill Foster","IL",11,"Democrat",100,95,"House"
-"Mike Bost","IL",12,"Republican",25,37,"House"
-"Rodney Davis","IL",13,"Republican",31,38,"House"
-"Lauren Underwood","IL",14,"Democrat",100,100,"House"
-"Mary Miller","IL",15,"Republican",0,0,"House"
-"Adam Kinzinger","IL",16,"Republican",60,36,"House"
-"Cheri Bustos","IL",17,"Democrat",100,96,"House"
-"Darin M. LaHood","IL",18,"Republican",0,18,"House"
-"Frank Mrvan","IN",1,"Democrat",100,100,"House"
-"Jackie Walorski","IN",2,"Republican",14,14,"House"
-"Rudy Yakym","IN",2,"Republican",0,0,"House"
-"Jim Banks","IN",3,"Republican",0,9,"House"
-"James Baird","IN",4,"Republican",8,15,"House"
-"Victoria Spartz","IN",5,"Republican",8,6,"House"
-"Greg Pence","IN",6,"Republican",8,17,"House"
-"André Carson","IN",7,"Democrat",100,98,"House"
-"Larry Bucshon","IN",8,"Republican",8,19,"House"
-"Trey Hollingsworth","IN",9,"Republican",8,14,"House"
-"Tracey Mann","KS",1,"Republican",0,0,"House"
-"Jake LaTurner","KS",2,"Republican",8,3,"House"
-"Sharice Davids","KS",3,"Democrat",100,99,"House"
-"Ron Estes","KS",4,"Republican",0,12,"House"
-"James Comer","KY",1,"Republican",8,12,"House"
-"Brett Guthrie","KY",2,"Republican",8,12,"House"
-"John Yarmuth","KY",3,"Democrat",100,99,"House"
-"Thomas Massie","KY",4,"Republican",8,15,"House"
-"Harold Rogers","KY",5,"Republican",8,15,"House"
-"Andy Barr","KY",6,"Republican",8,10,"House"
-"Steve Scalise","LA",1,"Republican",8,9,"House"
-"Troy Carter","LA",2,"Democrat",100,100,"House"
-"Clay Higgins","LA",3,"Republican",0,9,"House"
-"Mike Johnson","LA",4,"Republican",0,10,"House"
-"Julia Letlow","LA",5,"Republican",8,4,"House"
-"Garret Graves","LA",6,"Republican",8,15,"House"
-"Richard E. Neal","MA",1,"Democrat",100,98,"House"
-"Jim McGovern","MA",2,"Democrat",100,98,"House"
-"Lori Trahan","MA",3,"Democrat",100,99,"House"
-"Jake Auchincloss","MA",4,"Democrat",100,100,"House"
-"Katherine Clark","MA",5,"Democrat",100,99,"House"
-"Seth Moulton","MA",6,"Democrat",100,97,"House"
-"Ayanna Pressley","MA",7,"Democrat",100,91,"House"
-"Stephen F. Lynch","MA",8,"Democrat",100,99,"House"
-"Bill Keating","MA",9,"Democrat",100,97,"House"
-"Andy Harris","MD",1,"Republican",0,7,"House"
-"C.A. Dutch Ruppersberger","MD",2,"Democrat",100,97,"House"
-"John Sarbanes","MD",3,"Democrat",100,99,"House"
-"Anthony Brown","MD",4,"Democrat",100,97,"House"
-"Steny H. Hoyer","MD",5,"Democrat",100,97,"House"
-"David Trone","MD",6,"Democrat",100,100,"House"
-"Kweisi Mfume","MD",7,"Democrat",100,100,"House"
-"Jamie Raskin","MD",8,"Democrat",100,98,"House"
-"Chellie Pingree","ME",1,"Democrat",100,99,"House"
-"Jared Golden","ME",2,"Democrat",100,92,"House"
-"Jack Bergman","MI",1,"Republican",23,18,"House"
-"Bill Huizenga","MI",2,"Republican",0,9,"House"
-"Peter Meijer","MI",3,"Republican",31,21,"House"
-"John Moolenaar","MI",4,"Republican",0,17,"House"
-"Dan Kildee","MI",5,"Democrat",100,98,"House"
-"Fred Upton","MI",6,"Republican",54,33,"House"
-"Tim Walberg","MI",7,"Republican",8,13,"House"
-"Elissa Slotkin","MI",8,"Democrat",100,100,"House"
-"Andy Levin","MI",9,"Democrat",100,97,"House"
-"Lisa McClain","MI",10,"Republican",15,6,"House"
-"Haley Stevens","MI",11,"Democrat",100,100,"House"
-"Debbie Dingell","MI",12,"Democrat",100,99,"House"
-"Rashida Tlaib","MI",13,"Democrat",100,92,"House"
-"Brenda Lawrence","MI",14,"Democrat",100,98,"House"
-"Brad Finstad","MN",1,"Republican",0,0,"House"
-"Jim Hagedorn","MN",1,"Republican",100,23,"House"
-"Angie Craig","MN",2,"Democrat",100,100,"House"
-"Dean Phillips","MN",3,"Democrat",100,100,"House"
-"Betty McCollum","MN",4,"Democrat",100,97,"House"
-"Ilhan Omar","MN",5,"Democrat",100,90,"House"
-"Tom Emmer","MN",6,"Republican",15,21,"House"
-"Michelle Fischbach","MN",7,"Republican",8,6,"House"
-"Pete Stauber","MN",8,"Republican",15,37,"House"
-"Cori Bush","MO",1,"Democrat",100,97,"House"
-"Ann Wagner","MO",2,"Republican",8,15,"House"
-"Blaine Luetkemeyer","MO",3,"Republican",8,11,"House"
-"Vicky Hartzler","MO",4,"Republican",8,14,"House"
-"Emanuel Cleaver","MO",5,"Democrat",100,98,"House"
-"Sam Graves","MO",6,"Republican",8,18,"House"
-"Billy Long","MO",7,"Republican",0,11,"House"
-"Jason Smith","MO",8,"Republican",0,10,"House"
-"Trent Kelly","MS",1,"Republican",0,10,"House"
-"Bennie Thompson","MS",2,"Democrat",100,98,"House"
-"Michael Guest","MS",3,"Republican",8,12,"House"
-"Steven Palazzo","MS",4,"Republican",0,12,"House"
-"Matt Rosendale","MT",1,"Republican",0,0,"House"
-"G. K. Butterfield","NC",1,"Democrat",100,98,"House"
-"Deborah Ross","NC",2,"Democrat",100,100,"House"
-"Greg Murphy","NC",3,"Republican",8,16,"House"
-"David E. Price","NC",4,"Democrat",100,97,"House"
-"Virginia Foxx","NC",5,"Republican",8,8,"House"
-"Kathy Manning","NC",6,"Democrat",100,100,"House"
-"David Rouzer","NC",7,"Republican",8,11,"House"
-"Richard Hudson","NC",8,"Republican",15,10,"House"
-"Dan Bishop","NC",9,"Republican",0,5,"House"
-"Patrick T. McHenry","NC",10,"Republican",0,10,"House"
-"Madison Cawthorn","NC",11,"Republican",8,3,"House"
-"Alma Adams","NC",12,"Democrat",100,98,"House"
-"Ted Budd","NC",13,"Republican",8,8,"House"
-"Kelly Armstrong","ND",0,"Republican",8,11,"House"
-"Mike Flood","NE",1,"Republican",0,0,"House"
-"Jeff Fortenberry","NE",1,"Republican",33,21,"House"
-"Don Bacon","NE",2,"Republican",38,29,"House"
-"Adrian Smith","NE",3,"Republican",0,9,"House"
-"Chris Pappas","NH",1,"Democrat",100,100,"House"
-"Ann McLane Kuster","NH",2,"Democrat",100,95,"House"
-"Donald W. Norcross","NJ",1,"Democrat",100,97,"House"
-"Jefferson Van Drew","NJ",2,"Republican",23,61,"House"
-"Andy Kim","NJ",3,"Democrat",100,100,"House"
-"Christopher H. Smith","NJ",4,"Republican",46,54,"House"
-"Josh Gottheimer","NJ",5,"Democrat",100,89,"House"
-"Frank Pallone","NJ",6,"Democrat",100,99,"House"
-"Tom Malinowski","NJ",7,"Democrat",100,100,"House"
-"Albio Sires","NJ",8,"Democrat",100,98,"House"
-"Bill Pascrell","NJ",9,"Democrat",100,98,"House"
-"Donald M. Payne","NJ",10,"Democrat",100,98,"House"
-"Mikie Sherrill","NJ",11,"Democrat",100,100,"House"
-"Bonnie Watson Coleman","NJ",12,"Democrat",100,98,"House"
-"Melanie Stansbury","NM",1,"Democrat",100,100,"House"
-"Yvette Herrell","NM",2,"Republican",8,3,"House"
-"Teresa Leger Fernandez","NM",3,"Democrat",100,100,"House"
-"Dina Titus","NV",1,"Democrat",100,98,"House"
-"Mark Amodei","NV",2,"Republican",8,18,"House"
-"Susie Lee","NV",3,"Democrat",100,100,"House"
-"Steven Horsford","NV",4,"Democrat",100,99,"House"
-"Lee Zeldin","NY",1,"Republican",8,30,"House"
-"Andrew Garbarino","NY",2,"Republican",23,24,"House"
-"Thomas Suozzi","NY",3,"Democrat",100,94,"House"
-"Kathleen Rice","NY",4,"Democrat",92,94,"House"
-"Gregory W. Meeks","NY",5,"Democrat",100,94,"House"
-"Grace Meng","NY",6,"Democrat",100,96,"House"
-"Nydia M. Velázquez","NY",7,"Democrat",100,99,"House"
-"Hakeem Jeffries","NY",8,"Democrat",100,99,"House"
-"Yvette D. Clarke","NY",9,"Democrat",100,98,"House"
-"Jerrold Nadler","NY",10,"Democrat",100,99,"House"
-"Nicole Malliotakis","NY",11,"Republican",31,29,"House"
-"Carolyn B. Maloney","NY",12,"Democrat",100,97,"House"
-"Adriano Espaillat","NY",13,"Democrat",100,98,"House"
-"Alexandria Ocasio-Cortez","NY",14,"Democrat",92,88,"House"
-"Ritchie Torres","NY",15,"Democrat",100,100,"House"
-"Jamaal Bowman","NY",16,"Democrat",100,97,"House"
-"Mondaire Jones","NY",17,"Democrat",100,100,"House"
-"Sean Patrick Maloney","NY",18,"Democrat",100,97,"House"
-"Antonio Delgado","NY",19,"Democrat",100,100,"House"
-"Patrick Ryan","NY",19,"Democrat",100,100,"House"
-"Paul Tonko","NY",20,"Democrat",100,99,"House"
-"Elise Stefanik","NY",21,"Republican",8,35,"House"
-"Claudia Tenney","NY",22,"Republican",8,20,"House"
-"Tom Reed","NY",23,"Republican",67,32,"House"
-"Joe Sempolinski","NY",23,"Republican",0,0,"House"
-"John Katko","NY",24,"Republican",77,53,"House"
-"Joe Morelle","NY",25,"Democrat",100,100,"House"
-"Brian Higgins","NY",26,"Democrat",100,98,"House"
-"Chris Jacobs","NY",27,"Republican",31,24,"House"
-"Steven J. Chabot","OH",1,"Republican",15,9,"House"
-"Brad Wenstrup","OH",2,"Republican",0,8,"House"
-"Joyce Beatty","OH",3,"Democrat",100,97,"House"
-"Jim Jordan","OH",4,"Republican",0,5,"House"
-"Robert E. Latta","OH",5,"Republican",8,9,"House"
-"Bill Johnson","OH",6,"Republican",31,22,"House"
-"Bob Gibbs","OH",7,"Republican",15,14,"House"
-"Warren Davidson","OH",8,"Republican",8,7,"House"
-"Marcy Kaptur","OH",9,"Democrat",100,98,"House"
-"Michael R. Turner","OH",10,"Republican",23,33,"House"
-"Shontel Brown","OH",11,"Democrat",100,100,"House"
-"Troy Balderson","OH",12,"Republican",15,24,"House"
-"Tim Ryan","OH",13,"Democrat",100,98,"House"
-"Dave Joyce","OH",14,"Republican",31,39,"House"
-"Mike Carey","OH",15,"Republican",31,27,"House"
-"Anthony Gonzalez","OH",16,"Republican",33,32,"House"
-"Kevin Hern","OK",1,"Republican",0,8,"House"
-"Markwayne Mullin","OK",2,"Republican",0,15,"House"
-"Frank D. Lucas","OK",3,"Republican",8,15,"House"
-"Tom Cole","OK",4,"Republican",15,19,"House"
-"Stephanie Bice","OK",5,"Republican",15,12,"House"
-"Suzanne Bonamici","OR",1,"Democrat",100,96,"House"
-"Cliff Bentz","OR",2,"Republican",8,6,"House"
-"Earl Blumenauer","OR",3,"Democrat",100,95,"House"
-"Peter A. DeFazio","OR",4,"Democrat",100,94,"House"
-"Kurt Schrader","OR",5,"Democrat",92,85,"House"
-"Brian Fitzpatrick","PA",1,"Republican",85,65,"House"
-"Brendan Boyle","PA",2,"Democrat",100,97,"House"
-"Dwight Evans","PA",3,"Democrat",100,99,"House"
-"Madeleine Dean","PA",4,"Democrat",100,100,"House"
-"Mary Gay Scanlon","PA",5,"Democrat",100,100,"House"
-"Chrissy Houlahan","PA",6,"Democrat",100,100,"House"
-"Susan Wild","PA",7,"Democrat",100,99,"House"
-"Matt Cartwright","PA",8,"Democrat",100,97,"House"
-"Daniel Meuser","PA",9,"Republican",15,14,"House"
-"Scott Perry","PA",10,"Republican",0,8,"House"
-"Lloyd Smucker","PA",11,"Republican",0,11,"House"
-"Fred Keller","PA",12,"Republican",8,12,"House"
-"John Joyce","PA",13,"Republican",15,12,"House"
-"Guy Reschenthaler","PA",14,"Republican",15,24,"House"
-"Glenn Thompson","PA",15,"Republican",8,15,"House"
-"Mike Kelly","PA",16,"Republican",8,21,"House"
-"Conor Lamb","PA",17,"Democrat",100,94,"House"
-"Mike Doyle","PA",18,"Democrat",100,98,"House"
-"David Cicilline","RI",1,"Democrat",100,98,"House"
-"Jim Langevin","RI",2,"Democrat",100,98,"House"
-"Nancy Mace","SC",1,"Republican",15,6,"House"
-"Joe Wilson","SC",2,"Republican",8,11,"House"
-"Jeffrey Duncan","SC",3,"Republican",0,6,"House"
-"William Timmons","SC",4,"Republican",0,8,"House"
-"Ralph Norman","SC",5,"Republican",0,5,"House"
-"James E. Clyburn","SC",6,"Democrat",100,97,"House"
-"Tom Rice","SC",7,"Republican",8,11,"House"
-"Dusty Johnson","SD",0,"Republican",8,12,"House"
-"Diana Harshbarger","TN",1,"Republican",8,3,"House"
-"Tim Burchett","TN",2,"Republican",8,14,"House"
-"Chuck Fleischmann","TN",3,"Republican",0,12,"House"
-"Scott DesJarlais","TN",4,"Republican",8,9,"House"
-"Jim Cooper","TN",5,"Democrat",100,84,"House"
-"John Rose","TN",6,"Republican",0,8,"House"
-"Mark Green","TN",7,"Republican",0,11,"House"
-"David Kustoff","TN",8,"Republican",0,13,"House"
-"Steve Cohen","TN",9,"Democrat",100,98,"House"
-"Louie Gohmert","TX",1,"Republican",0,9,"House"
-"Dan Crenshaw","TX",2,"Republican",0,17,"House"
-"Van Taylor","TX",3,"Republican",0,10,"House"
-"Pat Fallon","TX",4,"Republican",0,0,"House"
-"Lance Gooden","TX",5,"Republican",0,11,"House"
-"Jake Ellzey","TX",6,"Republican",8,6,"House"
-"Lizzie Fletcher","TX",7,"Democrat",100,100,"House"
-"Kevin Brady","TX",8,"Republican",0,9,"House"
-"Al Green","TX",9,"Democrat",100,99,"House"
-"Michael McCaul","TX",10,"Republican",15,13,"House"
-"August Pfluger","TX",11,"Republican",0,0,"House"
-"Kay Granger","TX",12,"Republican",15,13,"House"
-"Ronny Jackson","TX",13,"Republican",0,0,"House"
-"Randy Weber","TX",14,"Republican",0,9,"House"
-"Vicente Gonzalez","TX",15,"Democrat",100,95,"House"
-"Veronica Escobar","TX",16,"Democrat",100,99,"House"
-"Pete Sessions","TX",17,"Republican",8,6,"House"
-"Sheila Jackson Lee","TX",18,"Democrat",100,98,"House"
-"Jodey Arrington","TX",19,"Republican",0,8,"House"
-"Joaquín Castro","TX",20,"Democrat",100,97,"House"
-"Chip Roy","TX",21,"Republican",0,7,"House"
-"Troy Nehls","TX",22,"Republican",0,0,"House"
-"Tony Gonzales","TX",23,"Republican",8,12,"House"
-"Beth Van Duyne","TX",24,"Republican",0,0,"House"
-"Roger Williams","TX",25,"Republican",0,9,"House"
-"Michael C. Burgess","TX",26,"Republican",8,9,"House"
-"Michael Cloud","TX",27,"Republican",0,8,"House"
-"Henry Cuellar","TX",28,"Democrat",92,73,"House"
-"Sylvia Garcia","TX",29,"Democrat",100,99,"House"
-"Eddie Bernice Johnson","TX",30,"Democrat",100,96,"House"
-"John Carter","TX",31,"Republican",8,11,"House"
-"Colin Allred","TX",32,"Democrat",100,100,"House"
-"Marc Veasey","TX",33,"Democrat",100,98,"House"
-"Mayra Flores","TX",34,"Republican",0,0,"House"
-"Filemon Vela","TX",34,"Democrat",100,93,"House"
-"Lloyd Doggett","TX",35,"Democrat",100,96,"House"
-"Brian Babin","TX",36,"Republican",0,11,"House"
-"Blake Moore","UT",1,"Republican",8,6,"House"
-"Chris Stewart","UT",2,"Republican",8,12,"House"
-"John Curtis","UT",3,"Republican",8,16,"House"
-"Burgess Owens","UT",4,"Republican",8,6,"House"
-"Robert J. Wittman","VA",1,"Republican",8,14,"House"
-"Elaine Luria","VA",2,"Democrat",100,99,"House"
-"Robert C. Scott","VA",3,"Democrat",100,98,"House"
-"A. Donald McEachin","VA",4,"Democrat",100,96,"House"
-"Robert Good","VA",5,"Republican",0,0,"House"
-"Ben Cline","VA",6,"Republican",8,11,"House"
-"Abigail Spanberger","VA",7,"Democrat",100,96,"House"
-"Donald Beyer","VA",8,"Democrat",100,96,"House"
-"Morgan Griffith","VA",9,"Republican",8,14,"House"
-"Jennifer Wexton","VA",10,"Democrat",100,100,"House"
-"Gerald E. Connolly","VA",11,"Democrat",100,93,"House"
-"Peter Welch","VT",0,"Democrat",100,97,"House"
-"Suzan K. DelBene","WA",1,"Democrat",100,95,"House"
-"Rick Larsen","WA",2,"Democrat",100,94,"House"
-"Jaime Herrera Beutler","WA",3,"Republican",31,21,"House"
-"Dan Newhouse","WA",4,"Republican",8,25,"House"
-"Cathy McMorris Rodgers","WA",5,"Republican",0,11,"House"
-"Derek Kilmer","WA",6,"Democrat",100,95,"House"
-"Pramila Jayapal","WA",7,"Democrat",100,96,"House"
-"Kim Schrier","WA",8,"Democrat",100,100,"House"
-"Adam Smith","WA",9,"Democrat",100,96,"House"
-"Marilyn Strickland","WA",10,"Democrat",100,100,"House"
-"Bryan Steil","WI",1,"Republican",0,15,"House"
-"Mark Pocan","WI",2,"Democrat",100,98,"House"
-"Ron Kind","WI",3,"Democrat",100,90,"House"
-"Gwen Moore","WI",4,"Democrat",100,97,"House"
-"Scott Fitzgerald","WI",5,"Republican",8,3,"House"
-"Glenn Grothman","WI",6,"Republican",8,10,"House"
-"Tom Tiffany","WI",7,"Republican",8,8,"House"
-"Mike Gallagher","WI",8,"Republican",9,11,"House"
-"David McKinley","WV",1,"Republican",56,42,"House"
-"Alex Mooney","WV",2,"Republican",0,11,"House"
-"Carol Miller","WV",3,"Republican",0,18,"House"
-"Liz Cheney","WY",0,"Republican",31,15,"House"
-"Lisa Murkowski","AK",NA,"Republican",45,39,"Senate"
-"Dan Sullivan","AK",NA,"Republican",27,21,"Senate"
-"Richard C. Shelby","AL",NA,"Republican",17,17,"Senate"
-"Tommy Tuberville","AL",NA,"Republican",0,6,"Senate"
-"John Boozman","AR",NA,"Republican",17,14,"Senate"
-"Tom Cotton","AR",NA,"Republican",17,11,"Senate"
-"Mark Kelly","AZ",NA,"Democrat",92,97,"Senate"
-"Kyrsten Sinema","AZ",NA,"Democrat",92,83,"Senate"
-"Dianne Feinstein","CA",NA,"Democrat",100,94,"Senate"
-"Alex Padilla","CA",NA,"Democrat",100,100,"Senate"
-"Michael Bennet","CO",NA,"Democrat",100,93,"Senate"
-"John Hickenlooper","CO",NA,"Democrat",100,100,"Senate"
-"Richard Blumenthal","CT",NA,"Democrat",100,99,"Senate"
-"Christopher S. Murphy","CT",NA,"Democrat",100,99,"Senate"
-"Thomas R. Carper","DE",NA,"Democrat",100,89,"Senate"
-"Christopher A. Coons","DE",NA,"Democrat",100,94,"Senate"
-"Marco Rubio","FL",NA,"Republican",18,11,"Senate"
-"Rick Scott","FL",NA,"Republican",0,9,"Senate"
-"Jon Ossoff","GA",NA,"Democrat",100,100,"Senate"
-"Raphael Warnock","GA",NA,"Democrat",100,100,"Senate"
-"Mazie K. Hirono","HI",NA,"Democrat",100,100,"Senate"
-"Brian Schatz","HI",NA,"Democrat",100,99,"Senate"
-"Joni Ernst","IA",NA,"Republican",25,18,"Senate"
-"Charles E. Grassley","IA",NA,"Republican",17,18,"Senate"
-"Michael D. Crapo","ID",NA,"Republican",8,12,"Senate"
-"Jim Risch","ID",NA,"Republican",8,10,"Senate"
-"Tammy Duckworth","IL",NA,"Democrat",100,99,"Senate"
-"Richard J. Durbin","IL",NA,"Democrat",100,98,"Senate"
-"Mike Braun","IN",NA,"Republican",8,14,"Senate"
-"Todd Young","IN",NA,"Republican",42,14,"Senate"
-"Roger Marshall","KS",NA,"Republican",17,15,"Senate"
-"Jerry Moran","KS",NA,"Republican",36,17,"Senate"
-"Mitch McConnell","KY",NA,"Republican",33,17,"Senate"
-"Rand Paul","KY",NA,"Republican",0,10,"Senate"
-"Bill Cassidy","LA",NA,"Republican",27,13,"Senate"
-"John Kennedy","LA",NA,"Republican",27,15,"Senate"
-"Edward J. Markey","MA",NA,"Democrat",100,99,"Senate"
-"Elizabeth Warren","MA",NA,"Democrat",100,99,"Senate"
-"Benjamin L. Cardin","MD",NA,"Democrat",100,98,"Senate"
-"Chris Van Hollen","MD",NA,"Democrat",100,97,"Senate"
-"Susan Collins","ME",NA,"Republican",50,49,"Senate"
-"Angus King","ME",NA,"ID",100,98,"Senate"
-"Gary Peters","MI",NA,"Democrat",100,97,"Senate"
-"Debbie Stabenow","MI",NA,"Democrat",100,97,"Senate"
-"Amy Klobuchar","MN",NA,"Democrat",100,96,"Senate"
-"Tina Smith","MN",NA,"Democrat",100,100,"Senate"
-"Roy Blunt","MO",NA,"Republican",36,18,"Senate"
-"Joshua Hawley","MO",NA,"Republican",17,12,"Senate"
-"Cindy Hyde-Smith","MS",NA,"Republican",10,18,"Senate"
-"Roger Wicker","MS",NA,"Republican",33,18,"Senate"
-"Steve Daines","MT",NA,"Republican",25,17,"Senate"
-"Jon Tester","MT",NA,"Democrat",100,93,"Senate"
-"Richard M. Burr","NC",NA,"Republican",44,17,"Senate"
-"Thom Tillis","NC",NA,"Republican",36,21,"Senate"
-"Kevin Cramer","ND",NA,"Republican",18,21,"Senate"
-"John Hoeven","ND",NA,"Republican",17,18,"Senate"
-"Deb Fischer","NE",NA,"Republican",17,17,"Senate"
-"Ben Sasse","NE",NA,"Republican",18,10,"Senate"
-"Margaret Hassan","NH",NA,"Democrat",100,99,"Senate"
-"Jeanne Shaheen","NH",NA,"Democrat",100,94,"Senate"
-"Cory Booker","NJ",NA,"Democrat",100,99,"Senate"
-"Robert Menendez","NJ",NA,"Democrat",100,97,"Senate"
-"Martin Heinrich","NM",NA,"Democrat",100,99,"Senate"
-"Ben Ray Luján","NM",NA,"Democrat",100,98,"Senate"
-"Catherine Cortez Masto","NV",NA,"Democrat",100,100,"Senate"
-"Jacky Rosen","NV",NA,"Democrat",100,92,"Senate"
-"Kirsten E. Gillibrand","NY",NA,"Democrat",100,96,"Senate"
-"Charles E. Schumer","NY",NA,"Democrat",92,95,"Senate"
-"Sherrod Brown","OH",NA,"Democrat",100,99,"Senate"
-"Rob Portman","OH",NA,"Republican",45,25,"Senate"
-"James M. Inhofe","OK",NA,"Republican",18,12,"Senate"
-"James Lankford","OK",NA,"Republican",8,10,"Senate"
-"Jeff Merkley","OR",NA,"Democrat",100,99,"Senate"
-"Ron Wyden","OR",NA,"Democrat",92,92,"Senate"
-"Bob Casey","PA",NA,"Democrat",100,98,"Senate"
-"Patrick J. Toomey","PA",NA,"Republican",10,10,"Senate"
-"Jack Reed","RI",NA,"Democrat",100,98,"Senate"
-"Sheldon Whitehouse","RI",NA,"Democrat",100,99,"Senate"
-"Lindsey Graham","SC",NA,"Republican",45,24,"Senate"
-"Tim Scott","SC",NA,"Republican",8,6,"Senate"
-"Mike Rounds","SD",NA,"Republican",25,20,"Senate"
-"John Thune","SD",NA,"Republican",25,15,"Senate"
-"Marsha Blackburn","TN",NA,"Republican",8,6,"Senate"
-"Bill Hagerty","TN",NA,"Republican",18,11,"Senate"
-"John Cornyn","TX",NA,"Republican",25,15,"Senate"
-"Ted Cruz","TX",NA,"Republican",17,10,"Senate"
-"Mike Lee","UT",NA,"Republican",9,8,"Senate"
-"Mitt Romney","UT",NA,"Republican",42,34,"Senate"
-"Tim Kaine","VA",NA,"Democrat",100,93,"Senate"
-"Mark Warner","VA",NA,"Democrat",100,90,"Senate"
-"Patrick J. Leahy","VT",NA,"Democrat",100,98,"Senate"
-"Bernard Sanders","VT",NA,"ID",91,98,"Senate"
-"Maria Cantwell","WA",NA,"Democrat",100,94,"Senate"
-"Patty Murray","WA",NA,"Democrat",100,95,"Senate"
-"Tammy Baldwin","WI",NA,"Democrat",100,99,"Senate"
-"Ron Johnson","WI",NA,"Republican",9,10,"Senate"
-"Shelley Moore Capito","WV",NA,"Republican",42,30,"Senate"
-"Joe Manchin","WV",NA,"Democrat",82,87,"Senate"
-"John Barrasso","WY",NA,"Republican",18,12,"Senate"
-"Cynthia M. Lummis","WY",NA,"Republican",25,9,"Senate"
+name,state,district,party,score,lifetime_score,chamber
+Mary Peltola,AK,0,Democrat,100,100,House
+Don Young,AK,0,Republican,100,45,House
+Jerry Carl,AL,1,Republican,0,0,House
+Barry Moore,AL,2,Republican,0,0,House
+Mike D Rogers,AL,3,Republican,8,14,House
+Robert B Aderholt,AL,4,Republican,8,14,House
+Mo Brooks,AL,5,Republican,0,9,House
+Gary Palmer,AL,6,Republican,0,7,House
+Terri Sewell,AL,7,Democrat,100,94,House
+Rick Crawford,AR,1,Republican,0,13,House
+French Hill,AR,2,Republican,8,14,House
+Steve Womack,AR,3,Republican,15,14,House
+Bruce Westerman,AR,4,Republican,8,12,House
+Tom O'Halleran,AZ,1,Democrat,100,90,House
+Ann Kirkpatrick,AZ,2,Democrat,100,94,House
+Raul M Grijalva,AZ,3,Democrat,100,99,House
+Paul Gosar,AZ,4,Republican,0,7,House
+Andy Biggs,AZ,5,Republican,0,13,House
+David Schweikert,AZ,6,Republican,0,7,House
+Ruben Gallego,AZ,7,Democrat,100,98,House
+Debbie Lesko,AZ,8,Republican,0,15,House
+Greg Stanton,AZ,9,Democrat,100,100,House
+Doug LaMalfa,CA,1,Republican,8,14,House
+Jared Huffman,CA,2,Democrat,100,96,House
+John Garamendi,CA,3,Democrat,100,98,House
+Tom McClintock,CA,4,Republican,0,7,House
+Mike Thompson,CA,5,Democrat,100,96,House
+Doris Matsui,CA,6,Democrat,100,97,House
+Ami Bera,CA,7,Democrat,100,91,House
+Jay Obernolte,CA,8,Republican,15,9,House
+Jerry McNerney,CA,9,Democrat,100,97,House
+Josh Harder,CA,10,Democrat,100,99,House
+Mark Desaulnier,CA,11,Democrat,100,98,House
+Nancy Pelosi,CA,12,Democrat,100,97,House
+Barbara Lee,CA,13,Democrat,100,99,House
+Jackie Speier,CA,14,Democrat,100,96,House
+Eric Swalwell,CA,15,Democrat,100,98,House
+Jim Costa,CA,16,Democrat,100,85,House
+Ro Khanna,CA,17,Democrat,100,97,House
+Anna Eshoo,CA,18,Democrat,100,97,House
+Zoe Lofgren,CA,19,Democrat,100,97,House
+Jimmy Panetta,CA,20,Democrat,100,95,House
+David Valadao,CA,21,Republican,23,29,House
+Connie Conway,CA,22,Republican,0,0,House
+Kevin McCarthy,CA,23,Republican,8,12,House
+Salud Carbajal,CA,24,Democrat,100,95,House
+Mike Garcia,CA,25,Republican,23,17,House
+Julia Brownley,CA,26,Democrat,100,96,House
+Judy Chu,CA,27,Democrat,100,98,House
+Adam Schiff,CA,28,Democrat,100,97,House
+Tony Cardenas,CA,29,Democrat,100,95,House
+Brad Sherman,CA,30,Democrat,100,98,House
+Pete Aguilar,CA,31,Democrat,100,94,House
+Grace Napolitano,CA,32,Democrat,100,100,House
+Ted Lieu,CA,33,Democrat,100,97,House
+Jimmy Gomez,CA,34,Democrat,100,99,House
+Norma Torres,CA,35,Democrat,100,98,House
+Raul Ruiz,CA,36,Democrat,100,95,House
+Karen Bass,CA,37,Democrat,100,99,House
+Linda Sanchez,CA,38,Democrat,100,99,House
+Young Kim,CA,39,Republican,15,18,House
+Lucille Roybal-Allard,CA,40,Democrat,100,98,House
+Mark Takano,CA,41,Democrat,100,98,House
+Ken Calvert,CA,42,Republican,8,15,House
+Maxine Waters,CA,43,Democrat,100,99,House
+Nanette Barragan,CA,44,Democrat,100,98,House
+Katie Porter,CA,45,Democrat,100,100,House
+Lou Correa,CA,46,Democrat,100,91,House
+Alan Lowenthal,CA,47,Democrat,100,98,House
+Michelle Steel,CA,48,Republican,0,3,House
+Mike Levin,CA,49,Democrat,100,100,House
+Darrell Issa,CA,50,Republican,0,10,House
+Juan Vargas,CA,51,Democrat,100,99,House
+Scott Peters,CA,52,Democrat,100,89,House
+Sara Jacobs,CA,53,Democrat,100,100,House
+Diana DeGette,CO,1,Democrat,100,97,House
+Joseph Neguse,CO,2,Democrat,100,99,House
+Lauren Boebert,CO,3,Republican,0,0,House
+Ken Buck,CO,4,Republican,0,7,House
+Doug Lamborn,CO,5,Republican,0,6,House
+Jason Crow,CO,6,Democrat,100,100,House
+Ed Perlmutter,CO,7,Democrat,100,96,House
+John Larson,CT,1,Democrat,100,98,House
+Joe Courtney,CT,2,Democrat,100,99,House
+Rosa DeLauro,CT,3,Democrat,100,99,House
+Jim Himes,CT,4,Democrat,100,93,House
+Jahana Hayes,CT,5,Democrat,100,100,House
+Lisa Blunt Rochester,DE,0,Democrat,100,98,House
+Matt Gaetz,FL,1,Republican,8,14,House
+Neal Dunn,FL,2,Republican,8,15,House
+Kat Cammack,FL,3,Republican,0,0,House
+John Rutherford,FL,4,Republican,9,20,House
+Al Lawson,FL,5,Democrat,100,97,House
+Michael Waltz,FL,6,Republican,8,18,House
+Stephanie Murphy,FL,7,Democrat,92,87,House
+Bill Posey,FL,8,Republican,8,12,House
+Darren Soto,FL,9,Democrat,100,99,House
+Val Demings,FL,10,Democrat,100,98,House
+Daniel Webster,FL,11,Republican,8,12,House
+Gus Bilirakis,FL,12,Republican,15,12,House
+Charlie Crist,FL,13,Democrat,100,96,House
+Kathy Castor,FL,14,Democrat,100,97,House
+Scott Franklin,FL,15,Republican,0,0,House
+Vernon Buchanan,FL,16,Republican,0,15,House
+Greg Steube,FL,17,Republican,0,8,House
+Brian Mast,FL,18,Republican,15,23,House
+Byron Donalds,FL,19,Republican,0,0,House
+Sheila Cherfilus-McCormick,FL,20,Democrat,100,100,House
+Lois Frankel,FL,21,Democrat,100,99,House
+Ted Deutch,FL,22,Democrat,100,97,House
+Debbie Wasserman Schultz,FL,23,Democrat,100,97,House
+Frederica Wilson,FL,24,Democrat,100,99,House
+Mario Diaz-Balart,FL,25,Republican,15,38,House
+Carlos Gimenez,FL,26,Republican,8,21,House
+Maria Salazar,FL,27,Republican,31,27,House
+Buddy Carter,GA,1,Republican,0,11,House
+Sanford Bishop,GA,2,Democrat,100,94,House
+Drew Ferguson,GA,3,Republican,0,13,House
+Hank Johnson,GA,4,Democrat,100,98,House
+Nikema Williams,GA,5,Democrat,100,100,House
+Lucy McBath,GA,6,Democrat,100,99,House
+Carolyn Bourdeaux,GA,7,Democrat,100,100,House
+Austin Scott,GA,8,Republican,0,13,House
+Andrew Clyde,GA,9,Republican,8,3,House
+Jody Hice,GA,10,Republican,0,6,House
+Barry Loudermilk,GA,11,Republican,0,9,House
+Richard W Allen,GA,12,Republican,0,9,House
+David Scott,GA,13,Democrat,100,97,House
+Marjorie Taylor Greene,GA,14,Republican,0,0,House
+Ed Case,HI,1,Democrat,100,99,House
+Kai Kahele,HI,2,Democrat,100,100,House
+Ashley Hinson,IA,1,Republican,8,9,House
+Mariannette Miller-Meeks,IA,2,Republican,8,9,House
+Cindy Axne,IA,3,Democrat,100,99,House
+Randy Feenstra,IA,4,Republican,8,6,House
+Russ Fulcher,ID,1,Republican,0,8,House
+Mike Simpson,ID,2,Republican,8,21,House
+Bobby Rush,IL,1,Democrat,100,97,House
+Robin Kelly,IL,2,Democrat,100,99,House
+Marie Newman,IL,3,Democrat,100,100,House
+Jesus Garcia,IL,4,Democrat,100,96,House
+Mike Quigley,IL,5,Democrat,100,95,House
+Sean Casten,IL,6,Democrat,100,100,House
+Danny K Davis,IL,7,Democrat,100,98,House
+Raja Krishnamoorthi,IL,8,Democrat,100,98,House
+Jan Schakowsky,IL,9,Democrat,100,99,House
+Brad Schneider,IL,10,Democrat,100,94,House
+Bill Foster,IL,11,Democrat,100,95,House
+Mike Bost,IL,12,Republican,25,37,House
+Rodney Davis,IL,13,Republican,31,38,House
+Lauren A Underwood,IL,14,Democrat,100,100,House
+Mary Miller,IL,15,Republican,0,0,House
+Adam Kinzinger,IL,16,Republican,60,36,House
+Cheri Bustos,IL,17,Democrat,100,96,House
+Darin LaHood,IL,18,Republican,0,18,House
+Frank Mrvan Jr,IN,1,Democrat,100,100,House
+Jackie Walorski,IN,2,Republican,14,14,House
+Rudy Yakym,IN,2,Republican,0,0,House
+Jim Banks,IN,3,Republican,0,9,House
+Jim Baird,IN,4,Republican,8,15,House
+Victoria Spartz,IN,5,Republican,8,6,House
+Greg Pence,IN,6,Republican,8,17,House
+Andre Carson,IN,7,Democrat,100,98,House
+Larry Bucshon,IN,8,Republican,8,19,House
+Trey Hollingsworth,IN,9,Republican,8,14,House
+Tracey Mann,KS,1,Republican,0,0,House
+Jake Laturner,KS,2,Republican,8,3,House
+Sharice Davids,KS,3,Democrat,100,99,House
+Ron Estes,KS,4,Republican,0,12,House
+James Comer,KY,1,Republican,8,12,House
+Brett Guthrie,KY,2,Republican,8,12,House
+John Yarmuth,KY,3,Democrat,100,99,House
+Thomas Massie,KY,4,Republican,8,15,House
+Hal Rogers,KY,5,Republican,8,15,House
+Andy Barr,KY,6,Republican,8,10,House
+Steve Scalise,LA,1,Republican,8,9,House
+Troy Carter,LA,2,Democrat,100,100,House
+Clay Higgins,LA,3,Republican,0,9,House
+Mike Johnson,LA,4,Republican,0,10,House
+Julia Letlow,LA,5,Republican,8,4,House
+Garret Graves,LA,6,Republican,8,15,House
+Richard Neal,MA,1,Democrat,100,98,House
+James P McGovern,MA,2,Democrat,100,98,House
+Lori Trahan,MA,3,Democrat,100,99,House
+Jake Auchincloss,MA,4,Democrat,100,100,House
+Katherine Clark,MA,5,Democrat,100,99,House
+Seth Moulton,MA,6,Democrat,100,97,House
+Ayanna Pressley,MA,7,Democrat,100,91,House
+Stephen Lynch,MA,8,Democrat,100,99,House
+Bill Keating,MA,9,Democrat,100,97,House
+Andy Harris,MD,1,Republican,0,7,House
+Dutch Ruppersberger,MD,2,Democrat,100,97,House
+John Sarbanes,MD,3,Democrat,100,99,House
+Anthony Brown,MD,4,Democrat,100,97,House
+Steny H Hoyer,MD,5,Democrat,100,97,House
+David Trone,MD,6,Democrat,100,100,House
+Kweisi Mfume,MD,7,Democrat,100,100,House
+Jamie Raskin,MD,8,Democrat,100,98,House
+Chellie Pingree,ME,1,Democrat,100,99,House
+Jared Golden,ME,2,Democrat,100,92,House
+John Bergman,MI,1,Republican,23,18,House
+Bill Huizenga,MI,2,Republican,0,9,House
+Peter Meijer,MI,3,Republican,31,21,House
+John Moolenaar,MI,4,Republican,0,17,House
+Dan Kildee,MI,5,Democrat,100,98,House
+Fred Upton,MI,6,Republican,54,33,House
+Tim Walberg,MI,7,Republican,8,13,House
+Elissa Slotkin,MI,8,Democrat,100,100,House
+Andy Levin,MI,9,Democrat,100,97,House
+Lisa McClain,MI,10,Republican,15,6,House
+Haley Stevens,MI,11,Democrat,100,100,House
+Debbie Dingell,MI,12,Democrat,100,99,House
+Rashida Tlaib,MI,13,Democrat,100,92,House
+Brenda Lawrence,MI,14,Democrat,100,98,House
+Brad Finstad,MN,1,Republican,0,0,House
+Jim Hagedorn,MN,1,Republican,100,23,House
+Angie Craig,MN,2,Democrat,100,100,House
+Dean Phillips,MN,3,Democrat,100,100,House
+Betty McCollum,MN,4,Democrat,100,97,House
+Ilhan Omar,MN,5,Democrat,100,90,House
+Tom Emmer,MN,6,Republican,15,21,House
+Michelle Fischbach,MN,7,Republican,8,6,House
+Pete Stauber,MN,8,Republican,15,37,House
+Cori Bush,MO,1,Democrat,100,97,House
+Ann Wagner,MO,2,Republican,8,15,House
+Blaine Luetkemeyer,MO,3,Republican,8,11,House
+Vicky Hartzler,MO,4,Republican,8,14,House
+Emanuel Cleaver,MO,5,Democrat,100,98,House
+Sam Graves,MO,6,Republican,8,18,House
+Billy Long,MO,7,Republican,0,11,House
+Jason Smith,MO,8,Republican,0,10,House
+Trent Kelly,MS,1,Republican,0,10,House
+Bennie G Thompson,MS,2,Democrat,100,98,House
+Michael Guest,MS,3,Republican,8,12,House
+Steven Palazzo,MS,4,Republican,0,12,House
+Matt Rosendale,MT,1,Republican,0,0,House
+G K Butterfield,NC,1,Democrat,100,98,House
+Deborah Ross,NC,2,Democrat,100,100,House
+Greg Murphy,NC,3,Republican,8,16,House
+David Price,NC,4,Democrat,100,97,House
+Virginia Foxx,NC,5,Republican,8,8,House
+Kathy Manning,NC,6,Democrat,100,100,House
+David Rouzer,NC,7,Republican,8,11,House
+Richard Hudson,NC,8,Republican,15,10,House
+Dan Bishop,NC,9,Republican,0,5,House
+Patrick McHenry,NC,10,Republican,0,10,House
+Madison Cawthorn,NC,11,Republican,8,3,House
+Alma Adams,NC,12,Democrat,100,98,House
+Ted Budd,NC,13,Republican,8,8,House
+Kelly Armstrong,ND,0,Republican,8,11,House
+Mike Flood,NE,1,Republican,0,0,House
+Jeff Fortenberry,NE,1,Republican,33,21,House
+Don Bacon,NE,2,Republican,38,29,House
+Adrian Smith,NE,3,Republican,0,9,House
+Chris Pappas,NH,1,Democrat,100,100,House
+Ann Kuster,NH,2,Democrat,100,95,House
+Donald Norcross,NJ,1,Democrat,100,97,House
+Jeff Van Drew,NJ,2,Republican,23,61,House
+Andy Kim,NJ,3,Democrat,100,100,House
+Chris Smith,NJ,4,Republican,46,54,House
+Josh Gottheimer,NJ,5,Democrat,100,89,House
+Frank Pallone Jr.,NJ,6,Democrat,100,99,House
+Tom Malinowski,NJ,7,Democrat,100,100,House
+Albio Sires,NJ,8,Democrat,100,98,House
+Bill Pascrell Jr.,NJ,9,Democrat,100,98,House
+Donald M Payne Jr.,NJ,10,Democrat,100,98,House
+Mikie Sherrill,NJ,11,Democrat,100,100,House
+Bonnie Watson Coleman,NJ,12,Democrat,100,98,House
+Melanie Stansbury,NM,1,Democrat,100,100,House
+Yvette Herrell,NM,2,Republican,8,3,House
+Teresa Leger Fernandez,NM,3,Democrat,100,100,House
+Dina Titus,NV,1,Democrat,100,98,House
+Mark Amodei,NV,2,Republican,8,18,House
+Susie Lee,NV,3,Democrat,100,100,House
+Steven Horsford,NV,4,Democrat,100,99,House
+Lee Zeldin,NY,1,Republican,8,30,House
+Andrew Garbarino,NY,2,Republican,23,24,House
+Tom Suozzi,NY,3,Democrat,100,94,House
+Kathleen Rice,NY,4,Democrat,92,94,House
+Gregory Meeks,NY,5,Democrat,100,94,House
+Grace Meng,NY,6,Democrat,100,96,House
+Nydia Velazquez,NY,7,Democrat,100,99,House
+Hakeem Jeffries,NY,8,Democrat,100,99,House
+Yvette Clarke,NY,9,Democrat,100,98,House
+Jerrold Nadler,NY,10,Democrat,100,99,House
+Nicole Malliotakis,NY,11,Republican,31,29,House
+Carolyn Maloney,NY,12,Democrat,100,97,House
+Adriano Espaillat,NY,13,Democrat,100,98,House
+Alexandria Ocasio-Cortez,NY,14,Democrat,92,88,House
+Ritchie Torres,NY,15,Democrat,100,100,House
+Jamaal Bowman,NY,16,Democrat,100,97,House
+Mondaire Jones,NY,17,Democrat,100,100,House
+Sean Patrick Maloney,NY,18,Democrat,100,97,House
+Antonio Delgado,NY,19,Democrat,100,100,House
+Pat Ryan,NY,19,Democrat,100,100,House
+Paul Tonko,NY,20,Democrat,100,99,House
+Elise Stefanik,NY,21,Republican,8,35,House
+Claudia Tenney,NY,22,Republican,8,20,House
+Tom Reed,NY,23,Republican,67,32,House
+Joe Sempolinski,NY,23,Republican,0,0,House
+John Katko,NY,24,Republican,77,53,House
+Joseph D Morelle,NY,25,Democrat,100,100,House
+Brian Higgins,NY,26,Democrat,100,98,House
+Chris Jacobs,NY,27,Republican,31,24,House
+Steve Chabot,OH,1,Republican,15,9,House
+Brad Wenstrup,OH,2,Republican,0,8,House
+Joyce Beatty,OH,3,Democrat,100,97,House
+Jim Jordan,OH,4,Republican,0,5,House
+Bob Latta,OH,5,Republican,8,9,House
+Bill Johnson,OH,6,Republican,31,22,House
+Bob Gibbs,OH,7,Republican,15,14,House
+Warren Davidson,OH,8,Republican,8,7,House
+Marcy Kaptur,OH,9,Democrat,100,98,House
+Michael R Turner,OH,10,Republican,23,33,House
+Shontel Brown,OH,11,Democrat,100,100,House
+Troy Balderson,OH,12,Republican,15,24,House
+Tim Ryan,OH,13,Democrat,100,98,House
+David P Joyce,OH,14,Republican,31,39,House
+Mike Carey,OH,15,Republican,31,27,House
+Anthony Gonzalez,OH,16,Republican,33,32,House
+Kevin Hern,OK,1,Republican,0,8,House
+Markwayne Mullin,OK,2,Republican,0,15,House
+Frank D Lucas,OK,3,Republican,8,15,House
+Tom Cole,OK,4,Republican,15,19,House
+Stephanie Bice,OK,5,Republican,15,12,House
+Suzanne Bonamici,OR,1,Democrat,100,96,House
+Cliff Bentz,OR,2,Republican,8,6,House
+Earl Blumenauer,OR,3,Democrat,100,95,House
+Peter DeFazio,OR,4,Democrat,100,94,House
+Kurt Schrader,OR,5,Democrat,92,85,House
+Brian Fitzpatrick,PA,1,Republican,85,65,House
+Brendan Boyle,PA,2,Democrat,100,97,House
+Dwight Evans,PA,3,Democrat,100,99,House
+Madeleine Dean,PA,4,Democrat,100,100,House
+Mary Gay Scanlon,PA,5,Democrat,100,100,House
+Chrissy Houlahan,PA,6,Democrat,100,100,House
+Susan Wild,PA,7,Democrat,100,99,House
+Matt Cartwright,PA,8,Democrat,100,97,House
+Dan Meuser,PA,9,Republican,15,14,House
+Scott Perry,PA,10,Republican,0,8,House
+Lloyd Smucker,PA,11,Republican,0,11,House
+Fred Keller,PA,12,Republican,8,12,House
+John Joyce,PA,13,Republican,15,12,House
+Guy Reschenthaler,PA,14,Republican,15,24,House
+Glenn Thompson,PA,15,Republican,8,15,House
+Mike Kelly,PA,16,Republican,8,21,House
+Conor Lamb,PA,17,Democrat,100,94,House
+Mike Doyle,PA,18,Democrat,100,98,House
+David Cicilline,RI,1,Democrat,100,98,House
+Jim Langevin,RI,2,Democrat,100,98,House
+Nancy Mace,SC,1,Republican,15,6,House
+Joe Wilson,SC,2,Republican,8,11,House
+Jeff Duncan,SC,3,Republican,0,6,House
+William Timmons,SC,4,Republican,0,8,House
+Ralph Norman,SC,5,Republican,0,5,House
+James E Clyburn,SC,6,Democrat,100,97,House
+Tom Rice,SC,7,Republican,8,11,House
+Dusty Johnson,SD,0,Republican,8,12,House
+Diana Harshbarger,TN,1,Republican,8,3,House
+Tim Burchett,TN,2,Republican,8,14,House
+Chuck Fleischmann,TN,3,Republican,0,12,House
+Scott Desjarlais,TN,4,Republican,8,9,House
+Jim Cooper,TN,5,Democrat,100,84,House
+John Rose,TN,6,Republican,0,8,House
+Mark Green,TN,7,Republican,0,11,House
+David Kustoff,TN,8,Republican,0,13,House
+Steve Cohen,TN,9,Democrat,100,98,House
+Louie Gohmert,TX,1,Republican,0,9,House
+Dan Crenshaw,TX,2,Republican,0,17,House
+Van Taylor,TX,3,Republican,0,10,House
+Patrick Fallon,TX,4,Republican,0,0,House
+Lance Gooden,TX,5,Republican,0,11,House
+Jake Ellzey,TX,6,Republican,8,6,House
+Lizzie Fletcher,TX,7,Democrat,100,100,House
+Kevin Brady,TX,8,Republican,0,9,House
+Al Green,TX,9,Democrat,100,99,House
+Michael McCaul,TX,10,Republican,15,13,House
+August Pfluger,TX,11,Republican,0,0,House
+Kay Granger,TX,12,Republican,15,13,House
+Ronny Jackson,TX,13,Republican,0,0,House
+Randy Weber,TX,14,Republican,0,9,House
+Vicente Gonzalez,TX,15,Democrat,100,95,House
+Veronica Escobar,TX,16,Democrat,100,99,House
+Pete Sessions,TX,17,Republican,8,6,House
+Sheila Jackson Lee,TX,18,Democrat,100,98,House
+Jodey Arrington,TX,19,Republican,0,8,House
+Joaquin Castro,TX,20,Democrat,100,97,House
+Chip Roy,TX,21,Republican,0,7,House
+Troy Nehls,TX,22,Republican,0,0,House
+Tony Gonzales,TX,23,Republican,8,12,House
+Beth Van Duyne,TX,24,Republican,0,0,House
+Roger Williams,TX,25,Republican,0,9,House
+Michael Burgess,TX,26,Republican,8,9,House
+Michael Cloud,TX,27,Republican,0,8,House
+Henry Cuellar,TX,28,Democrat,92,73,House
+Sylvia Garcia,TX,29,Democrat,100,99,House
+Eddie Bernice Johnson,TX,30,Democrat,100,96,House
+John Carter,TX,31,Republican,8,11,House
+Colin Allred,TX,32,Democrat,100,100,House
+Marc Veasey,TX,33,Democrat,100,98,House
+Mayra Flores,TX,34,Republican,0,0,House
+Filemon Vela,TX,34,Democrat,100,93,House
+Lloyd Doggett,TX,35,Democrat,100,96,House
+Brian Babin,TX,36,Republican,0,11,House
+Blake Moore,UT,1,Republican,8,6,House
+Chris Stewart,UT,2,Republican,8,12,House
+John Curtis,UT,3,Republican,8,16,House
+Burgess Owens,UT,4,Republican,8,6,House
+Rob Wittman,VA,1,Republican,8,14,House
+Elaine Luria,VA,2,Democrat,100,99,House
+Bobby Scott,VA,3,Democrat,100,98,House
+Donald McEachin,VA,4,Democrat,100,96,House
+Bob Good,VA,5,Republican,0,0,House
+Ben Cline,VA,6,Republican,8,11,House
+Abigail Spanberger,VA,7,Democrat,100,96,House
+Don Beyer,VA,8,Democrat,100,96,House
+Morgan Griffith,VA,9,Republican,8,14,House
+Jennifer Wexton,VA,10,Democrat,100,100,House
+Gerry Connolly,VA,11,Democrat,100,93,House
+Peter Welch,VT,0,Democrat,100,97,House
+Suzan DelBene,WA,1,Democrat,100,95,House
+Rick Larsen,WA,2,Democrat,100,94,House
+Jaime Herrera Beutler,WA,3,Republican,31,21,House
+Dan Newhouse,WA,4,Republican,8,25,House
+Cathy McMorris Rodgers,WA,5,Republican,0,11,House
+Derek Kilmer,WA,6,Democrat,100,95,House
+Pramila Jayapal,WA,7,Democrat,100,96,House
+Kim Schrier,WA,8,Democrat,100,100,House
+Adam Smith,WA,9,Democrat,100,96,House
+Marilyn Strickland,WA,10,Democrat,100,100,House
+Bryan Steil,WI,1,Republican,0,15,House
+Mark Pocan,WI,2,Democrat,100,98,House
+Ron Kind,WI,3,Democrat,100,90,House
+Gwen Moore,WI,4,Democrat,100,97,House
+Scott Fitzgerald,WI,5,Republican,8,3,House
+Glenn S Grothman,WI,6,Republican,8,10,House
+Tom Tiffany,WI,7,Republican,8,8,House
+Mike Gallagher,WI,8,Republican,9,11,House
+David McKinley,WV,1,Republican,56,42,House
+Alex Mooney,WV,2,Republican,0,11,House
+Carol Miller,WV,3,Republican,0,18,House
+Liz Cheney,WY,0,Republican,31,15,House
+Lisa Murkowski,AK,NA,Republican,45,39,Senate
+Dan Sullivan,AK,NA,Republican,27,21,Senate
+Richard C Shelby,AL,NA,Republican,17,17,Senate
+Tommy Tuberville,AL,NA,Republican,0,6,Senate
+John Boozman,AR,NA,Republican,17,14,Senate
+Tom Cotton,AR,NA,Republican,17,11,Senate
+Mark Kelly,AZ,NA,Democrat,92,97,Senate
+Kyrsten Sinema,AZ,NA,Democrat,92,83,Senate
+Dianne Feinstein,CA,NA,Democrat,100,94,Senate
+Alex Padilla,CA,NA,Democrat,100,100,Senate
+Michael Bennet,CO,NA,Democrat,100,93,Senate
+John Hickenlooper,CO,NA,Democrat,100,100,Senate
+Richard Blumenthal,CT,NA,Democrat,100,99,Senate
+Christopher S Murphy,CT,NA,Democrat,100,99,Senate
+Tom Carper,DE,NA,Democrat,100,89,Senate
+Chris Coons,DE,NA,Democrat,100,94,Senate
+Marco Rubio,FL,NA,Republican,18,11,Senate
+Rick Scott,FL,NA,Republican,0,9,Senate
+Jon Ossoff,GA,NA,Democrat,100,100,Senate
+Raphael Warnock,GA,NA,Democrat,100,100,Senate
+Mazie K Hirono,HI,NA,Democrat,100,100,Senate
+Brian Schatz,HI,NA,Democrat,100,99,Senate
+Joni Ernst,IA,NA,Republican,25,18,Senate
+Chuck Grassley,IA,NA,Republican,17,18,Senate
+Mike Crapo,ID,NA,Republican,8,12,Senate
+James E Risch,ID,NA,Republican,8,10,Senate
+Tammy Duckworth,IL,NA,Democrat,100,99,Senate
+Dick Durbin,IL,NA,Democrat,100,98,Senate
+Mike Braun,IN,NA,Republican,8,14,Senate
+Todd Young,IN,NA,Republican,42,14,Senate
+Roger Marshall,KS,NA,Republican,17,15,Senate
+Jerry Moran,KS,NA,Republican,36,17,Senate
+Mitch McConnell,KY,NA,Republican,33,17,Senate
+Rand Paul,KY,NA,Republican,0,10,Senate
+Bill Cassidy,LA,NA,Republican,27,13,Senate
+John Kennedy,LA,NA,Republican,27,15,Senate
+Ed Markey,MA,NA,Democrat,100,99,Senate
+Elizabeth Warren,MA,NA,Democrat,100,99,Senate
+Ben Cardin,MD,NA,Democrat,100,98,Senate
+Chris Van Hollen,MD,NA,Democrat,100,97,Senate
+Susan Collins,ME,NA,Republican,50,49,Senate
+Angus King,ME,NA,ID,100,98,Senate
+Gary Peters,MI,NA,Democrat,100,97,Senate
+Debbie Stabenow,MI,NA,Democrat,100,97,Senate
+Amy Klobuchar,MN,NA,Democrat,100,96,Senate
+Tina Smith,MN,NA,Democrat,100,100,Senate
+Roy Blunt,MO,NA,Republican,36,18,Senate
+Josh Hawley,MO,NA,Republican,17,12,Senate
+Cindy Hyde-Smith,MS,NA,Republican,10,18,Senate
+Roger Wicker,MS,NA,Republican,33,18,Senate
+Steven Daines,MT,NA,Republican,25,17,Senate
+Jon Tester,MT,NA,Democrat,100,93,Senate
+Richard Burr,NC,NA,Republican,44,17,Senate
+Thom Tillis,NC,NA,Republican,36,21,Senate
+Kevin Cramer,ND,NA,Republican,18,21,Senate
+John Hoeven,ND,NA,Republican,17,18,Senate
+Deb Fischer,NE,NA,Republican,17,17,Senate
+Ben Sasse,NE,NA,Republican,18,10,Senate
+Maggie Hassan,NH,NA,Democrat,100,99,Senate
+Jeanne Shaheen,NH,NA,Democrat,100,94,Senate
+Cory Booker,NJ,NA,Democrat,100,99,Senate
+Robert Menendez,NJ,NA,Democrat,100,97,Senate
+Martin Heinrich,NM,NA,Democrat,100,99,Senate
+Ben Ray Lujan,NM,NA,Democrat,100,98,Senate
+Catherine Cortez Masto,NV,NA,Democrat,100,100,Senate
+Jacky Rosen,NV,NA,Democrat,100,92,Senate
+Kirsten Gillibrand,NY,NA,Democrat,100,96,Senate
+Charles E Schumer,NY,NA,Democrat,92,95,Senate
+Sherrod Brown,OH,NA,Democrat,100,99,Senate
+Rob Portman,OH,NA,Republican,45,25,Senate
+James M Inhofe,OK,NA,Republican,18,12,Senate
+James Lankford,OK,NA,Republican,8,10,Senate
+Jeff Merkley,OR,NA,Democrat,100,99,Senate
+Ron Wyden,OR,NA,Democrat,92,92,Senate
+Bob Casey,PA,NA,Democrat,100,98,Senate
+Pat Toomey,PA,NA,Republican,10,10,Senate
+Jack Reed,RI,NA,Democrat,100,98,Senate
+Sheldon Whitehouse,RI,NA,Democrat,100,99,Senate
+Lindsey Graham,SC,NA,Republican,45,24,Senate
+Tim Scott,SC,NA,Republican,8,6,Senate
+Mike Rounds,SD,NA,Republican,25,20,Senate
+John Thune,SD,NA,Republican,25,15,Senate
+Marsha Blackburn,TN,NA,Republican,8,6,Senate
+Bill Hagerty,TN,NA,Republican,18,11,Senate
+John Cornyn,TX,NA,Republican,25,15,Senate
+Ted Cruz,TX,NA,Republican,17,10,Senate
+Mike Lee,UT,NA,Republican,9,8,Senate
+Mitt Romney,UT,NA,Republican,42,34,Senate
+Tim Kaine,VA,NA,Democrat,100,93,Senate
+Mark Warner,VA,NA,Democrat,100,90,Senate
+Patrick Leahy,VT,NA,Democrat,100,98,Senate
+Bernie Sanders,VT,NA,ID,91,98,Senate
+Maria Cantwell,WA,NA,Democrat,100,94,Senate
+Patty Murray,WA,NA,Democrat,100,95,Senate
+Tammy Baldwin,WI,NA,Democrat,100,99,Senate
+Ron Johnson,WI,NA,Republican,9,10,Senate
+Shelley Moore Capito,WV,NA,Republican,42,30,Senate
+Joe Manchin,WV,NA,Democrat,82,87,Senate
+John A Barrasso,WY,NA,Republican,18,12,Senate
+Cynthia Lummis,WY,NA,Republican,25,9,Senate
