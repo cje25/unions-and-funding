@@ -1,0 +1,109 @@
+---
+title: "Processing CSVs"
+author: "Cameron Eller"
+date: "2024-01-11"
+output: html_document
+---
+
+Reading in the CSVs
+```{r}
+library(here)
+indiv_com_df <- read.csv(here("analysis", "individual_communities_by_community.csv"))
+union_scores <- read.csv(here("data", "cleaned_union_scores.csv"))
+pac_com_df <- read.csv(here("analysis", "pac_communities_by_community.csv"))
+
+```
+
+Match Score Function
+```{r}
+match_score = function(big_name){
+  matched_row <- union_scores |>
+    filter(str_detect(big_name, name))
+  
+  if(nrow(matched_row)>0){
+    return(matched_row[1, c("score", "lifetime_score", "name")])
+  }else{
+    return(tibble(score = NA, lifetime_score = NA))
+  }
+}
+```
+
+
+Individual Communities and Associated Union Scores
+```{r}
+#initializing the score data frame
+indiv_score_df <- data.frame(matrix(ncol = 4, nrow = nrow(union_scores)))
+colnames(indiv_score_df) <- c("congresspeople", "community", "score", "lifetime_score")
+
+#recoding the types of the variables
+indiv_score_df$congresspeople <- as.character(indiv_score_df$congresspeople)
+indiv_score_df$community <- as.numeric(indiv_score_df$community)
+indiv_score_df$score <- as.numeric(indiv_score_df$score)
+
+#filling the data frame
+index = 1
+for (i in seq_along(indiv_com_df$community)){
+  congress_vec <- str_split(indiv_com_df$congresspeople[i], ", ")[[1]]
+  for(j in seq_along(congress_vec)){
+    indiv_score_df$congresspeople[[index]] <- congress_vec[[j]]
+    
+    indiv_score_df$community[[index]] <- indiv_com_df$community[[i]]
+    index = index + 1
+    
+  }
+}
+
+#associating names with union scores
+indiv_score_df |> 
+  rowwise() |>
+  mutate(matched_score = list(match_score(congresspeople))) |> 
+  unnest() |>
+  select(congresspeople, community, score1, lifetime_score1, name) -> indiv_score_df
+  
+#checking who is not in the data set
+anti_join(union_scores, indiv_score_df, by="name")
+
+#writing to csv
+write.csv(indiv_score_df, "individual_communities_and_scores.csv", row.names=FALSE)
+
+```
+
+PAC Communities and Associated Union Scores
+```{r}
+#initializing the score data frame
+pac_score_df <- data.frame(matrix(ncol = 4, nrow = nrow(union_scores)))
+colnames(pac_score_df) <- c("congresspeople", "community", "score", "lifetime_score")
+
+#recoding the types of the variables
+pac_score_df$congresspeople <- as.character(pac_score_df$congresspeople)
+pac_score_df$community <- as.numeric(pac_score_df$community)
+pac_score_df$score <- as.numeric(pac_score_df$score)
+
+#filling the data frame
+index = 1
+for (i in seq_along(pac_com_df$community)){
+  congress_vec <- str_split(pac_com_df$congresspeople[i], ", ")[[1]]
+  for(j in seq_along(congress_vec)){
+    pac_score_df$congresspeople[[index]] <- congress_vec[[j]]
+    
+    pac_score_df$community[[index]] <- pac_com_df$community[[i]]
+    index = index + 1
+    
+  }
+}
+
+#associating names with union scores
+pac_score_df |> 
+  rowwise() |>
+  mutate(matched_score = list(match_score(congresspeople))) |> 
+  unnest() |>
+  select(congresspeople, community, score1, lifetime_score1, name) -> pac_score_df
+  
+#checking who is not in the data set
+anti_join(union_scores, pac_score_df, by="name")
+
+#writing to csv
+write.csv(pac_score_df, "pac_communities_and_scores.csv", row.names=FALSE)
+
+```
+
