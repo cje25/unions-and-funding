@@ -8,18 +8,15 @@ output: html_document
 ```{r}
 library(igraph)
 library(tidyverse)
-donations = read_csv("../../large_contributions_and_scores.csv", n_max = 10000) #n_max if you don't want to explode
-
-print(nrow(donations))
-
+donations = read_csv("../../large_contributions_and_scores.csv", n_max = 10000)
 individual_donations = donations %>%
   filter(pac_or_individual == 'i')
-#pac_donations = donations %>%
-  #filter(pac_or_individual == 'p')
 
-#print(nrow(pac_donations))
-#print(nrow(individual_donations))
+pac_donations = donations %>%
+  filter(pac_or_individual == 'p')
 
+head(individual_donations)
+head(pac_donations)
 ```
 
 ```{r}
@@ -30,46 +27,103 @@ g <- graph_from_data_frame(d=edge_list, directed=FALSE)
 
 V(g)$type <- bipartite_mapping(g)$type
 
-donor_candidate_amount <- edge_list %>%
-  group_by(donor_name, candidate_name) %>%
-  summarize(total_amount = sum(amount))
-
-
-candidate_pairs <- donor_candidate_amount %>%
-  full_join(donor_candidate_amount, by="donor_name") %>%
-  filter(candidate_name.x != candidate_name.y) %>%
-  group_by(candidate_name.x, candidate_name.y) %>%
-  summarize(weight = sum(total_amount.x + total_amount.y))
-
 candidate_projection <- bipartite_projection(g, which=TRUE)
-V(candidate_projection)$name <- V(g)[V(g)$type == TRUE]$name
 
-E(candidate_projection)$weight <- 0
-for (i in 1:nrow(candidate_pairs)) {
-  pair <- candidate_pairs[i, ]
-  edge <- get.edge.ids(candidate_projection, 
-                       c(pair$candidate_name.x, pair$candidate_name.y))
-  E(candidate_projection)[edge]$weight <- pair$weight
-}
+candidate_projection
 
+```
+Associating Union Scores:
+```{r}
+library(here)
+union_scores_df <- read.csv(here("data", "cleaned_union_scores.csv"),
+                            encoding = "latin1")
 
-wt_communities <- cluster_walktrap(candidate_projection, steps = 3)
-membership <- membership(wt_communities)
-V(candidate_projection)$community <- membership
+union_scores_df
+```
 
-plot(candidate_projection, 
-     vertex.color=V(candidate_projection)$community,
-     vertex.label=NA, #V(candidate_projection)$name, 
-     vertex.size=10, 
-     edge.arrow.size=0, 
-     edge.curved=0.1, 
-     layout=layout.kamada.kawai(candidate_projection)
-)
+graph attempt #1
 
-for (i in unique(membership)) {
-  cat("Community", i, ":", names(V(candidate_projection))[membership == i], "\n")
-}
+```{r}
+
+individual_donations
+
+network_data <- individual_donations %>%
+  select(donor_name, candidate_name, amount, candidate_party)
+
+network_data
+
+network_edges <- network_data |>
+  select(donor_name, candidate_name, amount)
+
+network_nodes <- network_data |>
+  select(candidate_name, candidate_party)
+
+test_net <- graph_from_data_frame(d = network_edges, 
+                                  vertices = network_nodes, 
+                                  directed = T)
+
+net <- graph_from_data_frame(d=network_data, directed=F)
+
+plot(net,  edge.arrow.size = 0.4,
+     layout = layout.kamada.kawai(net),
+     vertex.color = "lightblue", 
+     edge.color = "gray", vertex.label = NA)
+
+E(net)
+V(net)
+E(net)$amount
+
+#V(net)$size <- E(net)$amount.size*0.7
+
+plot(net, edge.arrow.size=.4, vertex.label=NA)
+
+edge_list
+
+colrs <- c("gray50", "tomato", "gold")
+
+V(net)$candidate_party
+
+V(net)$color <- colrs[V(net)$media.type]
+
+plot(net, edge.arrow.size=.4,
+     #vertex.color=candidate_party, 
+     #vertex.frame.color="#555555",
+     vertex.label=NA) 
+
+net.bg <- graph_from_data_frame(d=network_data, directed=T)
+E(net.bg)$candidate_party
 
 ```
 
+```{r}
+
+candidate_data <- union_scores_df |>
+  select(name, party)
+
+network_data
+union_scores_df
+
+candidate_data
+
+# match
+V(net)$candidate_party <- candidate_data$candidate_party[match(V(net)$candidate_name, candidate_data$candidate_name)]
+  
+# Assuming you have already created a graph object named 'graph'
+# graph <- graph_from_data_frame(data, directed = TRUE)
+
+# Sample data frame with candidate information, including party affiliation
+candidate_data <- data.frame(candidate_id = c(1, 2, 3, 4),
+                             party = c("Democrat", "Republican", "Democrat", "Independent"))
+
+# Match candidate information to node IDs in the graph
+V(graph)$party <- candidate_data$party[match(V(graph)$name, candidate_data$candidate_id)]
+
+# Define colors for each party
+party_colors <- c("Democrat" = "blue", "Republican" = "red", "Independent" = "green")
+
+# Plot the graph with vertices color-coded by party
+plot(graph, layout = layout.fruchterman.reingold, vertex.color = party_colors[V(graph)$party])
+
+
+```
 
