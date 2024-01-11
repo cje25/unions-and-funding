@@ -209,3 +209,62 @@ for (i in unique(membership)) {
 #print(communities_df)
 
 ```
+
+Reworking Communities Dataframe:
+```{r}
+library(tidyverse)
+test_string <- "this, is, a, test, string"
+
+new_string_vec <- str_split(test_string, ", ")
+
+test_string
+new_string_vec
+
+test_df <- data.frame(community = c(1, 2, 3), 
+                      reps = c("person1, person2, person3", 
+                               "person4", 
+                               "person5, person6, person7"))
+
+test_df
+
+new_df <- test_df |>
+  transmute(name = str_split(reps, ", "),
+            community = community)
+
+new_df
+
+fake_union <- data.frame(rep = c("person1", "person2", "person3", 
+                                 "person4", "person5", "person6", 
+                                 "person7"),
+                         scores = c(25, 35, 52, 10, 100, 87, 54))
+fake_union
+
+# not vectorized
+
+new_df <- data.frame(matrix(ncol = 3, nrow = nrow(fake_union)))
+colnames(new_df) <- c("rep", "community", "score")
+
+new_df$rep <- as.character(new_df$rep)
+new_df$community <- as.numeric(new_df$community)
+new_df$score <- as.numeric(new_df$score)
+
+new_df
+index = 1
+for (i in seq_along(test_df$community)){
+  congress_vec <- str_split(test_df$reps[i], ", ")[[1]]
+  for(j in seq_along(congress_vec)){
+    new_df$rep[[index]] <- congress_vec[[j]]
+    
+    new_df$community[[index]] <- test_df$community[[i]]
+    index = index + 1
+    
+  }
+}
+
+
+
+
+new_df
+
+```
+
