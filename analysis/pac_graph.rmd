@@ -1,0 +1,257 @@
+---
+title: "Graph"
+author: "Cameron Eller"
+date: "2024-01-11"
+output: html_document
+---
+
+```{r}
+library(data.table)
+library(igraph)
+library(tidyverse)
+
+# load in all of the donations data
+donations = read_csv("../../large_contributions_and_scores.csv") #n_max if you don't want to explode , n_max = 10000
+
+print(nrow(donations))
+
+# individual donations split vs pacs donations split
+#individual_donations = donations %>%
+#  filter(pac_or_individual == 'i')
+pac_donations = donations %>%
+  filter(pac_or_individual == 'p')
+
+#print(nrow(individual_donations))
+print(nrow(pac_donations))
+
+```
+
+Group-by Mutate:
+```{r}
+test_df <- pac_donations |>
+  group_by(donor_name, candidate_name) |>
+  mutate(amount = sum(amount)) |> #instead of donation_total
+  select(donor_name, candidate_name, candidate_party, score, lifetime_score, name, amount) |> #removed donation_total, add amount
+  ungroup()
+
+test_df <- unique(test_df)
+
+
+```
+
+```{r}
+#------------------------------------------------------
+# create the edge list of individual or pac donors
+
+#edge_list <- individual_donations %>%
+#  select(donor_name, candidate_name, amount)
+
+#edge_list <- pac_donations %>%
+#  select(donor_name, candidate_name, amount)
+
+edge_list <- test_df |>
+  select(donor_name, candidate_name, amount)
+
+#-------------------------------------------------------
+
+# using the edge list create the first graph (not directed)
+g <- graph_from_data_frame(d=edge_list, directed=FALSE)
+
+# change the graph type to bipartite
+V(g)$type <- bipartite_mapping(g)$type
+
+
+donor_candidate_amount <- edge_list %>%
+  group_by(donor_name, candidate_name) %>%
+  summarize(total_amount = sum(amount))
+
+
+candidate_pairs <- donor_candidate_amount %>%
+  full_join(donor_candidate_amount, by="donor_name") %>%
+  filter(candidate_name.x != candidate_name.y) %>%
+  group_by(candidate_name.x, candidate_name.y) %>%
+  summarize(weight = sum(total_amount.x + total_amount.y))
+
+candidate_projection <- bipartite_projection(g, which=TRUE)
+V(candidate_projection)$name <- V(g)[V(g)$type == TRUE]$name
+
+#--------------------------------------------------------------
+#code that works
+#E(candidate_projection)$weight <- 0
+#for (i in 1:nrow(candidate_pairs)) {
+#  pair <- candidate_pairs[i, ]
+#  edge <- get.edge.ids(candidate_projection, 
+#                       c(pair$candidate_name.x, pair$candidate_name.y))
+#  E(candidate_projection)[edge]$weight <- pair$weight
+#}
+#-------------------------------------------------------
+#vectorized code that works
+get_edge_ids_vectorized <- function(graph, from, to){
+  mapply(function(f, t)get.edge.ids(graph, c(f, t)), from, to)
+}
+
+edge_ids <- get_edge_ids_vectorized(candidate_projection, 
+                                    candidate_pairs$candidate_name.x,
+                                    candidate_pairs$candidate_name.y)
+
+E(candidate_projection)$weight[edge_ids] <- candidate_pairs$weight
+
+wt_communities <- cluster_walktrap(candidate_projection, steps = 1)
+membership <- membership(wt_communities)
+V(candidate_projection)$community <- membership
+str <- strength(candidate_projection, mode="all")
+
+for (i in unique(membership)) {
+  cat("Community", i, ":", names(V(candidate_projection))[membership == i], "\n")
+}
+
+```
+
+```{r}
+
+names_of_interest = names(sort(str, decreasing = TRUE)[1:5])
+l = layout_with_lgl(candidate_projection, 
+                    area = vcount(candidate_projection)^5, 
+                    cellsize = sqrt(vcount(candidate_projection)^5))
+
+last_two_words <- function(name) {
+  words <- strsplit(name, " ")[[1]]
+  if (length(words) >= 2) {
+    paste(tail(words, 2), collapse=" ")
+  } else {
+    name  
+  }
+}
+
+
+vertex_indices = match(names_of_interest, V(candidate_projection)$name)
+short_labels <- sapply(V(candidate_projection)$name[vertex_indices], last_two_words)
+vlabs = rep(NA, vcount(candidate_projection))
+vlabs[vertex_indices] <- short_labels
+
+
+g = max(str)
+print(g)
+str = str/g
+
+```
+
+```{r}
+
+par(mar=c(0,0,0,0))
+plot(candidate_projection, 
+     vertex.color=V(candidate_projection)$community,
+     vertex.label=vlabs, #V(candidate_projection)$name, 
+     vertex.size=str*10, 
+     vertex.label.cex = 0.5,
+     edge.arrow.size=0, 
+     edge.curved=0.1, 
+     edge.width=0.0023,
+     layout=l
+)
+
+
+
+
+```
+
+Writing graph to a file:
+```{r}
+write_graph(candidate_projection, "01-graph.graphml", format = "graphml")
+#write_graph(graph, "graph.gml", format = "gml")
+
+```
+
+Reading in a graph from a file:
+```{r}
+loaded_graph <- read.graph("01-graph.graphml", format = "graphml")
+
+plot(loaded_graph)
+
+#outputted og graph, will likely need to run it through additional code again
+
+```
+
+Creating a communities data frame:
+```{r}
+
+# creating an empty dataframe with two columns, community and congresspeople
+communities_df <- data.frame(matrix(ncol = 2, nrow = length(unique(membership))))
+colnames(communities_df) <- c("community", "congresspeople")
+
+# add all of the communities to the dataframe (currently out of order)
+for (i in unique(membership)) {
+  communities_df$community[[i]] <- unique(membership)[i]
+}
+
+# reorder the communities from first to last
+communities_df <- communities_df |>
+  arrange(community)
+
+# add off of the people in each community as a single string
+for (i in unique(membership)) {
+  communities_df$congresspeople[[i]] <- paste(names(V(candidate_projection)[membership == i]), sep="", collapse=", ") 
+}
+
+write.csv(communities_df, "./pac_communities_by_community.csv")
+
+```
+
+Reworking Communities Dataframe:
+```{r}
+library(tidyverse)
+test_string <- "this, is, a, test, string"
+
+new_string_vec <- str_split(test_string, ", ")
+
+test_string
+new_string_vec
+
+test_df <- data.frame(community = c(1, 2, 3), 
+                      reps = c("person1, person2, person3", 
+                               "person4", 
+                               "person5, person6, person7"))
+
+test_df
+
+new_df <- test_df |>
+  transmute(name = str_split(reps, ", "),
+            community = community)
+
+new_df
+
+fake_union <- data.frame(rep = c("person1", "person2", "person3", 
+                                 "person4", "person5", "person6", 
+                                 "person7"),
+                         scores = c(25, 35, 52, 10, 100, 87, 54))
+fake_union
+
+# not vectorized
+
+new_df <- data.frame(matrix(ncol = 3, nrow = nrow(fake_union)))
+colnames(new_df) <- c("rep", "community", "score")
+
+new_df$rep <- as.character(new_df$rep)
+new_df$community <- as.numeric(new_df$community)
+new_df$score <- as.numeric(new_df$score)
+
+new_df
+index = 1
+for (i in seq_along(test_df$community)){
+  congress_vec <- str_split(test_df$reps[i], ", ")[[1]]
+  for(j in seq_along(congress_vec)){
+    new_df$rep[[index]] <- congress_vec[[j]]
+    
+    new_df$community[[index]] <- test_df$community[[i]]
+    index = index + 1
+    
+  }
+}
+
+
+
+
+new_df
+
+```
+
