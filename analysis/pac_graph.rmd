@@ -40,6 +40,15 @@ clean_pac_df <- unique(clean_pac_df)
 ```
 
 ```{r}
+pac_donations %>% 
+  group_by(donor_name) %>% 
+  summarize(total = sum(amount)) %>% 
+  arrange(-total)
+
+```
+
+
+```{r}
 # creating the edge list of the pac donors
 edge_list <- clean_pac_df |>
   select(donor_name, candidate_name, amount)
@@ -105,6 +114,7 @@ l = layout_with_lgl(candidate_projection,
                     area = vcount(candidate_projection)^5, 
                     cellsize = sqrt(vcount(candidate_projection)^5))
 
+print(names_of_interest)
 last_two_words <- function(name) {
   words <- strsplit(name, " ")[[1]]
   if (length(words) >= 2) {
