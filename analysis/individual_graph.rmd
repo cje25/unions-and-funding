@@ -24,6 +24,14 @@ print(nrow(individual_donations))
 ```
 
 ```{r}
+individual_donations %>% 
+  group_by(donor_name) %>% 
+  summarize(total = sum(amount)) %>% 
+  arrange(-total)
+```
+
+
+```{r}
 # creating the edge list of the individual donors
 edge_list <- individual_donations %>%
   select(donor_name, candidate_name, amount)
@@ -83,7 +91,7 @@ for (i in unique(membership)) {
 ```{r}
 # graphing the network
 names_of_interest = names(sort(str, decreasing = TRUE)[1:5])
-
+names_of_interest
 l = layout_with_lgl(candidate_projection, area = vcount(candidate_projection)^5, cellsize=vcount(candidate_projection)^4)
 
 last_two_words <- function(name) {
