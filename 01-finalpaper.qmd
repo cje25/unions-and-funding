@@ -11,11 +11,11 @@ format:
     toc: false
     geometry:
     - top=3cm
-date: 2023-01-12
+date: 2024-01-12
 date-format: iso
 documentclass: article
 editor: source
-abstract: "This study explores the potential variations in congressional AFL-CIO scorescards among communities created by donor networks. The Null Hypothesis posits that these communities exhibit the same mean union score, while the Alternative Hypothesis suggests differences in mean union scores. To investigate these hypotheses, a comprehensive analysis of various donor network communities is conducted, employing statistical methods to assess and compare their union scores. We find that communities created by donor networks meaningfully represent different mean AFL-CIO scores."
+abstract: "We explore the potential variations in congressional AFL-CIO scorescards among communities created by donor networks. The Null Hypothesis posits that these communities exhibit the same mean union score, while the Alternative Hypothesis suggests differences in mean union scores. To investigate these hypotheses, we conduct a comprehensive analysis of various donor network communities, employing statistical methods to assess and compare their union scores. We find that communities created by donor networks meaningfully represent different mean AFL-CIO scores."
 ---
 
 ```{r setup,message = FALSE, echo=FALSE}
@@ -69,11 +69,11 @@ Simultaneously, the Union Scores data for 2022 was processed, encompassing both 
 
 To connect these datasets, we had to conduct a tremendous amount of data cleaning. In particular, we had to individually clean members of the AFL-CIO scorecard, since some members had suffixes, middle names, or nicknames associated to them. This undertaking was difficult and took a long time, but ultimately we wrangled the data the way we wanted it.
 
-The AFL-CIO Union Score is a number created by the American Federation of Labor and Congress of Industrial Organizations (AFL-CIO), which represents a congressperson\'s favorability towards unions through their voting patterns. The AFL-CIO separates their score calculations based on the chamber the congressperson is in as the House and Senate hold different votes. Additionally, while the union score for House members is calculated using bills and resolutions, the union score for Senate members also takes into account nominations. The score itself is calculated by taking a percentage of how often a congressperson voted in favor of union interests out of how often that member actively voted. The score is also calculated for each year, and averaged into a lifetime score. For example, as Representative Mary Petola of Alaska did not take office until September 13 2022, her score calculation in the 2022 dataset for the House does not take into account the eight bills the score card tracked before this. The first bill tracked by the score card that she was eligible to vote on was the Presidential Election Reform Act (H.R. 8873), which held its roll call vote on September 20, 2022. After she took office the score card tracked five bills, four of which she voted yes on and one that she abstained, making her score for 2022 100%.
+The AFL-CIO Union Score is a number created by the American Federation of Labor and Congress of Industrial Organizations (AFL-CIO), which represents a congressperson's favorability towards unions through their voting patterns. The AFL-CIO separates their score calculations based on the chamber the congressperson is in as the House and Senate hold different votes. Additionally, while the union score for House members is calculated using bills and resolutions, the union score for Senate members also takes into account nominations. The score itself is calculated by taking a percentage of how often a congressperson voted in favor of union interests out of how often that member actively voted. The score is also calculated for each year, and averaged into a lifetime score. For example, as Representative Mary Petola of Alaska did not take office until September 13 2022, her score calculation in the 2022 dataset for the House does not take into account the eight bills the score card tracked before this. The first bill tracked by the score card that she was eligible to vote on was the Presidential Election Reform Act (H.R. 8873), which held its roll call vote on September 20, 2022. After she took office the score card tracked five bills, four of which she voted yes on and one that she abstained, making her score for 2022 100%.
 
 For our paper, we utilized the lifetime scores of congresspeople as calculated in the 2022 data sets. In the House data set, the score card tracked twelve bills and one resolution. In the Senate data set, the score card tracked five nominations, six bills, and one resolution. 
 
-Notably, the union scores are not weighted by popularity of the legislation or nomination up for vote or any other factors. For example, a congressperson voting for a bill despite many of their peers not voting for it does not influence their score other than the fact that they voted yes. In future analysis weighting the union score by different legislation\'s popularity, as well as taking into account type (for example appropriations, resolutions, or even levels of nomination such as Supreme Court nominations), could help to identify the \'extremeness\' and \'strength of convictions\' of a candidate. 
+Notably, the union scores are not weighted by popularity of the legislation or nomination up for vote or any other factors. For example, a congressperson voting for a bill despite many of their peers not voting for it does not influence their score other than the fact that they voted yes. In future analysis weighting the union score by different legislation's popularity, as well as taking into account type (for example appropriations, resolutions, or even levels of nomination such as Supreme Court nominations), could help to identify the 'extremeness' and 'strength of convictions' of a candidate. 
 
 We leveraged the igraph package in R to construct network graphs, visualizing connections between Congress members based on donor contributions. Originally, we had a bipartite graph: directed connections from donors to Congresspeople. The method we used to project this is that two Congresspeople are connected if they have a mutual donor. The weight of the connection is the sum of the contributions of the mutual donor to both candidates. Nodes, representing Congress members, were sized proportionally to the total amount donated.
 
@@ -131,25 +131,25 @@ For ease, we have renamed the communities we created based on the political char
 
 #### Community 1: Major Fundraisers
 
-	Major names:  Bernie Sanders, Kyrsten Sinema, Alexandria Ocasio-Cortez, Joe Manchin, Chuck Schumer, Jon Ossoff, Tammy Duckworth
+Major names: Bernie Sanders, Kyrsten Sinema, Alexandria Ocasio-Cortez, Joe Manchin, Chuck Schumer, Jon Ossoff, Tammy Duckworth
 
-This group is comprised of both Senators and Representatives, primarily Democrats and some Independents, but mainly \'very nameable\' players who are successful at fundraising!
+This group is comprised of both Senators and Representatives, primarily Democrats and some Independents, but mainly 'very nameable' players who are successful at fundraising!
 
 #### Community 2: Extreme Ideological Statements
 
-	Major names: Elizabeth Warren, Ed Markey, Nancy Pelosi, Matt Gaetz, Lauren Boebert Marjorie Taylor Green
+Major names: Elizabeth Warren, Ed Markey, Nancy Pelosi, Matt Gaetz, Lauren Boebert Marjorie Taylor Green
 
 Individual donors generally donate to congresspeople with more extreme ideological positions, but they also cast their financial support to institutional players or congresspeople that they are making a clear statement to by donating. This is a more extreme group of donors, placing a focus on contemporary and new shifts in the poltiical landscape.
 
 #### Community 3: The Fringe
 
-	Major names: Adam Schiff, Scott Perry, Connie Conway
+Major names: Adam Schiff, Scott Perry, Connie Conway
 
 A majority of the members in this group are congresspeople on the political fringe or are developing and shifting their niche. They are not engrossed in the current political machine, but they do have developments that are upcoming.
 
 #### Community 4: The Battleground
 
-	Major names: Raphael Warnock, Hakeem Jeffries, Rand Paul, Rick Scott
+Major names: Raphael Warnock, Hakeem Jeffries, Rand Paul, Rick Scott
 
 A majority of these are either currently elected or are elected into competitive districts. The major connections in this community will be found in donors who are spending on current competitive elections.
 
@@ -157,31 +157,31 @@ A majority of these are either currently elected or are elected into competitive
 
 #### Community 1: Battleground Senators
 
-	Major names: Bill Foster, Tim Ryan, Raphael Warnock, Jon Ossoff, Elizabeth Warren
+Major names: Bill Foster, Tim Ryan, Raphael Warnock, Jon Ossoff, Elizabeth Warren
 
 A majority of the members in this grouping are Senators, and many are also either recently elected or have been elected in battleground states.
 
 #### Community 2: New Era Conservatives
 
-	Major names: Ted Cruz, Lindsey Graham, Marjorie Taylor Greene, Lauren Boebert
+Major names: Ted Cruz, Lindsey Graham, Marjorie Taylor Greene, Lauren Boebert
 
-This group was not used for analysis due to the relatively small group size, but it is comprised of the major players in the new era conservative movement. 
+This group was not used for analysis due to the relatively small group size, but it is comprised of the major players in the new era conservative movement.
 
 #### Community 3: Range Senators
 
-	Major names: Tammy Baldwin, Rick Scott, Joe Manchin, Kyrsten Sinema, 
+Major names: Tammy Baldwin, Rick Scott, Joe Manchin, Kyrsten Sinema.
 
-This group holds both the most ideologically extreme senators and the most centrist senators who generally act as swing votes in key legislative moments, it is likely that \'far\' left PACs and \'far\' right PACs donate with the interest to sway them.
+This group holds both the most ideologically extreme senators and the most centrist senators who generally act as swing votes in key legislative moments, it is likely that 'far' left PACs and 'far' right PACs donate with the interest to sway them.
 
-#### Community 4: Catch All 
+#### Community 4: Catch All
 
-	Major names: Nancy Pelosi, Jared Huffman, Sheila Lee, Al Green, Adam Schiff, Ayanna Pressley, Yvette Clarke, Ed Markey
+Major names: Nancy Pelosi, Jared Huffman, Sheila Lee, Al Green, Adam Schiff, Ayanna Pressley, Yvette Clarke, Ed Markey
 
 The largest community features pillars of the Democratic party and the generally left leaning house of representative members. It seems that these PACs donate to candidates with the intention of having a majority of house members to pass democrat-agenda legislation.
 
 #### Community 6: Centrist House Members
 
-	Major names: Chris Pappas, Tom Malinowksi, Susie Lee, Haley Stevens
+Major names: Chris Pappas, Tom Malinowksi, Susie Lee, Haley Stevens
 
 This group is very similar to group 4, but featuring some pillars of the modern Republican strategy with a slight weight towards the ideological center. This group is also smaller than group 4, placing a bigger emphasis on members with generally strong positions on a single main issue.
 
@@ -189,45 +189,46 @@ This group is very similar to group 4, but featuring some pillars of the modern 
 
 After organizing communities by donor networks for both large individual donors and large PAC donors, we tested the mean union scores of the communities using an Analysis of Variance (ANOVA) Test. Using an ANOVA depends on certain assumptions being fulfilled.
 
-```{r, echo=FALSE}
-individual_naming = function(community){
-  if(community == 1){
+```{r, message = FALSE, echo=FALSE, warning=FALSE}
+individual_naming = function(c){
+  if(c == 1){
     return("Major Fundraisers")
-  }else if(community == 2){
+  }else if(c == 2){
     return("Extreme Ideological Statements")
-  }else if (community == 3){
+  }else if (c == 3){
     return("The Fringe")
-  }else if( community == 4){
+  }else if( c == 4){
     return("The Battleground")
   }else{
-    return(paste("Community ", community))
+    return(paste("Community ", c))
   }
 }
 
-pac_naming = function(community){
-  if(community == 1){
+pac_naming = function(c){
+  if(c == 1){
     return("Battleground Senators")
-  }else if(community == 2){
+  }else if(c == 2){
     return("New Era Conservatives")
-  }else if (community == 3){
+  }else if (c == 3){
     return("Range Senators")
-  }else if( community == 4){
+  }else if( c == 4){
     return("Catch All")
-  }else if(community == 6){
+  }else if(c == 6){
     return("Centrist House Members")
   } else{
-    return(paste("Community ", community))
+    return(paste("Community ", c))
   }
 }
 
 individuals = read_csv("./analysis/individual_communities_and_scores.csv", show_col_types = FALSE)
 pacs = read_csv("./analysis/pac_communities_and_scores.csv", show_col_types = FALSE)
 individuals = individuals %>% 
-  mutate(party = str_sub(congresspeople, -2, -2)) %>% 
-  mutate(community = individual_naming(community))
-
-individuals = individuals %>% 
   drop_na() %>% 
+  mutate(party = str_sub(congresspeople, -2, -2)) %>% 
+  rowwise() %>% 
+  mutate(community = individual_naming(community)) %>% 
+  unnest() 
+individuals = individuals %>% 
   rename(score = score1) %>% 
   rename(lifetime_score = lifetime_score1)
 
@@ -235,7 +236,9 @@ pacs = pacs %>%
   drop_na() %>% 
   rename(score = score1) %>% 
   rename(lifetime_score = lifetime_score1) %>% 
-  mutate(community = pac_naming(community))
+  rowwise() %>% 
+  mutate(community = pac_naming(community)) %>% 
+  unnest() 
 
 cold_colors <- c("#078D70", "#26CEAA", "#98E8C1", "#7BADE2")
 warm_colors <- c("#D52D00", "#EF7627", "#FF9A56", "#D162A4")
@@ -290,6 +293,7 @@ ggplot(individuals, mapping = aes(x = community, y = lifetime_score, fill=commun
        x = "Walktrap Community",
        y = "Lifetime Union Score")+
   theme_bw()+
+  guides(x = guide_axis(angle=45))+
   theme(plot.title = element_text(hjust = 0.5))
   
 ```
@@ -324,6 +328,7 @@ individual_means = individuals %>%
           text=element_text(size=16, family="sans"))+
     scale_fill_manual(values=cold_colors)+
     ggtitle("Individual Network Mean Union Scores")+
+    guides(x = guide_axis(angle=45))+
     labs(y = "Mean Union Score", x = "Walktrap Community")+
     geom_bar(stat="identity", show.legend = FALSE, color="black")
 ```
@@ -354,8 +359,9 @@ ggplot(pacs_means, mapping = aes(x = reorder(community, -community_mean), y = co
   theme_bw()+
   theme(plot.title = element_text(hjust=0.5),
         text=element_text(size=16,  family="sans"))+
-  scale_fill_manual(values=warm_colors)+
+  scale_fill_manual(values=warm_colors2)+
   ggtitle("PACs Network Mean Union Scores")+
+  guides(x = guide_axis(angle=45))+
   labs(y = "Mean Union Score", x = "Walktrap Community")+
   geom_bar(stat="identity", show.legend = FALSE, color="black")
 
@@ -377,7 +383,7 @@ In this study, we delved into the intricate voting behavior of Congresspeople, p
 
 However, our study is not without limitations. Time constraints posed challenges, restricting the depth of our analysis. Additionally, computing power limitations influenced the complexity of our methods. A notable limitation stems from missing data due to the Citizens United decision and changes in campaign donations research. Despite these constraints, we propose that graph theory could offer valuable insights into the connections among donors, mitigating the impact of missing data.
 
-Looking ahead, our research lays a foundation for future investigations. Incorporating small donations into the analysis could further enrich our understanding of donor networks. Time series analysis, exploring the directionality of voting behavior, is a logical next step for a more dynamic perspective. Investigating dark money and tracking donations through Super PACs would provide a more comprehensive view of the financial landscape influencing congressional decisions.  Furthermore, engaging with other scorecards or metrics could offer additional dimensions for analysis. 
+Looking ahead, our research lays a foundation for future investigations. Incorporating small donations into the analysis could further enrich our understanding of donor networks. Time series analysis, exploring the directionality of voting behavior, is a logical next step for a more dynamic perspective. Investigating dark money and tracking donations through Super PACs would provide a more comprehensive view of the financial landscape influencing congressional decisions Furthermore, engaging with other scorecards or metrics could offer additional dimensions for analysis.
 
 \clearpage
 
