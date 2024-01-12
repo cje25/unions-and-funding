@@ -14,7 +14,6 @@ date-format: iso
 documentclass: article
 editor: source
 abstract: "This is our informative abstract of fewer than 200 words. It describes what we investigate, how we investigate it, and what we find."
-bibliography: main.bib
 ---
 
 ```{r setup}
@@ -27,28 +26,7 @@ bibliography: main.bib
 library(kableExtra)
 library(parameters)
 library(tidyverse)
-```
-
-```{r}
-#| echo: false
-#| message: false
-
-# This chunk might read our data.
-# It might clean the data, create new variables, etc.
-# Now our data are ready for our paper.
-
-# Because echo: false, this chunk itself is not shown.
-
-data("cars")
-```
-
-```{r readdata}
-#| eval: false
-#| echo: false
- 
-# Because eval: false, this chunk is not run.
-
-df <- read.csv()
+library(ggplot)
 ```
 
 # Introduction
@@ -65,13 +43,9 @@ Furthermore, the analysis goes beyond statistical comparisons, delving into the 
 
 This scientific data analysis paper, rooted in R Studio, provides a robust exploration of political contributions and community structures. By combining network analyses, hypothesis testing, and descriptive approaches, the study offers a comprehensive perspective on the complex relationships that define contemporary political landscapes.
 
-
-
-
 # Political Donations and Network Analysis
 
-
-	The last year has been marked by a growing number of coordinated labor movements and union action across several industries in the United States. Our research explores the nature of connections between labor union legislative scorecards from members of congress and the networks created by prolific wide-reaching large campaign contributors. 
+The last year has been marked by a growing number of coordinated labor movements and union action across several industries in the United States. Our research explores the nature of connections between labor union legislative scorecards from members of congress and the networks created by prolific wide-reaching large campaign contributors. 
 	
 There are a number of political implications of the expectations placed upon a candidate by a donor, including but not limited to ideological transparency and the degree of a representative agenda. Conversely, the actions that a congressperson takes to attract donations to further their own interests is also a deep topic of study. La Raja, Raymond J., and Brian Schaffner (2015) theorize that candidates who receive very large funding from individuals are very likely to be ideologically centrist, while candidates who seek funding from large amounts of small donations are more likely to be ideologically extreme. Additionally, the theory extends to corporations and business groups to claim that they will tend to favor moderate and conservative officeholders who will bargain over specifics rather than overarching ideological change. In our research, we expect to find that large donations from corporations will skew toward conservative networks in congress, while large donations from individuals will flow to centrist networks. 
 
@@ -102,117 +76,13 @@ For statistical insights, we implemented code to perform ANOVA on the identified
 
 # [Our Results Section Title Here]
 
-Here, we explain and interpret our results. We try to learn as much as we can about our question as possible, given the data and analysis. We present our results clearly. We interpret them for the reader with precision and circumspection. We avoid making claims that are not substantiated by our data. We are careful about causality. When we describe associations, we avoid language like "effects" and "increases"; we only describe "effects" or "impacts" when we have a causally well-identified research design. 
+After organizing communities by donor networks for both large individual donors and large PAC donors, we tested the mean union scores of the communities using an Analysis of Variance (ANOVA) Test. 
 
-Note that this section may be integrated into @sec-data, if joining the two improves the overall presentation.
+```{r}
 
-## Predicting Distance with Speed
-
-Our results for the `cars` data include estimating the linear model 
-
-$$\text{Distance}_i = \beta_0 + \beta_1 (\text{Speed}_i) + \epsilon_i.$$
-Perhaps we start by plotting the data, as in @fig-cars.
-
-```{r fig-cars}
-#| echo: false
-#| fig-cap: Distance on Speed
-
-ggplot(cars, aes(speed, dist)) +
-  geom_point()
 ```
 
-The data may be roughly linear, though there may be some non-linearity we should incorporate.
 
-```{r linearmodel}
-#| echo: false
-
-# Estimate a linear model:
-lm_out <- lm(dist ~ speed, data = cars)
-# Extract the coefficient on speed:
-cars_speed_coef <- coef(lm_out)["speed"]
-```
-
-Below we show the model estimates. The first table uses `xtable()`, the second uses `stargazer()` [@hlavac18].
-
-```{r linearxtable}
-#| echo: false
-#| message: false
-#| results: 'asis'
-
-# We can print regression tables with xtable or stargazer:
-regr_table <- xtable::xtable(lm_out,
-                             digits = 2,
-                             caption = "Our Informative Caption")
-
-print(regr_table, comment = FALSE)
-```
-
-```{r linearstargazer}
-#| echo: false
-#| message: false
-#| results: 'asis'
-
-# We can print regression tables with xtable or stargazer:
-stargazer::stargazer(lm_out, 
-                     title = "Our Informative Title",
-                     dep.var.caption = "Outcome",
-                     digits = 2,
-                     header = FALSE)
-```
-
-Using the `cars` data, we find that each unit of speed is associated with `r round(cars_speed_coef, 1)` more units of distance. We draw out what this really means, and what it implies. For example, if a typical difference among our observations is 7 units of speed, then our model estimates that a typical difference in distance among our observations is $7 \times `r round(cars_speed_coef, 1)` = `r 7 * round(cars_speed_coef, 1)`$ units of distance. We describe the substantive relevance of this number.
-
-We do not report estimates like `p = 3.242e-15`, since these are computational zeros. Instead, we write $p < 0.001$ or $p \approx 0$, as appropriate.
-
-We do not report quantities to unhelpful degrees of precision. Although there were 112,030,874 votes cast from voting-eligible population of 242,690,810 in the U.S. in 2022, it is not helpful to report turnout as `r (112030874 / 242690810) * 100`%; writing `r round((112030874 / 242690810) * 100, 1)`% suffices.
-
-
-## Comparing Distances between High- and Low-Speed Cars
-
-```{r ttest}
-#| echo: FALSE
-
-# Create a binary variable for "high-speed":
-cars <- cars |> mutate(hs = ifelse(speed > mean(speed), 1, 0))
-
-# Conduct t-test:
-t_out <- t.test(dist ~ hs, cars)
-
-t_lower_ci <- t_out$conf.int[1] |> round(2)
-t_upper_ci <- t_out$conf.int[2] |> round(2)
-```
-
-To report the results of a $t$-test, we do so in text, and perhaps in a well-formatted table as well, such as @tbl-ttesttable. Here, as above, we report the important details in text. For example, when we define "high-speed" cars as those traveling above the mean speed, the difference between the high-speed and low-speed group means is `r t_out$estimate[2] - t_out$estimate[1]`, with a 95% confidence interval that covers $(`r -t_upper_ci`, `r -t_lower_ci`)$. 
-
-```{r tbl-ttesttable}
-#| echo: FALSE
-#| warning: FALSE
-#| tbl-cap: Distance by Speed Group
-
-parameters::model_parameters(t_out) |> 
-  parameters::print_md(
-    footer = "")
-```
-
-If I have tests of two outcomes from the same data, I can bind them together, as in @tbl-ttesttable2:
-
-```{r tbl-ttesttable2}
-#| echo: FALSE
-#| warning: FALSE
-#| tbl-cap: Distance and Square-root Distance by Speed Group
-
-cars <- cars |> mutate(dist_sqrt = (sqrt(dist)))
-t_out_2 <- t.test(dist_sqrt ~ hs, data = cars)
-
-tab <- rbind(
-  model_parameters(t_out),
-  model_parameters(t_out_2)
-)
-
-tab |> 
-  print_md(
-    footer = "")
-```
 
 # Discussion
 
