@@ -1,10 +1,10 @@
 ---
-title: "Communities"
+title: "Shared Structures in Campaign Donation Networks & Congressional Voting Patterns on Union-Related Bills"
 author:
   - Nina-Marie Cielo^[American University]
   - Cameron Eller^[American University]
   - Jake Pellett^[American University]
-  - Thomas Schupp^[American University]
+  - Tommy Schupp^[American University]
 format: 
   pdf:
     number-sections: true
