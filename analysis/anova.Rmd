@@ -6,6 +6,9 @@ output: html_document
 ---
 
 ```{r}
+
+cold_colors <- c("#078D70", "#26CEAA", "#98E8C1", "#7BADE2")
+warm_colors <- c("#D52D00", "#EF7627", "#FF9A56", "#D162A4")
 library(tidyverse)
 library(ggplot2)
 individuals = read_csv("./individual_communities_and_scores.csv")
@@ -43,7 +46,8 @@ ggplot(individuals, mapping = aes(x = name, y = lifetime_score, color = party))+
   guides(color = guide_legend(title = "Party"))+
   theme(axis.title.x = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.text.x = element_blank())
+        axis.text.x = element_blank(),
+        plot.title = element_text(hjust=0.5))
   
 ```
 
@@ -56,15 +60,27 @@ ANOVA ASSUMPTIONS
 
 Addressing (1): distributions of communities 
 ```{r}
-ggplot(individuals, mapping = aes(y = lifetime_score))+
-  geom_histogram()+
+ggplot(individuals, mapping = aes(x = lifetime_score))+
+  theme_bw()+
+  geom_histogram(fill="#7BADE2")+
+  ggtitle("Individual Lifetime Union Scores by Community")+
+  labs(y = "Number of Congresspeople", x = "Lifetime Union Score")+
+  theme(plot.title = element_text(hjust=0.5),
+        strip.background =element_rect(fill="#5988ba"),
+        strip.text = element_text(colour = 'white'))+
   facet_wrap(~community)
 ```
 
 We should probably drop PAC communities 2, 5, 7, 8, 9
 ```{r}
-ggplot(pacs, mapping = aes(y = lifetime_score))+
-  geom_histogram()+
+ggplot(pacs, mapping = aes(x = lifetime_score))+
+  theme_bw()+
+  geom_histogram(fill=warm_colors[1])+
+  ggtitle("PAC Lifetime Union Scores by Community")+
+  labs(y = "Number of Congresspeople", x = "Lifetime Union Score")+
+  theme(plot.title = element_text(hjust=0.5),
+        strip.background =element_rect(fill="#9c2302"),
+        strip.text = element_text(colour = 'white'))+
   facet_wrap(~community)
 
 ```
@@ -106,14 +122,14 @@ individual_means = individuals %>%
   group_by(community) %>% 
   summarize(community_mean = mean(lifetime_score))
 
-  ggplot(individual_means, mapping = aes(x = community, y = community_mean, fill = community))+
+  ggplot(individual_means, mapping = aes(x = reorder(community, -community_mean), y = community_mean, fill = community))+
     theme_bw()+
     theme(plot.title = element_text(hjust=0.5),
-          text=element_text(size=16,  family="sans"))+
-    scale_fill_manual(values=c("#88D9E6", "#8B8BAE", "#526760", "#1B2F33"))+
+          text=element_text(size=16, family="sans"))+
+    scale_fill_manual(values=cold_colors)+
     ggtitle("Individual Network Mean Union Scores")+
     labs(y = "Mean Union Score", x = "Walktrap Community")+
-    geom_bar(stat="identity", show.legend = FALSE)
+    geom_bar(stat="identity", show.legend = FALSE, color="black")
 ```
 
 ```{r}
@@ -135,14 +151,14 @@ pacs = pacs %>%
 pacs_means = pacs %>% 
   summarize(community_mean = mean(lifetime_score))
 
-ggplot(pacs_means, mapping = aes(x = community, y = community_mean, fill = community))+
+ggplot(pacs_means, mapping = aes(x = reorder(community, -community_mean), y = community_mean, fill = community))+
   theme_bw()+
   theme(plot.title = element_text(hjust=0.5),
         text=element_text(size=16,  family="sans"))+
-  scale_fill_manual(values=c("#88D9E6", "#8B8BAE", "#526760", "#1B2F33"))+
+  scale_fill_manual(values=warm_colors)+
   ggtitle("PACs Network Mean Union Scores")+
   labs(y = "Mean Union Score", x = "Walktrap Community")+
-  geom_bar(stat="identity", show.legend = FALSE)
+  geom_bar(stat="identity", show.legend = FALSE, color="black")
 
 ```
 
