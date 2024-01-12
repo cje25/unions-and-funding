@@ -53,15 +53,22 @@ df <- read.csv()
 
 # Introduction
 
-In this section, we introduce the reader to the phenomenon we investigate. We describe the way in which our analysis contributes to an important intellectual debate, or how it answers a pressing political or social question. We introduce our research question, hypotheses, data, and results. We signpost for the reader what's coming in the rest of the paper.
+In the ever-evolving landscape of political campaigns, understanding the intricate web of connections between individual donors, political action committees (PACs), and candidates is paramount. This paper presents a comprehensive data analysis utilizing R Studio to unravel the dynamics of political contributions and community structures. The initial step involved coding to classify data into distinct categories, distinguishing between individuals and PACs based on a designated column.
 
-We remember that our paper is not a mystery novel. We note our core results early and often.
+The dataset was divided into two subsets: 'individuals_df' and 'pac_df.' For 'individuals_df,' a network analysis was conducted, establishing edges between candidates based on individual donations. Connections were weighted, reflecting the cumulative contributions from shared individual donors. A similar approach was employed for 'pac_df,' where connections between candidates were determined by PAC donations, and weights represented the financial support provided.
 
-Throughout our paper, we use active, first-person language and avoid the passive voice. For example, we write "we examine the relationship between $X$ and $Y$"; we do not write "the relationship between $X$ and $Y$ was examined." Where we do the analysis, we speak about it transparently. We use the present tense; for example, "In this paper, we argue \ldots" and "Paper XYZ demonstrates the relationship between \ldots".
+Following the network analyses, the research delved into exploring candidate communities within the network. The investigation extended to examining these communities' scorecard data, aiming to discern patterns and similarities among groups of candidates. This multifaceted approach offered a nuanced understanding of the relationships within and between different political entities.
+
+The analytical phase included hypothesis testing, focusing on comparing the mean union scores of candidate communities. To evaluate whether communities exhibited similar or different means, ANOVA tests were employed, complemented by the use of standard error and other relevant statistical measures. Specifically, the paper delves into comparing means within communities with PACs, providing insights into potential disparities in political contributions.
+
+Furthermore, the analysis goes beyond statistical comparisons, delving into the nuanced characteristics of different candidate groups. Descriptive methods are utilized to elucidate the distinctive traits and behaviors within these political communities, shedding light on the intricate interplay of individual and PAC contributions.
+
+This scientific data analysis paper, rooted in R Studio, provides a robust exploration of political contributions and community structures. By combining network analyses, hypothesis testing, and descriptive approaches, the study offers a comprehensive perspective on the complex relationships that define contemporary political landscapes.
 
 
-# [Our Substance and Context Section Title Here]
 
+
+# Political Donations and Network Analysis
 
 
 	The last year has been marked by a growing number of coordinated labor movements and union action across several industries in the United States. Our research explores the nature of connections between labor union legislative scorecards from members of congress and the networks created by prolific wide-reaching large campaign contributors. 
@@ -74,8 +81,6 @@ Graph theory is a powerful tool for analyzing complex systems of interacting age
 
 
 
-
-
 Here we go deeper into the intellectual debate, the political and social context of our investigation. To give the reader a clear sense of why we are writing this paper, we describe the relevant scholarly, technical, or popular literature. We give this section a meaningful _substantive_ title; it is not entitled "Literature Review", for example. We cite at least three published, peer-reviewed scholarly works. For example, we could cite @mooree20 or @moorav12^[There should always be a space before the "(" in a citation date.], which we discussed in class.^[To cite a paper within parentheses, use, e.g., [@moore12].] We only cite others' work in our paper when it enhances the reader's understanding of what we, the authors of this paper, are doing.  We connect everything we cite to _our_ investigation; this is our original research, not a book report or an annotated bibliography.
 
 We do not cite paper titles or journal names, unless our paper is about someone else's paper or about the set of articles in a journal. We do not cite authors' first, given names. We can refer to either what an author does, or what a paper does, but we should be consistent. For example, "@moorav12 argue that we should \ldots" refers to what the authors do; "@moorav12 argues that we should \ldots" refers to what the paper -- @moorav12 -- does.
@@ -84,22 +89,16 @@ In order to integrate citations into the References section below, we add entrie
 
 
 # Data and Methods {#sec-data}
+For this study, two primary datasets were utilized—Open Secrets donation data and Union Scores for the year 2022. The Open Secrets data underwent cleaning to isolate donors contributing over $2000 to House and Senate members in 2022. The names were standardized, and the 'candidate_party' variable was simplified to 'D' for Democrats, 'R' for Republicans, and 'I' for Independents. A new variable, 'pac_or_individual,' was introduced to categorize PACs ('p') and individuals ('i'). Notably, we integrated two initially separate datasets for individuals and PACs.
 
-This section describes the data we analyze. We describe the source of the data,
-and its primary features. We cite our data. We describe the methods we use to
-answer our question and to test our hypotheses.
+Simultaneously, the Union Scores data for 2022 was processed, encompassing both yearly and lifetime scores. Titles preceding names were removed, and percentage-based score values were converted to vectors. The House and Senate data frames were merged, and encoding discrepancies between the Union Scores (latin1) and Open Secrets (utf-8) datasets were addressed.
 
-If our data were `cars`, loaded in a chunk above, we note that our data have `r nrow(cars)` observations. Our unit of analysis is the cars; each row represents a different car that was measured.
+We leveraged the igraph and qgraph packages in R to construct network graphs, visualizing connections between Congress members based on donor contributions. Nodes, representing Congress members, were sized proportionally to the total amount donated and color-coded to distinguish between individual and PAC donors. This graphical representation facilitated a comprehensive exploration of relationships within and between these donor groups.
 
-We refer to concepts and label them appropriately. We state our outcome and how it is measured: "Our outcome is stopping distance measured in feet." We state our key predictor and how it is measured: "Our key predictor is the car's speed, measured in miles per hour."
+A walkthrough function was employed to identify groups within the network. These groups were then transformed into a data frame, enabling the association of Union Scores with specific Congress members and their respective groups.
 
-We almost never refer to specific variable, object, function, or data frame names (such as `var_x`, `ourdata`, `this_useful_func`, or `df`). These particular names are almost never of interest or use to the reader.
+For statistical insights, we implemented code to perform ANOVA on the identified communities, assessing differences in mean Union Scores. Additional analyses, such as graphical representations of score and donation distributions, may be explored based on available time.
 
-We explain important decisions and codings in this section. "We collect our data from source X. We code the outcome as 1 if the registrant turned out in the 2022 election, 0 if they did not." A table can serve as an efficient way to detail several such decisions.
-
-Where there are less-critical details that we implement to improve our analysis or presentation, we do not explain them in the paper. Our paper does not say, for example, "we reorder the levels of the factor variable from alphabetical 'high, low, medium' to the sensible 'low, medium, high.'" Of course, we implement that reordering, but it should not appear in our paper.
-
-We cite the software we use. For example, we conduct our analysis using R version `r paste(R.version$major, R.version$minor, sep = ".")` [@rcoreteam23]. We rely on several elements of the `tidyverse` [@wickhamtidyverse]. Of course, we do not cite software that we do not use.
 
 # [Our Results Section Title Here]
 
