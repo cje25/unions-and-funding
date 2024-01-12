@@ -1,24 +1,24 @@
 ---
-title: "Your Substantive Title Here"
-author: 
-  - Your Name1^[American University]
-  - Your Name2^[American University]
+title: "Communities"
+author:
+  - Nina-Marie Cielo^[American University]
+  - Cameron Eller^[American University]
+  - Jake Pellett^[American University]
+  - Thomas Schupp^[American University]
 format: 
   pdf:
     number-sections: true
     toc: false
-    geometry: 
-      - top=3cm
+    geometry:
+    - top=3cm
 date: 2023-09-27
 date-format: iso
 documentclass: article
 editor: source
-  markdown: 
-    wrap: 72
-abstract: "This is our informative abstract of fewer than 200 words. It describes what we investigate, how we investigate it, and what we find."
+abstract: "This study explores the potential variations in congressional AFL-CIO scorescards among communities created by donor networks. The Null Hypothesis (H₀) posits that these communities exhibit the same mean union score, while the Alternative Hypothesis (Hₐ) suggests differences in mean union scores. To investigate these hypotheses, a comprehensive analysis of various donor network communities is conducted, employing statistical methods to assess and compare their union scores. We find that communities created by donor networks meaningfully represent different mean AFL-CIO scores."
 ---
 
-```{r setup,message = FALSE}
+```{r setup,message = FALSE, echo=FALSE}
 #| echo: false
 #| message: false
 
@@ -67,17 +67,33 @@ In order to integrate citations into the References section below, we add entrie
 
 # Data and Methods {#sec-data}
 
-For this study, two primary datasets were utilized---Open Secrets donation data and Union Scores for the year 2022. The Open Secrets data underwent cleaning to isolate donors contributing over \$2000 to House and Senate members in 2022. The names were standardized, and the 'candidate_party' variable was simplified to 'D' for Democrats, 'R' for Republicans, and 'I' for Independents. A new variable, 'pac_or_individual,' was introduced to categorize PACs ('p') and individuals ('i'). Notably, we integrated two initially separate datasets for individuals and PACs.
+For this study, two primary datasets were utilized---Open Secrets donation data and Union Scores for the year 2022. The Open Secrets data underwent cleaning to isolate donors contributing over \$1000 to House and Senate members in 2022. The names were standardized, and the 'candidate_party' variable was simplified to 'D' for Democrats, 'R' for Republicans, and 'I' for Independents. A new variable, 'pac_or_individual,' was introduced to categorize PACs ('p') and individuals ('i'). Notably, we integrated two initially separate datasets for individuals and PACs.
 
-Simultaneously, the Union Scores data for 2022 was processed, encompassing both yearly and lifetime scores. Titles preceding names were removed, and percentage-based score values were converted to vectors. The House and Senate data frames were merged, and encoding discrepancies between the Union Scores (latin1) and Open Secrets (utf-8) datasets were addressed.
+We had many difficulties navigating this dataset. First of all, the files were extraordinarily large. Before cleaning, the original individual donations file was 15GB. We also had to use joins and merges to connect disparate datasets containing different information so that we could get the information we wanted. For example, the individual donors dataset did not have candidate names, only their ID numbers. So, we had to cross-reference with another source that corresponded ID numbers to candidate names.
 
-We leveraged the igraph and qgraph packages in R to construct network graphs, visualizing connections between Congress members based on donor contributions. Nodes, representing Congress members, were sized proportionally to the total amount donated and color-coded to distinguish between individual and PAC donors. This graphical representation facilitated a comprehensive exploration of relationships within and between these donor groups.
+Simultaneously, the Union Scores data for 2022 was processed, encompassing both yearly and lifetime scores. Ultimately, we settled on just selecting lifetime scores. Titles preceding names were removed, and percentage-based score values were converted to a standard format. The House and Senate data frames were merged, and encoding discrepancies between the Union Scores (latin1) and Open Secrets (utf-8) datasets were addressed.
 
-A walkthrough function was employed to identify groups within the network. These groups were then transformed into a data frame, enabling the association of Union Scores with specific Congress members and their respective groups.
+To connect these datasets, we had to conduct a tremendous amount of data cleaning. In particular, we had to individually clean members of the AFL-CIO scorecard, since some members had suffixes, middle names, or nicknames associated to them. This undertaking was difficult and took a long time, but ultimately we wrangled the data the way we wanted it.
 
-For statistical insights, we implemented code to perform ANOVA on the identified communities, assessing differences in mean Union Scores. Additional analyses, such as graphical representations of score and donation distributions, may be explored based on available time.
+We leveraged the igraph package in R to construct network graphs, visualizing connections between Congress members based on donor contributions. Originally, we had a bipartite graph: directed connections from donors to Congresspeople. The method we used to project this is that two Congresspeople are connected if they have a mutual donor. The weight of the connection is the sum of the contributions of the mutual donor to both candidates. Nodes, representing Congress members, were sized proportionally to the total amount donated.
 
-```{r}
+This took an extraordinarily long time to learn, but the results were fascinating. The graphs that we created were extremely complex and with more time, we would learn more methods of representing the information. This is our first time using graph theory, as we were deeply inspired by Dr. Noel, and we used the notes provided to us by him. Moreover, we were not aware of the LGL (large graph layout), which sped up our processing time by orders of magnitude. Originally, when we were running the code to draw these graphs, it took us 15 hours to draw a graph. With LGL, it sped it up into minutes. We also achieved performance speed ups by vectorizing the operations we used, which is demonstrated in the code we have in our GitHub.
+
+A walktrap function was employed to identify groups within the network. We chose a number of steps that provided us with a number of groups that aligned with our expectations (more than 2, but not too many). Many configurations of the steps parameter led to either far too many groups or simply two (Democrats and Republicans). The communities we landed on were then transformed into a data frame, enabling the association of union scores to specific Congress members.
+
+This graphical representation facilitated a comprehensive exploration of relationships within and between these donor groups. The graphs could be a lot cleaner and more thoughtful.
+
+![](analysis/individual_graph.png)
+
+Above is the graph of the individual donation network. The candidates with the most prolific donor connections are highlighted by showing their names. Communities are distinguished by colors.
+
+![](analysis/community_graph.png)
+
+Above is the graph of the PAC donation network. The candidates with the most prolific donor connections are highlighted by showing their names. Communities are distinguished by colors.
+
+For statistical insights, we implemented code to perform ANOVA on the identified communities, assessing differences in mean Union Scores. We also conducted additional analyses, such as graphical representations of score and donation distributions.
+
+```{r, echo=FALSE}
 individuals = read_csv("./analysis/individual_communities_and_scores.csv", show_col_types = FALSE)
 individuals = individuals %>% 
   mutate(party = str_sub(congresspeople, -2, -2)) %>% 
@@ -105,13 +121,11 @@ ggplot(individuals, mapping = aes(x = name, y = lifetime_score, color = party))+
 
 ```
 
--   community graphs -communities by people -republican democrat graph of union scores -cite union scores
-
 # \[Our Results Section Title Here\]
 
 After organizing communities by donor networks for both large individual donors and large PAC donors, we tested the mean union scores of the communities using an Analysis of Variance (ANOVA) Test. Using an ANOVA depends on certain assumptions being fulfilled.
 
-```{r}
+```{r, echo=FALSE}
 individuals = read_csv("./analysis/individual_communities_and_scores.csv", show_col_types = FALSE)
 pacs = read_csv("./analysis/pac_communities_and_scores.csv", show_col_types = FALSE)
 individuals = individuals %>% 
@@ -141,7 +155,7 @@ We begin by addressing these assumptions.
 
 First, we examine the union score histograms of the large individual donor communities. Community 1 and Community 4 both seem to be unimodal and normally distributed, however, both communities have some skew. Community 2 and Community 3 are both bimodal with peaks on both ends of the union score spectrum. They do not seem to fit the normality assumption very well.
 
-```{r, message=FALSE}
+```{r, message=FALSE, echo=FALSE}
 ggplot(individuals, mapping = aes(x = lifetime_score))+
   theme_bw()+
   geom_histogram(fill="#7BADE2")+
@@ -155,7 +169,7 @@ ggplot(individuals, mapping = aes(x = lifetime_score))+
 
 Now, we examine the union score histograms of the large PAC donor communities. First, note that Community 2, Community 5, Community 7, Community 8, and Community 9 are all extremely small, between 1 and 10 members each. For that reason, we drop those communities from the analysis, as they are too small to gain meaningful insight. Community 3 and Community 4 are both unimodal and have some light skew. Meanwhile, Community 6 and Community 1 are more evenly distributed. Like the individual section, these do not seem to fit the normality assumptions very well.
 
-```{r, message=FALSE}
+```{r, message=FALSE, echo=FALSE}
 ggplot(pacs, mapping = aes(x = lifetime_score))+
   theme_bw()+
   geom_histogram(fill=warm_colors[1])+
@@ -174,7 +188,7 @@ In regards to the independence of union scores, it is very unlikely that they ar
 
 Now, we examine the variances of the communities using boxplots.
 
-```{r}
+```{r, echo=FALSE}
 ggplot(individuals, mapping = aes(x = community, y = lifetime_score, fill=community))+
   scale_fill_manual(values = cold_colors) +
   geom_boxplot(alpha=1, show.legend = FALSE)+ #alpha is transparency
@@ -188,13 +202,14 @@ ggplot(individuals, mapping = aes(x = community, y = lifetime_score, fill=commun
 
 In the boxplots of large individual donation communities, we can see that the variances of Community 1 and Community 4 seem to be approximately equal. The variances of Community 2 and Community 3 also seem to be approximately equal. However, the variances of Community 1 and Community 4 are not equal to Community 2 and Community 3.
 
-```{r}
+```{r, echo=FALSE}
 ggplot(pacs, mapping = aes(x = community, y = lifetime_score, fill=community))+
   scale_fill_manual(values = warm_colors2) +
   geom_boxplot(alpha=1, show.legend = FALSE)+ #alpha is transparency
   labs(title = "Lifetime Union Score Distributions by PAC Donation Community",
        x = "Walktrap Community",
        y = "Lifetime Union Score")+
+  guides(x = guide_axis(angle=45))+
   theme_bw()+
   theme(plot.title = element_text(hjust = 0.5))
 
@@ -204,7 +219,7 @@ In the boxplots of large PAC donations communities, we find that Community 2, Co
 
 Though the ANOVA assumptions are violated, we still think that the test is appropriate to test the means of these communities. Future research could apply more complex non-parametric tests.
 
-```{r}
+```{r, echo=FALSE}
 individual_means = individuals %>% 
   group_by(community) %>% 
   summarize(community_mean = mean(lifetime_score))
@@ -231,7 +246,7 @@ We find that, with *F*-Value 110.3 and level of significance *p*\<0.001, we reje
 
 Plotting PAC means
 
-```{r}
+```{r, echo=FALSE}
 pacs = pacs %>% 
   group_by(community) %>%
   filter(community != "Community 5") %>%
