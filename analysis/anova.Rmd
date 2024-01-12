@@ -1,6 +1,6 @@
 ---
 title: "anova"
-author: "Tommy Schupp"
+author: "Tommy Schupp and Cameron Eller"
 date: "2024-01-11"
 output: html_document
 ---
@@ -24,15 +24,22 @@ pacs = pacs %>%
   rename(lifetime_score = lifetime_score1)
 
 ```
-Everybody's Lifetimescore 
+Everybody's Lifetime Score 
 ```{r}
 ggplot(individuals, mapping = aes(x = name, y = lifetime_score, color = party))+
+  theme_classic()+
+  geom_point() +
+  coord_cartesian(clip = "off")+
   scale_color_manual(breaks = c("D", "I", "R"), 
-                    values = c("blue", "green", "red"))+
+                    values = c("blue", "green", "red")) + ##D64045 #20BF55
+  labs(title = "Lifetime Union Score",
+       caption = "Each member's lifetime union score color coded by their party.",
+       y = "Lifetime Union Score")+
+  guides(color = guide_legend(title = "Party"))+
   theme(axis.title.x = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.text.x = element_blank())+
-  geom_point()
+        axis.text.x = element_blank())
+  
 ```
 
 ANOVA ASSUMPTIONS
