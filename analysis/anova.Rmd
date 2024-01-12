@@ -6,9 +6,6 @@ output: html_document
 ---
 
 ```{r}
-
-cold_colors <- c("#078D70", "#26CEAA", "#98E8C1", "#7BADE2")
-warm_colors <- c("#D52D00", "#EF7627", "#FF9A56", "#D162A4")
 library(tidyverse)
 library(ggplot2)
 individuals = read_csv("./individual_communities_and_scores.csv")
@@ -28,6 +25,10 @@ pacs = pacs %>%
   rename(lifetime_score = lifetime_score1) %>% 
   mutate(community = paste("Community", community))
 
+cold_colors <- c("#078D70", "#26CEAA", "#98E8C1", "#7BADE2")
+warm_colors <- c("#D52D00", "#EF7627", "#FF9A56", "#D162A4")
+warm_colors2 <- c("#D52D00", "#EF7627", "#D162A4", "#B55690", "#A30262", "#5C0029", "#2D080A", "#7C3626", "#FF9A56")
+
 ```
 Everybody's Lifetime Score 
 ```{r}
@@ -36,10 +37,10 @@ ggplot(individuals, mapping = aes(x = name, y = lifetime_score, color = party))+
   geom_point() +
   coord_cartesian(clip = "off")+
   scale_color_manual(breaks = c("D", "I", "R"), 
-                    values = c("blue", "green", "red")) + ##D64045 #20BF55
-  labs(title = "Lifetime Union Score",
-       caption = "Each member's lifetime union score color coded by their party.",
-       y = "Lifetime Union Score")+
+                    values = c("blue", "green", "red"),
+                    labels=c("Democrat", "Independent", "Republican")) + 
+  labs(title = "Congressional Union Scores",
+       y = "Union Score")+
   guides(color = guide_legend(title = "Party"))+
   theme(axis.title.x = element_blank(),
         axis.ticks.x = element_blank(),
@@ -60,8 +61,8 @@ Addressing (1): distributions of communities
 ggplot(individuals, mapping = aes(x = lifetime_score))+
   theme_bw()+
   geom_histogram(fill="#7BADE2")+
-  ggtitle("Lifetime Union Scores by Individual Donation Community")+
-  labs(y = "Number of Congresspeople", x = "Lifetime Union Score")+
+  ggtitle("Individual Union Scores by Community")+
+  labs(y = "Number of Congresspeople", x = "Union Score")+
   theme(plot.title = element_text(hjust=0.5),
         strip.background =element_rect(fill="#5988ba"),
         strip.text = element_text(colour = 'white'))+
@@ -73,8 +74,8 @@ We should probably drop PAC communities 2, 5, 7, 8, 9
 ggplot(pacs, mapping = aes(x = lifetime_score))+
   theme_bw()+
   geom_histogram(fill=warm_colors[1])+
-  ggtitle("PAC Lifetime Union Scores by Community")+
-  labs(y = "Number of Congresspeople", x = "Lifetime Union Score")+
+  ggtitle("PAC Union Scores by Community")+
+  labs(y = "Number of Congresspeople", x = "Union Score")+
   theme(plot.title = element_text(hjust=0.5),
         strip.background =element_rect(fill="#9c2302"),
         strip.text = element_text(colour = 'white'))+
@@ -86,13 +87,26 @@ ggplot(pacs, mapping = aes(x = lifetime_score))+
 
 3. Equal variances
 ```{r}
-ggplot(individuals, mapping = aes(group = community, y = lifetime_score))+
-  geom_boxplot()
+ggplot(individuals, mapping = aes(x = community, y = lifetime_score, fill=community))+
+  scale_fill_manual(values = cold_colors) +
+  geom_boxplot(alpha=1, show.legend = FALSE)+ #alpha is transparency
+  labs(title = "Union Score Distributions by Individual Donation Community",
+       x = "Walktrap Community",
+       y = "Lifetime Union Score")+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
+  
 ```
 
 ```{r}
-ggplot(pacs, mapping = aes(group = community, y = lifetime_score))+
-  geom_boxplot()
+ggplot(pacs, mapping = aes(x = community, y = lifetime_score, fill=community))+
+  scale_fill_manual(values = warm_colors2) +
+  geom_boxplot(alpha=1, show.legend = FALSE)+ #alpha is transparency
+  labs(title = "Lifetime Union Score Distributions by PAC Donation Community",
+       x = "Walktrap Community",
+       y = "Lifetime Union Score")+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
 
 ```
 
@@ -121,6 +135,7 @@ individual_anova = aov(lifetime_score ~ community, data = individuals)
 summary(individual_anova)
 
 ```
+
 Plotting PAC means
 ```{r}
 pacs = pacs %>% 
