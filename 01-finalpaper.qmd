@@ -1,0 +1,224 @@
+---
+title: "Your Substantive Title Here"
+author: 
+  - Your Name1^[American University]
+  - Your Name2^[American University]
+format: 
+  pdf:
+    number-sections: true
+    toc: false
+    geometry: 
+      - top=3cm
+date: 2023-09-27
+date-format: iso
+documentclass: article
+editor: source
+abstract: "This is our informative abstract of fewer than 200 words. It describes what we investigate, how we investigate it, and what we find."
+bibliography: main.bib
+---
+
+```{r setup}
+#| echo: false
+#| message: false
+
+# This chunk loads any packages we need.
+# Because "message: false", any R messages from this chunk do not appear in our paper.
+
+library(kableExtra)
+library(parameters)
+library(tidyverse)
+```
+
+```{r}
+#| echo: false
+#| message: false
+
+# This chunk might read our data.
+# It might clean the data, create new variables, etc.
+# Now our data are ready for our paper.
+
+# Because echo: false, this chunk itself is not shown.
+
+data("cars")
+```
+
+```{r readdata}
+#| eval: false
+#| echo: false
+ 
+# Because eval: false, this chunk is not run.
+
+df <- read.csv()
+```
+
+# Introduction
+
+In this section, we introduce the reader to the phenomenon we investigate. We describe the way in which our analysis contributes to an important intellectual debate, or how it answers a pressing political or social question. We introduce our research question, hypotheses, data, and results. We signpost for the reader what's coming in the rest of the paper.
+
+We remember that our paper is not a mystery novel. We note our core results early and often.
+
+Throughout our paper, we use active, first-person language and avoid the passive voice. For example, we write "we examine the relationship between $X$ and $Y$"; we do not write "the relationship between $X$ and $Y$ was examined." Where we do the analysis, we speak about it transparently. We use the present tense; for example, "In this paper, we argue \ldots" and "Paper XYZ demonstrates the relationship between \ldots".
+
+
+# [Our Substance and Context Section Title Here]
+
+
+
+	The last year has been marked by a growing number of coordinated labor movements and union action across several industries in the United States. Our research explores the nature of connections between labor union legislative scorecards from members of congress and the networks created by prolific wide-reaching large campaign contributors. 
+	
+There are a number of political implications of the expectations placed upon a candidate by a donor, including but not limited to ideological transparency and the degree of a representative agenda. Conversely, the actions that a congressperson takes to attract donations to further their own interests is also a deep topic of study. La Raja, Raymond J., and Brian Schaffner (2015) theorize that candidates who receive very large funding from individuals are very likely to be ideologically centrist, while candidates who seek funding from large amounts of small donations are more likely to be ideologically extreme. Additionally, the theory extends to corporations and business groups to claim that they will tend to favor moderate and conservative officeholders who will bargain over specifics rather than overarching ideological change. In our research, we expect to find that large donations from corporations will skew toward conservative networks in congress, while large donations from individuals will flow to centrist networks. 
+
+The academic literary body surrounding lobbying and political donations is dense, but there is a distinct difference in the post Citizens United v Federal Election Commission (2010) world. Citizens United further emphasized an already disproportionate influence in massive donations and dark money in elections. Hansen and Rocca (2019) draw a clear line in analysis of individual campaign contributors in the pre and post Citizens landscape to argue that a flood of extremely large donations to super PACs have contributed to a reduction in academic research surrounding political donations. Our investigation seeks to construct a web of large donations from available sources to understand the financial connections between current members of congress and highly active large donors. The primary difference in a post Citizens analysis is that many of the largest donations, largely from CEOs, is that the data has become obfuscated by inflated dark money values. 
+
+Graph theory is a powerful tool for analyzing complex systems of interacting agents in the political context. The precedent set by the research of Porter et al. (2005) to project bipartite networks onto one-mode networks, where the strength of connections can be quantified using the normalized interlock, in measuring social networks in congressional committees allows for an effective method of congressional network analysis. Our chosen method of clustering is the walktrap algorithm, discussed in greater detail in the following sections.
+
+
+
+
+
+Here we go deeper into the intellectual debate, the political and social context of our investigation. To give the reader a clear sense of why we are writing this paper, we describe the relevant scholarly, technical, or popular literature. We give this section a meaningful _substantive_ title; it is not entitled "Literature Review", for example. We cite at least three published, peer-reviewed scholarly works. For example, we could cite @mooree20 or @moorav12^[There should always be a space before the "(" in a citation date.], which we discussed in class.^[To cite a paper within parentheses, use, e.g., [@moore12].] We only cite others' work in our paper when it enhances the reader's understanding of what we, the authors of this paper, are doing.  We connect everything we cite to _our_ investigation; this is our original research, not a book report or an annotated bibliography.
+
+We do not cite paper titles or journal names, unless our paper is about someone else's paper or about the set of articles in a journal. We do not cite authors' first, given names. We can refer to either what an author does, or what a paper does, but we should be consistent. For example, "@moorav12 argue that we should \ldots" refers to what the authors do; "@moorav12 argues that we should \ldots" refers to what the paper -- @moorav12 -- does.
+
+In order to integrate citations into the References section below, we add entries into our file `main.bib`. This is a plain-text file that we edit in RStudio. We store `main.bib` in the same folder as our paper's `.qmd` and `.pdf` files. Its entries are formatted so that they can be knit to `.pdf`; see [https://j.mp/2UzTXEZ](https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex#The_bibliography_file) for example entries for articles, books, and miscellaneous. We can get these entries automatically from Google Scholar by turning on BibTeX in the Google Scholar Settings - Bibliography Manager. Perhaps we use a tool like free, open-source BibDesk to help us manage the `.bib` file.
+
+
+# Data and Methods {#sec-data}
+
+This section describes the data we analyze. We describe the source of the data,
+and its primary features. We cite our data. We describe the methods we use to
+answer our question and to test our hypotheses.
+
+If our data were `cars`, loaded in a chunk above, we note that our data have `r nrow(cars)` observations. Our unit of analysis is the cars; each row represents a different car that was measured.
+
+We refer to concepts and label them appropriately. We state our outcome and how it is measured: "Our outcome is stopping distance measured in feet." We state our key predictor and how it is measured: "Our key predictor is the car's speed, measured in miles per hour."
+
+We almost never refer to specific variable, object, function, or data frame names (such as `var_x`, `ourdata`, `this_useful_func`, or `df`). These particular names are almost never of interest or use to the reader.
+
+We explain important decisions and codings in this section. "We collect our data from source X. We code the outcome as 1 if the registrant turned out in the 2022 election, 0 if they did not." A table can serve as an efficient way to detail several such decisions.
+
+Where there are less-critical details that we implement to improve our analysis or presentation, we do not explain them in the paper. Our paper does not say, for example, "we reorder the levels of the factor variable from alphabetical 'high, low, medium' to the sensible 'low, medium, high.'" Of course, we implement that reordering, but it should not appear in our paper.
+
+We cite the software we use. For example, we conduct our analysis using R version `r paste(R.version$major, R.version$minor, sep = ".")` [@rcoreteam23]. We rely on several elements of the `tidyverse` [@wickhamtidyverse]. Of course, we do not cite software that we do not use.
+
+# [Our Results Section Title Here]
+
+Here, we explain and interpret our results. We try to learn as much as we can about our question as possible, given the data and analysis. We present our results clearly. We interpret them for the reader with precision and circumspection. We avoid making claims that are not substantiated by our data. We are careful about causality. When we describe associations, we avoid language like "effects" and "increases"; we only describe "effects" or "impacts" when we have a causally well-identified research design. 
+
+Note that this section may be integrated into @sec-data, if joining the two improves the overall presentation.
+
+## Predicting Distance with Speed
+
+Our results for the `cars` data include estimating the linear model 
+
+$$\text{Distance}_i = \beta_0 + \beta_1 (\text{Speed}_i) + \epsilon_i.$$
+Perhaps we start by plotting the data, as in @fig-cars.
+
+```{r fig-cars}
+#| echo: false
+#| fig-cap: Distance on Speed
+
+ggplot(cars, aes(speed, dist)) +
+  geom_point()
+```
+
+The data may be roughly linear, though there may be some non-linearity we should incorporate.
+
+```{r linearmodel}
+#| echo: false
+
+# Estimate a linear model:
+lm_out <- lm(dist ~ speed, data = cars)
+# Extract the coefficient on speed:
+cars_speed_coef <- coef(lm_out)["speed"]
+```
+
+Below we show the model estimates. The first table uses `xtable()`, the second uses `stargazer()` [@hlavac18].
+
+```{r linearxtable}
+#| echo: false
+#| message: false
+#| results: 'asis'
+
+# We can print regression tables with xtable or stargazer:
+regr_table <- xtable::xtable(lm_out,
+                             digits = 2,
+                             caption = "Our Informative Caption")
+
+print(regr_table, comment = FALSE)
+```
+
+```{r linearstargazer}
+#| echo: false
+#| message: false
+#| results: 'asis'
+
+# We can print regression tables with xtable or stargazer:
+stargazer::stargazer(lm_out, 
+                     title = "Our Informative Title",
+                     dep.var.caption = "Outcome",
+                     digits = 2,
+                     header = FALSE)
+```
+
+Using the `cars` data, we find that each unit of speed is associated with `r round(cars_speed_coef, 1)` more units of distance. We draw out what this really means, and what it implies. For example, if a typical difference among our observations is 7 units of speed, then our model estimates that a typical difference in distance among our observations is $7 \times `r round(cars_speed_coef, 1)` = `r 7 * round(cars_speed_coef, 1)`$ units of distance. We describe the substantive relevance of this number.
+
+We do not report estimates like `p = 3.242e-15`, since these are computational zeros. Instead, we write $p < 0.001$ or $p \approx 0$, as appropriate.
+
+We do not report quantities to unhelpful degrees of precision. Although there were 112,030,874 votes cast from voting-eligible population of 242,690,810 in the U.S. in 2022, it is not helpful to report turnout as `r (112030874 / 242690810) * 100`%; writing `r round((112030874 / 242690810) * 100, 1)`% suffices.
+
+
+## Comparing Distances between High- and Low-Speed Cars
+
+```{r ttest}
+#| echo: FALSE
+
+# Create a binary variable for "high-speed":
+cars <- cars |> mutate(hs = ifelse(speed > mean(speed), 1, 0))
+
+# Conduct t-test:
+t_out <- t.test(dist ~ hs, cars)
+
+t_lower_ci <- t_out$conf.int[1] |> round(2)
+t_upper_ci <- t_out$conf.int[2] |> round(2)
+```
+
+To report the results of a $t$-test, we do so in text, and perhaps in a well-formatted table as well, such as @tbl-ttesttable. Here, as above, we report the important details in text. For example, when we define "high-speed" cars as those traveling above the mean speed, the difference between the high-speed and low-speed group means is `r t_out$estimate[2] - t_out$estimate[1]`, with a 95% confidence interval that covers $(`r -t_upper_ci`, `r -t_lower_ci`)$. 
+
+```{r tbl-ttesttable}
+#| echo: FALSE
+#| warning: FALSE
+#| tbl-cap: Distance by Speed Group
+
+parameters::model_parameters(t_out) |> 
+  parameters::print_md(
+    footer = "")
+```
+
+If I have tests of two outcomes from the same data, I can bind them together, as in @tbl-ttesttable2:
+
+```{r tbl-ttesttable2}
+#| echo: FALSE
+#| warning: FALSE
+#| tbl-cap: Distance and Square-root Distance by Speed Group
+
+cars <- cars |> mutate(dist_sqrt = (sqrt(dist)))
+t_out_2 <- t.test(dist_sqrt ~ hs, data = cars)
+
+tab <- rbind(
+  model_parameters(t_out),
+  model_parameters(t_out_2)
+)
+
+tab |> 
+  print_md(
+    footer = "")
+```
+
+# Discussion
+
+We remind the reader what this paper was about, why it was important, and what we found. We reflect on limitations of the data or methods. If we have specific advice for someone picking up where we leave off, we provide that guidance. We avoid making trite statements like "more research should be done".
+
+\clearpage
+
+# References

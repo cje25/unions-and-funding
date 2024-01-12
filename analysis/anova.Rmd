@@ -60,7 +60,7 @@ Addressing (1): distributions of communities
 ggplot(individuals, mapping = aes(x = lifetime_score))+
   theme_bw()+
   geom_histogram(fill="#7BADE2")+
-  ggtitle("Individual Lifetime Union Scores by Community")+
+  ggtitle("Lifetime Union Scores by Individual Donation Community")+
   labs(y = "Number of Congresspeople", x = "Lifetime Union Score")+
   theme(plot.title = element_text(hjust=0.5),
         strip.background =element_rect(fill="#5988ba"),
