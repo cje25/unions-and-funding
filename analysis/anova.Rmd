@@ -1,0 +1,111 @@
+---
+title: "anova"
+author: "Tommy Schupp"
+date: "2024-01-11"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+individuals = read_csv("./individual_communities_and_scores.csv")
+pacs = read_csv("./pac_communities_and_scores.csv")
+individuals = individuals %>% 
+  mutate(party = str_sub(congresspeople, -2, -2))
+
+individuals = individuals %>% 
+  drop_na() %>% 
+  rename(score = score1) %>% 
+  rename(lifetime_score = lifetime_score1)
+
+pacs = pacs %>% 
+  drop_na() %>% 
+  rename(score = score1) %>% 
+  rename(lifetime_score = lifetime_score1)
+
+```
+Everybody's Lifetimescore 
+```{r}
+ggplot(individuals, mapping = aes(x = name, y = lifetime_score, color = party))+
+  scale_color_manual(breaks = c("D", "I", "R"), 
+                    values = c("blue", "green", "red"))+
+  theme(axis.title.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.x = element_blank())+
+  geom_point()
+```
+
+ANOVA ASSUMPTIONS
+
+1. each community has a normal population distribution
+2. Data are independent
+3. Distributions have same variance
+
+
+Addressing (1): distributions of communities 
+```{r}
+ggplot(individuals, mapping = aes(y = lifetime_score))+
+  geom_histogram()+
+  facet_wrap(~community)
+```
+
+We should probably drop PAC communities 2, 5, 7, 8, 9
+```{r}
+ggplot(pacs, mapping = aes(y = lifetime_score))+
+  geom_histogram()+
+  facet_wrap(~community)
+
+```
+
+2. Data are independent 
+
+3. Equal variances
+```{r}
+ggplot(individuals, mapping = aes(group = community, y = lifetime_score))+
+  geom_boxplot()
+```
+
+```{r}
+ggplot(pacs, mapping = aes(group = community, y = lifetime_score))+
+  geom_boxplot()
+
+```
+
+3. Independence
+The data aren't independent. 
+
+
+Plotting individual means
+```{r}
+individual_means = individuals %>% 
+  group_by(community) %>% 
+  summarize(community_mean = mean(lifetime_score))
+
+ggplot(individual_means, mapping = aes(x = community, y = community_mean, fill = community))+
+  geom_bar(stat="identity")
+```
+
+```{r}
+individual_anova = aov(lifetime_score ~ community, data = individuals)
+summary(individual_anova)
+
+```
+Plotting PAC means
+```{r}
+pacs_means = pacs %>% 
+  group_by(community) %>% 
+  summarize(community_mean = mean(lifetime_score))
+
+ggplot(pacs_means, mapping = aes(x = community, y = community_mean, fill = community))+
+  geom_bar(stat="identity")
+
+```
+
+
+```{r}
+pacs_anova = aov(lifetime_score ~ community, data = pacs)
+summary(individual_anova)
+
+```
+
+Then we interpret and we are done. 
