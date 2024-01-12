@@ -1,0 +1,170 @@
+---
+title: "anova"
+author: "Tommy Schupp and Cameron Eller"
+date: "2024-01-11"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+individuals = read_csv("./individual_communities_and_scores.csv")
+pacs = read_csv("./pac_communities_and_scores.csv")
+individuals = individuals %>% 
+  mutate(party = str_sub(congresspeople, -2, -2)) %>% 
+  mutate(community = paste("Community", community))
+
+individuals = individuals %>% 
+  drop_na() %>% 
+  rename(score = score1) %>% 
+  rename(lifetime_score = lifetime_score1)
+
+pacs = pacs %>% 
+  drop_na() %>% 
+  rename(score = score1) %>% 
+  rename(lifetime_score = lifetime_score1) %>% 
+  mutate(community = paste("Community", community))
+
+cold_colors <- c("#078D70", "#26CEAA", "#98E8C1", "#7BADE2")
+warm_colors <- c("#D52D00", "#EF7627", "#FF9A56", "#D162A4")
+warm_colors2 <- c("#D52D00", "#EF7627", "#D162A4", "#B55690", "#A30262", "#5C0029", "#2D080A", "#7C3626", "#FF9A56")
+
+```
+Everybody's Lifetime Score 
+```{r}
+ggplot(individuals, mapping = aes(x = name, y = lifetime_score, color = party))+
+  theme_classic()+
+  geom_point() +
+  coord_cartesian(clip = "off")+
+  scale_color_manual(breaks = c("D", "I", "R"), 
+                    values = c("blue", "green", "red"),
+                    labels=c("Democrat", "Independent", "Republican")) + 
+  labs(title = "Congressional Union Scores",
+       y = "Union Score")+
+  guides(color = guide_legend(title = "Party"))+
+  theme(axis.title.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.x = element_blank(),
+        plot.title = element_text(hjust=0.5))
+  
+```
+
+ANOVA ASSUMPTIONS
+
+1. each community has a normal population distribution
+2. Data are independent
+3. Distributions have same variance
+
+
+Addressing (1): distributions of communities 
+```{r}
+ggplot(individuals, mapping = aes(x = lifetime_score))+
+  theme_bw()+
+  geom_histogram(fill="#7BADE2")+
+  ggtitle("Individual Union Scores by Community")+
+  labs(y = "Number of Congresspeople", x = "Union Score")+
+  theme(plot.title = element_text(hjust=0.5),
+        strip.background =element_rect(fill="#5988ba"),
+        strip.text = element_text(colour = 'white'))+
+  facet_wrap(~community)
+```
+
+We should probably drop PAC communities 2, 5, 7, 8, 9
+```{r}
+ggplot(pacs, mapping = aes(x = lifetime_score))+
+  theme_bw()+
+  geom_histogram(fill=warm_colors[1])+
+  ggtitle("PAC Union Scores by Community")+
+  labs(y = "Number of Congresspeople", x = "Union Score")+
+  theme(plot.title = element_text(hjust=0.5),
+        strip.background =element_rect(fill="#9c2302"),
+        strip.text = element_text(colour = 'white'))+
+  facet_wrap(~community)
+
+```
+
+2. Data are independent 
+
+3. Equal variances
+```{r}
+ggplot(individuals, mapping = aes(x = community, y = lifetime_score, fill=community))+
+  scale_fill_manual(values = cold_colors) +
+  geom_boxplot(alpha=1, show.legend = FALSE)+ #alpha is transparency
+  labs(title = "Union Score Distributions by Individual Donation Community",
+       x = "Walktrap Community",
+       y = "Lifetime Union Score")+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
+  
+```
+
+```{r}
+ggplot(pacs, mapping = aes(x = community, y = lifetime_score, fill=community))+
+  scale_fill_manual(values = warm_colors2) +
+  geom_boxplot(alpha=1, show.legend = FALSE)+ #alpha is transparency
+  labs(title = "Lifetime Union Score Distributions by PAC Donation Community",
+       x = "Walktrap Community",
+       y = "Lifetime Union Score")+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+3. Independence
+The data aren't independent. 
+
+
+Plotting individual means
+```{r}
+individual_means = individuals %>% 
+  group_by(community) %>% 
+  summarize(community_mean = mean(lifetime_score))
+
+  ggplot(individual_means, mapping = aes(x = reorder(community, -community_mean), y = community_mean, fill = community))+
+    theme_bw()+
+    theme(plot.title = element_text(hjust=0.5),
+          text=element_text(size=16, family="sans"))+
+    scale_fill_manual(values=cold_colors)+
+    ggtitle("Individual Network Mean Union Scores")+
+    labs(y = "Mean Union Score", x = "Walktrap Community")+
+    geom_bar(stat="identity", show.legend = FALSE, color="black")
+```
+
+```{r}
+individual_anova = aov(lifetime_score ~ community, data = individuals)
+summary(individual_anova)
+
+```
+
+Plotting PAC means
+```{r}
+pacs = pacs %>% 
+  group_by(community) %>%
+  filter(community != "Community 5") %>%
+  filter(community != "Community 2") %>% 
+  filter(community != "Community 7") %>% 
+  filter(community != "Community 8") %>%
+  filter(community != "Community 9") 
+
+pacs_means = pacs %>% 
+  summarize(community_mean = mean(lifetime_score))
+
+ggplot(pacs_means, mapping = aes(x = reorder(community, -community_mean), y = community_mean, fill = community))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust=0.5),
+        text=element_text(size=16,  family="sans"))+
+  scale_fill_manual(values=warm_colors)+
+  ggtitle("PACs Network Mean Union Scores")+
+  labs(y = "Mean Union Score", x = "Walktrap Community")+
+  geom_bar(stat="identity", show.legend = FALSE, color="black")
+
+```
+
+
+```{r}
+pacs_anova = aov(lifetime_score ~ community, data = pacs)
+summary(individual_anova)
+
+```
+
+Then we interpret and we are done. 

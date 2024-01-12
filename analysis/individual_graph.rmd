@@ -1,0 +1,155 @@
+---
+title: "Individual Graph"
+author: "Tommy Schupp"
+date: "2024-01-10"
+output: html_document
+---
+
+```{r}
+library(data.table)
+library(igraph)
+library(tidyverse)
+
+# load in all of the donations data
+donations = read_csv("../../large_contributions_and_scores.csv") 
+#note: github wont allow for uploading as large a file as "large_contributions_and_scores.csv" so it is stored outside of the repo on our personal computers
+
+print(nrow(donations))
+
+individual_donations = donations %>%
+  filter(pac_or_individual == 'i')
+
+print(nrow(individual_donations))
+
+```
+
+```{r}
+# creating the edge list of the individual donors
+edge_list <- individual_donations %>%
+  select(donor_name, candidate_name, amount)
+
+# using the edge list to create the first graph (not directed)
+g <- graph_from_data_frame(d=edge_list, directed=FALSE)
+
+# change the graph type to bipartite
+V(g)$type <- bipartite_mapping(g)$type
+
+# summing the total amount donated to the candidate
+donor_candidate_amount <- edge_list %>%
+  group_by(donor_name, candidate_name) %>%
+  summarize(total_amount = sum(amount))
+
+# pairing the candidates with their donated total
+candidate_pairs <- donor_candidate_amount %>%
+  full_join(donor_candidate_amount, by="donor_name") %>%
+  filter(candidate_name.x != candidate_name.y) %>%
+  group_by(candidate_name.x, candidate_name.y) %>%
+  summarize(weight = sum(total_amount.x + total_amount.y))
+
+# creating the one mode projection
+candidate_projection <- bipartite_projection(g, which=TRUE)
+V(candidate_projection)$name <- V(g)[V(g)$type == TRUE]$name
+
+# vectorized code getting the edge ids
+get_edge_ids_vectorized <- function(graph, from, to) {
+  mapply(function(f, t) get.edge.ids(graph, c(f, t)), from, to)
+}
+
+# using edge ids to pair candidates and weights
+edge_ids <- get_edge_ids_vectorized(candidate_projection, 
+                                    candidate_pairs$candidate_name.x, 
+                                    candidate_pairs$candidate_name.y)
+
+E(candidate_projection)$weight[edge_ids] <- candidate_pairs$weight
+
+```
+
+```{r}
+# running walktrap
+wt_communities <- cluster_walktrap(candidate_projection, steps = 580)
+
+membership <- membership(wt_communities)
+
+V(candidate_projection)$community <- membership
+
+str <- strength(candidate_projection, mode="all")
+
+# creating a string for the members of each community
+for (i in unique(membership)) {
+  cat("Community", i, ":", names(V(candidate_projection))[membership == i], "\n")
+}
+```
+
+```{r}
+# graphing the network
+names_of_interest = names(sort(str, decreasing = TRUE)[1:5])
+
+l = layout_with_lgl(candidate_projection, area = vcount(candidate_projection)^5, cellsize=vcount(candidate_projection)^4)
+
+last_two_words <- function(name) {
+  words <- strsplit(name, " ")[[1]]
+  if (length(words) >= 2) {
+    paste(tail(words, 2), collapse=" ")
+  } else {
+    name  
+  }
+}
+
+vertex_indices = match(names_of_interest, V(candidate_projection)$name)
+short_labels <- sapply(V(candidate_projection)$name[vertex_indices], last_two_words)
+vlabs = rep(NA, vcount(candidate_projection))
+vlabs[vertex_indices] <- short_labels
+
+g = max(str)
+str = str/g
+
+par(mar=c(0,0,0,0))
+plot(candidate_projection, 
+     vertex.color=V(candidate_projection)$community,
+     vertex.label=vlabs, #V(candidate_projection)$name, 
+     vertex.size=str*13, 
+     vertex.label.cex = 0.8,
+     edge.arrow.size=0, 
+     edge.curved=0.1, 
+     edge.width=0.0025,
+     layout=l
+)
+
+```
+
+Writing the graph to a file:
+```{r}
+write_graph(candidate_projection, "individual_graph.graphml", format = "graphml")
+
+```
+
+Reading in a graph from a file:
+```{r}
+loaded_graph <- read.graph("individual_graph.graphml", format = "graphml")
+```
+
+Creating a communities data frame:
+```{r}
+# creating an empty dataframe with two columns, community and congresspeople
+communities_df <- data.frame(matrix(ncol = 2, nrow = length(unique(membership))))
+colnames(communities_df) <- c("community", "congresspeople")
+
+# add all of the communities to the dataframe (currently out of order)
+for (i in unique(membership)) {
+  communities_df$community[[i]] <- unique(membership)[i]
+}
+
+# reorder the communities from first to last
+communities_df <- communities_df |>
+  arrange(community)
+
+# add the people in each community as a single string
+for (i in unique(membership)) {
+  communities_df$congresspeople[[i]] <- paste(names(V(candidate_projection)[membership == i]), sep="", collapse=", ") 
+}
+
+# write the community data frame to a csv
+write.csv(communities_df, "individual_communities_by_community.csv")
+```
+
+
