@@ -8,8 +8,8 @@ output: html_document
 ```{r}
 library(tidyverse)
 library(ggplot2)
-individuals = read_csv("./individual_communities_and_scores.csv")
-pacs = read_csv("./pac_communities_and_scores.csv")
+individuals = read_csv("./analysis/individual_communities_and_scores.csv")
+pacs = read_csv("./analysis/pac_communities_and_scores.csv")
 individuals = individuals %>% 
   mutate(party = str_sub(congresspeople, -2, -2)) %>% 
   mutate(community = paste("Community", community))

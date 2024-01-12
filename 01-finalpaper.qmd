@@ -13,10 +13,12 @@ date: 2023-09-27
 date-format: iso
 documentclass: article
 editor: source
+  markdown: 
+    wrap: 72
 abstract: "This is our informative abstract of fewer than 200 words. It describes what we investigate, how we investigate it, and what we find."
 ---
 
-```{r setup}
+```{r setup,message = FALSE}
 #| echo: false
 #| message: false
 
@@ -26,7 +28,7 @@ abstract: "This is our informative abstract of fewer than 200 words. It describe
 library(kableExtra)
 library(parameters)
 library(tidyverse)
-library(ggplot)
+library(ggplot2)
 ```
 
 # Introduction
@@ -45,25 +47,27 @@ This scientific data analysis paper, rooted in R Studio, provides a robust explo
 
 # Political Donations and Network Analysis
 
-The last year has been marked by a growing number of coordinated labor movements and union action across several industries in the United States. Our research explores the nature of connections between labor union legislative scorecards from members of congress and the networks created by prolific wide-reaching large campaign contributors. 
-	
-There are a number of political implications of the expectations placed upon a candidate by a donor, including but not limited to ideological transparency and the degree of a representative agenda. Conversely, the actions that a congressperson takes to attract donations to further their own interests is also a deep topic of study. La Raja, Raymond J., and Brian Schaffner (2015) theorize that candidates who receive very large funding from individuals are very likely to be ideologically centrist, while candidates who seek funding from large amounts of small donations are more likely to be ideologically extreme. Additionally, the theory extends to corporations and business groups to claim that they will tend to favor moderate and conservative officeholders who will bargain over specifics rather than overarching ideological change. In our research, we expect to find that large donations from corporations will skew toward conservative networks in congress, while large donations from individuals will flow to centrist networks. 
+The last year has been marked by a growing number of coordinated labor movements and union action across several industries in the United States. Our research explores the nature of connections between labor union legislative scorecards from members of congress and the networks created by prolific wide-reaching large campaign contributors.
 
-The academic literary body surrounding lobbying and political donations is dense, but there is a distinct difference in the post Citizens United v Federal Election Commission (2010) world. Citizens United further emphasized an already disproportionate influence in massive donations and dark money in elections. Hansen and Rocca (2019) draw a clear line in analysis of individual campaign contributors in the pre and post Citizens landscape to argue that a flood of extremely large donations to super PACs have contributed to a reduction in academic research surrounding political donations. Our investigation seeks to construct a web of large donations from available sources to understand the financial connections between current members of congress and highly active large donors. The primary difference in a post Citizens analysis is that many of the largest donations, largely from CEOs, is that the data has become obfuscated by inflated dark money values. 
+There are a number of political implications of the expectations placed upon a candidate by a donor, including but not limited to ideological transparency and the degree of a representative agenda. Conversely, the actions that a congressperson takes to attract donations to further their own interests is also a deep topic of study. La Raja, Raymond J., and Brian Schaffner (2015) theorize that candidates who receive very large funding from individuals are very likely to be ideologically centrist, while candidates who seek funding from large amounts of small donations are more likely to be ideologically extreme. Additionally, the theory extends to corporations and business groups to claim that they will tend to favor moderate and conservative officeholders who will bargain over specifics rather than overarching ideological change. In our research, we expect to find that large donations from corporations will skew toward conservative networks in congress, while large donations from individuals will flow to centrist networks.
+
+The academic literary body surrounding lobbying and political donations is dense, but there is a distinct difference in the post Citizens United v Federal Election Commission (2010) world. Citizens United further emphasized an already disproportionate influence in massive donations and dark money in elections. Hansen and Rocca (2019) draw a clear line in analysis of individual campaign contributors in the pre and post Citizens landscape to argue that a flood of extremely large donations to super PACs have contributed to a reduction in academic research surrounding political donations. Our investigation seeks to construct a web of large donations from available sources to understand the financial connections between current members of congress and highly active large donors. The primary difference in a post Citizens analysis is that many of the largest donations, largely from CEOs, is that the data has become obfuscated by inflated dark money values.
 
 Graph theory is a powerful tool for analyzing complex systems of interacting agents in the political context. The precedent set by the research of Porter et al. (2005) to project bipartite networks onto one-mode networks, where the strength of connections can be quantified using the normalized interlock, in measuring social networks in congressional committees allows for an effective method of congressional network analysis. Our chosen method of clustering is the walktrap algorithm, discussed in greater detail in the following sections.
 
+Here we go deeper into the intellectual debate, the political and social context of our investigation. To give the reader a clear sense of why we are writing this paper, we describe the relevant scholarly, technical, or popular literature. We give this section a meaningful *substantive* title; it is not entitled "Literature Review", for example. We cite at least three published, peer-reviewed scholarly works. For example, we could cite @mooree20 or @moorav12[^1], which we discussed in class.[^2] We only cite others' work in our paper when it enhances the reader's understanding of what we, the authors of this paper, are doing. We connect everything we cite to *our* investigation; this is our original research, not a book report or an annotated bibliography.
 
+[^1]: There should always be a space before the "(" in a citation date.
 
-Here we go deeper into the intellectual debate, the political and social context of our investigation. To give the reader a clear sense of why we are writing this paper, we describe the relevant scholarly, technical, or popular literature. We give this section a meaningful _substantive_ title; it is not entitled "Literature Review", for example. We cite at least three published, peer-reviewed scholarly works. For example, we could cite @mooree20 or @moorav12^[There should always be a space before the "(" in a citation date.], which we discussed in class.^[To cite a paper within parentheses, use, e.g., [@moore12].] We only cite others' work in our paper when it enhances the reader's understanding of what we, the authors of this paper, are doing.  We connect everything we cite to _our_ investigation; this is our original research, not a book report or an annotated bibliography.
+[^2]: To cite a paper within parentheses, use, e.g., [@moore12].
 
 We do not cite paper titles or journal names, unless our paper is about someone else's paper or about the set of articles in a journal. We do not cite authors' first, given names. We can refer to either what an author does, or what a paper does, but we should be consistent. For example, "@moorav12 argue that we should \ldots" refers to what the authors do; "@moorav12 argues that we should \ldots" refers to what the paper -- @moorav12 -- does.
 
 In order to integrate citations into the References section below, we add entries into our file `main.bib`. This is a plain-text file that we edit in RStudio. We store `main.bib` in the same folder as our paper's `.qmd` and `.pdf` files. Its entries are formatted so that they can be knit to `.pdf`; see [https://j.mp/2UzTXEZ](https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex#The_bibliography_file) for example entries for articles, books, and miscellaneous. We can get these entries automatically from Google Scholar by turning on BibTeX in the Google Scholar Settings - Bibliography Manager. Perhaps we use a tool like free, open-source BibDesk to help us manage the `.bib` file.
 
-
 # Data and Methods {#sec-data}
-For this study, two primary datasets were utilized—Open Secrets donation data and Union Scores for the year 2022. The Open Secrets data underwent cleaning to isolate donors contributing over $2000 to House and Senate members in 2022. The names were standardized, and the 'candidate_party' variable was simplified to 'D' for Democrats, 'R' for Republicans, and 'I' for Independents. A new variable, 'pac_or_individual,' was introduced to categorize PACs ('p') and individuals ('i'). Notably, we integrated two initially separate datasets for individuals and PACs.
+
+For this study, two primary datasets were utilized---Open Secrets donation data and Union Scores for the year 2022. The Open Secrets data underwent cleaning to isolate donors contributing over \$2000 to House and Senate members in 2022. The names were standardized, and the 'candidate_party' variable was simplified to 'D' for Democrats, 'R' for Republicans, and 'I' for Independents. A new variable, 'pac_or_individual,' was introduced to categorize PACs ('p') and individuals ('i'). Notably, we integrated two initially separate datasets for individuals and PACs.
 
 Simultaneously, the Union Scores data for 2022 was processed, encompassing both yearly and lifetime scores. Titles preceding names were removed, and percentage-based score values were converted to vectors. The House and Senate data frames were merged, and encoding discrepancies between the Union Scores (latin1) and Open Secrets (utf-8) datasets were addressed.
 
@@ -73,16 +77,192 @@ A walkthrough function was employed to identify groups within the network. These
 
 For statistical insights, we implemented code to perform ANOVA on the identified communities, assessing differences in mean Union Scores. Additional analyses, such as graphical representations of score and donation distributions, may be explored based on available time.
 
-
-# [Our Results Section Title Here]
-
-After organizing communities by donor networks for both large individual donors and large PAC donors, we tested the mean union scores of the communities using an Analysis of Variance (ANOVA) Test. 
-
 ```{r}
+individuals = read_csv("./analysis/individual_communities_and_scores.csv", show_col_types = FALSE)
+individuals = individuals %>% 
+  mutate(party = str_sub(congresspeople, -2, -2)) %>% 
+  mutate(community = paste("Community", community))
+
+individuals = individuals %>% 
+  drop_na() %>% 
+  rename(score = score1) %>% 
+  rename(lifetime_score = lifetime_score1)
+
+ggplot(individuals, mapping = aes(x = name, y = lifetime_score, color = party))+
+  theme_classic()+
+  geom_point() +
+  coord_cartesian(clip = "off")+
+  scale_color_manual(breaks = c("D", "I", "R"), 
+                    values = c("blue", "green", "red"),
+                    labels=c("Democrat", "Independent", "Republican")) + 
+  labs(title = "Congressional Union Scores",
+       y = "Union Score")+
+  guides(color = guide_legend(title = "Party"))+
+  theme(axis.title.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.x = element_blank(),
+        plot.title = element_text(hjust=0.5))
 
 ```
 
+-   community graphs -communities by people -republican democrat graph of union scores -cite union scores
 
+# \[Our Results Section Title Here\]
+
+After organizing communities by donor networks for both large individual donors and large PAC donors, we tested the mean union scores of the communities using an Analysis of Variance (ANOVA) Test. Using an ANOVA depends on certain assumptions being fulfilled.
+
+```{r}
+individuals = read_csv("./analysis/individual_communities_and_scores.csv", show_col_types = FALSE)
+pacs = read_csv("./analysis/pac_communities_and_scores.csv", show_col_types = FALSE)
+individuals = individuals %>% 
+  mutate(party = str_sub(congresspeople, -2, -2)) %>% 
+  mutate(community = paste("Community", community))
+
+individuals = individuals %>% 
+  drop_na() %>% 
+  rename(score = score1) %>% 
+  rename(lifetime_score = lifetime_score1)
+
+pacs = pacs %>% 
+  drop_na() %>% 
+  rename(score = score1) %>% 
+  rename(lifetime_score = lifetime_score1) %>% 
+  mutate(community = paste("Community", community))
+
+cold_colors <- c("#078D70", "#26CEAA", "#98E8C1", "#7BADE2")
+warm_colors <- c("#D52D00", "#EF7627", "#FF9A56", "#D162A4")
+warm_colors2 <- c("#D52D00", "#EF7627", "#D162A4", "#B55690", "#A30262", "#5C0029", "#2D080A", "#7C3626", "#FF9A56")
+
+```
+
+The ANOVA Assumptions are that 1. Each community has a normal population distribution of union score, 2. The union scores of congresspeople are independent, 3. The union scores between communities have an equal variance.
+
+We begin by addressing these assumptions.
+
+First, we examine the union score histograms of the large individual donor communities. Community 1 and Community 4 both seem to be unimodal and normally distributed, however, both communities have some skew. Community 2 and Community 3 are both bimodal with peaks on both ends of the union score spectrum. They do not seem to fit the normality assumption very well.
+
+```{r, message=FALSE}
+ggplot(individuals, mapping = aes(x = lifetime_score))+
+  theme_bw()+
+  geom_histogram(fill="#7BADE2")+
+  ggtitle("Individual Union Scores by Community")+
+  labs(y = "Number of Congresspeople", x = "Union Score")+
+  theme(plot.title = element_text(hjust=0.5),
+        strip.background =element_rect(fill="#5988ba"),
+        strip.text = element_text(colour = 'white'))+
+  facet_wrap(~community)
+```
+
+Now, we examine the union score histograms of the large PAC donor communities. First, note that Community 2, Community 5, Community 7, Community 8, and Community 9 are all extremely small, between 1 and 10 members each. For that reason, we drop those communities from the analysis, as they are too small to gain meaningful insight. Community 3 and Community 4 are both unimodal and have some light skew. Meanwhile, Community 6 and Community 1 are more evenly distributed. Like the individual section, these do not seem to fit the normality assumptions very well.
+
+```{r, message=FALSE}
+ggplot(pacs, mapping = aes(x = lifetime_score))+
+  theme_bw()+
+  geom_histogram(fill=warm_colors[1])+
+  ggtitle("PAC Union Scores by Community")+
+  labs(y = "Number of Congresspeople", x = "Union Score")+
+  theme(plot.title = element_text(hjust=0.5),
+        strip.background =element_rect(fill="#9c2302"),
+        strip.text = element_text(colour = 'white'))+
+  facet_wrap(~community)
+
+```
+
+Even though the communities have skewed distributions, we treat them as normally distributed.
+
+In regards to the independence of union scores, it is very unlikely that they are independent. Because of the nature of Congress, voting tends to occur in coalitions and by party line. However, to perform this analysis, we can assume that the observations are independent.
+
+Now, we examine the variances of the communities using boxplots.
+
+```{r}
+ggplot(individuals, mapping = aes(x = community, y = lifetime_score, fill=community))+
+  scale_fill_manual(values = cold_colors) +
+  geom_boxplot(alpha=1, show.legend = FALSE)+ #alpha is transparency
+  labs(title = "Union Score Distributions by Individual Donation Community",
+       x = "Walktrap Community",
+       y = "Lifetime Union Score")+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
+  
+```
+
+In the boxplots of large individual donation communities, we can see that the variances of Community 1 and Community 4 seem to be approximately equal. The variances of Community 2 and Community 3 also seem to be approximately equal. However, the variances of Community 1 and Community 4 are not equal to Community 2 and Community 3.
+
+```{r}
+ggplot(pacs, mapping = aes(x = community, y = lifetime_score, fill=community))+
+  scale_fill_manual(values = warm_colors2) +
+  geom_boxplot(alpha=1, show.legend = FALSE)+ #alpha is transparency
+  labs(title = "Lifetime Union Score Distributions by PAC Donation Community",
+       x = "Walktrap Community",
+       y = "Lifetime Union Score")+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+In the boxplots of large PAC donations communities, we find that Community 2, Community 3, and Community 4 have similar variances. We also find that Community 1 and Community 6 have similar variances. Also, Community 5, Community 7, Community 8, and Community 9 have similar variances. Again, the variances between these groupings of communities are quite different.
+
+Though the ANOVA assumptions are violated, we still think that the test is appropriate to test the means of these communities. Future research could apply more complex non-parametric tests.
+
+```{r}
+individual_means = individuals %>% 
+  group_by(community) %>% 
+  summarize(community_mean = mean(lifetime_score))
+
+  ggplot(individual_means, mapping = aes(x = reorder(community, -community_mean), y = community_mean, fill = community))+
+    theme_bw()+
+    theme(plot.title = element_text(hjust=0.5),
+          text=element_text(size=16, family="sans"))+
+    scale_fill_manual(values=cold_colors)+
+    ggtitle("Individual Network Mean Union Scores")+
+    labs(y = "Mean Union Score", x = "Walktrap Community")+
+    geom_bar(stat="identity", show.legend = FALSE, color="black")
+```
+
+Examining the means of the large individual donor communities, we see that the mean union score of Community 1 and Community 2 is favorable towards unions. Conversely, Community 3 and Community 4 are less favorable towards unions.
+
+```{r}
+individual_anova = aov(lifetime_score ~ community, data = individuals)
+summary(individual_anova)
+
+```
+
+We find that, with *F*-Value 110.3 and level of significance *p*\<0.001, we reject that the means of these communities are the same. This means that for the distinct communities of congresspeople generated by mutual large individual donors, voting patterns on bills related to unions are distinct. In particular, this shows that structure in relational campaign donation behavior encodes information about the voting patterns of congresspeople towards unions.
+
+Plotting PAC means
+
+```{r}
+pacs = pacs %>% 
+  group_by(community) %>%
+  filter(community != "Community 5") %>%
+  filter(community != "Community 2") %>% 
+  filter(community != "Community 7") %>% 
+  filter(community != "Community 8") %>%
+  filter(community != "Community 9") 
+
+pacs_means = pacs %>% 
+  summarize(community_mean = mean(lifetime_score))
+
+ggplot(pacs_means, mapping = aes(x = reorder(community, -community_mean), y = community_mean, fill = community))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust=0.5),
+        text=element_text(size=16,  family="sans"))+
+  scale_fill_manual(values=warm_colors)+
+  ggtitle("PACs Network Mean Union Scores")+
+  labs(y = "Mean Union Score", x = "Walktrap Community")+
+  geom_bar(stat="identity", show.legend = FALSE, color="black")
+
+```
+
+```{r}
+pacs_anova = aov(lifetime_score ~ community, data = pacs)
+summary(pacs_anova)
+
+```
+
+We find that, with *F*-Value 329 and level of significance *p*\<0.001, we reject that means of the communities created by PAC donation networks are the same. This means that for the distinct communities of congresspeople generated by mutual large PAC donors, voting patterns on bills related to unions are distinct. In particular, this shows that structure in relational campaign donation behavior encodes information about the voting patterns of congresspeople towards unions.
+
+Between the two groups of donors, these results show that union scores are legitimate ways of distinguishing communities created by large PAC donations and large individual donations networks. This is a meaningful result because it shows that donation patterns are important in finding out information about congressional voting behavior.
 
 # Discussion
 
