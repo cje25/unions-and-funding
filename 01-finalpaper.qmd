@@ -15,7 +15,7 @@ documentclass: article
 editor: source
   markdown: 
     wrap: 72
-abstract: "This is our informative abstract of fewer than 200 words. It describes what we investigate, how we investigate it, and what we find."
+abstract: "This study explores the potential variations in union scores among communities created by donor networks. The Null Hypothesis (H₀) posits that these communities exhibit the same mean union score, while the Alternative Hypothesis (Hₐ) suggests differences in mean union scores. To investigate these hypotheses, a comprehensive analysis of various donor network communities will be conducted, employing statistical methods to assess and compare their union scores. The findings aim to contribute valuable insights into the dynamics of donor network communities and their potential impact on union scores, offering a nuanced understanding of the relationships within these networks."
 ---
 
 ```{r setup,message = FALSE}
