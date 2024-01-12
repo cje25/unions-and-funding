@@ -11,7 +11,8 @@ library(ggplot2)
 individuals = read_csv("./individual_communities_and_scores.csv")
 pacs = read_csv("./pac_communities_and_scores.csv")
 individuals = individuals %>% 
-  mutate(party = str_sub(congresspeople, -2, -2))
+  mutate(party = str_sub(congresspeople, -2, -2)) %>% 
+  mutate(community = paste("Community", community))
 
 individuals = individuals %>% 
   drop_na() %>% 
@@ -21,7 +22,8 @@ individuals = individuals %>%
 pacs = pacs %>% 
   drop_na() %>% 
   rename(score = score1) %>% 
-  rename(lifetime_score = lifetime_score1)
+  rename(lifetime_score = lifetime_score1) %>% 
+  mutate(community = paste("Community", community))
 
 ```
 Everybody's Lifetimescore 
@@ -81,8 +83,14 @@ individual_means = individuals %>%
   group_by(community) %>% 
   summarize(community_mean = mean(lifetime_score))
 
-ggplot(individual_means, mapping = aes(x = community, y = community_mean, fill = community))+
-  geom_bar(stat="identity")
+  ggplot(individual_means, mapping = aes(x = community, y = community_mean, fill = community))+
+    theme_bw()+
+    theme(plot.title = element_text(hjust=0.5),
+          text=element_text(size=16,  family="sans"))+
+    scale_fill_manual(values=c("#88D9E6", "#8B8BAE", "#526760", "#1B2F33"))+
+    ggtitle("Individual Network Mean Union Scores")+
+    labs(y = "Mean Union Score", x = "Walktrap Community")+
+    geom_bar(stat="identity", show.legend = FALSE)
 ```
 
 ```{r}
@@ -92,12 +100,25 @@ summary(individual_anova)
 ```
 Plotting PAC means
 ```{r}
+pacs = pacs %>% 
+  group_by(community) %>%
+  filter(community != "Community 5") %>%
+  filter(community != "Community 2") %>% 
+  filter(community != "Community 7") %>% 
+  filter(community != "Community 8") %>%
+  filter(community != "Community 9") 
+
 pacs_means = pacs %>% 
-  group_by(community) %>% 
   summarize(community_mean = mean(lifetime_score))
 
 ggplot(pacs_means, mapping = aes(x = community, y = community_mean, fill = community))+
-  geom_bar(stat="identity")
+  theme_bw()+
+  theme(plot.title = element_text(hjust=0.5),
+        text=element_text(size=16,  family="sans"))+
+  scale_fill_manual(values=c("#88D9E6", "#8B8BAE", "#526760", "#1B2F33"))+
+  ggtitle("PACs Network Mean Union Scores")+
+  labs(y = "Mean Union Score", x = "Walktrap Community")+
+  geom_bar(stat="identity", show.legend = FALSE)
 
 ```
 
